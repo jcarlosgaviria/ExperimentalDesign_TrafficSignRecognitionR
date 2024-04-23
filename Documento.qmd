@@ -1,0 +1,933 @@
+---
+format: html
+editor: visual
+mainfont: Times new roman
+monofont: Times new roman
+include-in-header:
+  - text: |
+      <style>
+      
+      html {
+        font-size: 12px;
+      }
+      
+      body {
+        font-size: 0.75rem;
+      }
+      
+      h3 {
+        text-align: left;
+      }
+      
+      .center h2 {
+        text-align: center;
+      }
+      
+      .center h3 {
+        text-align: center;
+        font-size: 1.25rem;
+      }
+      
+      .left h2 {
+        text-align: left;
+      }
+      
+      .left h3 {
+        text-align: left;
+      }
+      
+      p {
+        text-align: justify !important
+      }
+      
+      code{ 
+        text-wrap: balance;
+      }
+      
+      </style>
+---
+
+```{r}
+#| echo: false
+options(warn.conflicts = FALSE)
+
+suppressWarnings(library(carData, warn.conflicts = FALSE))
+suppressWarnings(library(zoo, warn.conflicts = FALSE))
+suppressWarnings(library(readxl, warn.conflicts = FALSE))
+suppressWarnings(library(ggplot2, warn.conflicts = FALSE))
+suppressWarnings(library(nortest, warn.conflicts = FALSE)) 
+suppressWarnings(library(moments, warn.conflicts = FALSE)) 
+suppressWarnings(library(car, warn.conflicts = FALSE))
+suppressWarnings(library(lmtest, warn.conflicts = FALSE))
+suppressWarnings(library(agricolae, warn.conflicts = FALSE)) 
+suppressWarnings(library(gplots, warn.conflicts = FALSE)) 
+
+```
+
+```{r}
+#| echo: false 
+library(lmtest)
+
+alfaNormalidad <- 0.05
+
+pruebaNormalidadShapiro <- function(datos, alfa, h0, ha) { 
+  resultado <- shapiro.test(datos) 
+  print(resultado)
+  if (resultado$p.value > alfa) {
+    cat("Dado que el valor-p ", resultado$p.value, " es mayor que el nivel de significancia ", alfa , " no se rechaza H0, y se concluye que ", h0, ".")
+  } else {
+    cat("Dado que el valor-p ", resultado$p.value, " es menor que el nivel de significancia ", alfa , " se rechaza H0, y se concluye que ", ha, ".")
+  }
+}
+
+pruebaNormalidadJarque <- function(datos, alfa, h0, ha) { 
+  resultado <- jarque.test(datos) 
+  print(resultado)
+  if (resultado$p.value > alfa) {
+    cat("Dado que el valor-p ", resultado$p.value, " es mayor que el nivel de significancia ", alfa , " no se rechaza H0, y se concluye que ", h0, ".")
+  } else {
+    cat("Dado que el valor-p ", resultado$p.value, " es menor que el nivel de significancia ", alfa , " se rechaza H0, y se concluye que ", ha, ".")
+  }
+}
+
+pruebaNormalidadLillie <- function(datos, alfa, h0, ha) { 
+  resultado <- lillie.test(datos) 
+  print(resultado)
+  if (resultado$p.value > alfa) {
+    cat("Dado que el valor-p ", resultado$p.value, " es mayor que el nivel de significancia ", alfa , " no se rechaza H0, y se concluye que ", h0, ".")
+  } else {
+    cat("Dado que el valor-p ", resultado$p.value, " es menor que el nivel de significancia ", alfa , " se rechaza H0, y se concluye que ", ha, ".")
+  }
+}
+
+pruebaNormalidadAD <- function(datos, alfa, h0, ha) { 
+  resultado <- ad.test(datos) 
+  print(resultado)
+  if (resultado$p.value > alfa) {
+    cat("Dado que el valor-p ", resultado$p.value, " es mayor que el nivel de significancia ", alfa , " no se rechaza H0, y se concluye que ", h0, ".")
+  } else {
+    cat("Dado que el valor-p ", resultado$p.value, " es menor que el nivel de significancia ", alfa , " se rechaza H0, y se concluye que ", ha, ".")
+  }
+}
+
+pruebaIgualdadVarianzasLevene <- function(datos, alfa, h0, ha) { 
+  resultado <- leveneTest(datos) 
+  print(resultado)
+  pvalue<-resultado$'Pr(>F)'[1]
+  if ( pvalue > alfa) {
+    cat("Dado que el valor-p ", pvalue, " es mayor que el nivel de significancia ", alfa , " no se rechaza H0, y se concluye que ", h0, ".")
+  } else {
+    cat("Dado que el valor-p ", pvalue, " es menor que el nivel de significancia ", alfa , " se rechaza H0, y se concluye que ", ha, ".")
+  }
+}
+
+pruebaIgualdadVarianzasBartlett <- function(datos, alfa, h0, ha) { 
+  resultado <- bartlett.test(datos)
+  print(resultado)
+  pvalue<-resultado$p.value
+  if ( pvalue > alfa) {
+    cat("Dado que el valor-p ", pvalue, " es mayor que el nivel de significancia ", alfa , " no se rechaza H0, y se concluye que ", h0, ".")
+  } else {
+    cat("Dado que el valor-p ", pvalue, " es menor que el nivel de significancia ", alfa , " se rechaza H0, y se concluye que ", ha, ".")
+  }
+}
+
+pruebaIgualdadVarianzasBreuschPagan <- function(datos, alfa, h0, ha) { 
+  resultado <- bptest(datos)
+  print(resultado)
+  pvalue<-resultado$p.value
+  if ( pvalue > alfa) {
+    cat("Dado que el valor-p ", pvalue, " es mayor que el nivel de significancia ", alfa , " no se rechaza H0, y se concluye que ", h0, ".")
+  } else {
+    cat("Dado que el valor-p ", pvalue, " es menor que el nivel de significancia ", alfa , " se rechaza H0, y se concluye que ", ha, ".")
+  }
+}
+
+pruebaIndependencia <- function(datos, alfa, h0, ha) { 
+  resultado <- dwtest(datos)
+  print(resultado)
+  pvalue<-resultado$p.value 
+  if ( pvalue > alfa) {
+    cat("Dado que el valor-p ", pvalue, " es mayor que el nivel de significancia ", alfa , " no se rechaza H0, y se concluye que ", h0, ".")
+  } else {
+    cat("Dado que el valor-p ", pvalue, " es menor que el nivel de significancia ", alfa , " se rechaza H0, y se concluye que ", ha, ".")
+  }
+  
+  print(".")
+  
+  DW<-resultado$statistic 
+  if (DW > 1.5 && DW < 2.5) {
+    cat("Dado que el DW ", DW, " es cercano a 2 no se rechaza H0, y se concluye que ", h0, ".")
+  } else {
+    cat("Dado que el DW ", DW, " no es cercano a 2 no se rechaza H0, y se concluye que ", h0, ".")
+  }
+}
+
+
+
+```
+
+## Diseño factorial {.center}
+
+### Juan Carlos Gaviria Chaverra, Andrés Orlando López Henao {.center}
+
+**1. Plan y ejecución del experimento**
+
+**1.1. Título del experimento**
+
+Influencia de la arquitectura de redes neuronales convolucionales en la exactitud de predicción de señales de tránsito.
+
+**1.2. Objetivos**
+
+Evaluar cómo diferentes arquitecturas de redes neuronales convolucionales afectan la exactitud de predicción de señales de tránsito.
+
+**1.3. Marco teórico**
+
+Se ha observado un incremento significativo en la cantidad de fatalidades ocasionadas por percances automovilísticos a nivel global, siendo la causa primordial la falta de familiaridad con las indicaciones viales y las vías, aunque la razón más común es en parte el desconocimiento de ciertas señales viales específicas (OMS, 2022). Los incidentes de tránsito representan para la mayoría de las naciones un 3% de su producto interno bruto (PIB). Entre los años 2015 y 2030, se estima que estos incidentes tendrán un costo para la economía mundial de 1,8 billones de dólares, lo que equivale al 0,12% del PIB global (Al-Rousan et al., 2021). El aprendizaje automático consiste en un conjunto de técnicas y procedimientos destinados a generar inteligencia artificial mediante el uso de algoritmos y grandes volúmenes de datos con el fin de simular el proceso de aprendizaje (Gu et al., 2108). El aprendizaje profundo, como una subdivisión del aprendizaje automático, se basa en arquitecturas de redes neuronales con múltiples capas internas, tales como las Redes Neuronales Convolucionales (CNN) (Indolia et al., 2018). La identificación de señales de tráfico (TSR por sus siglas en inglés) constituye una tarea de visión artificial y aprendizaje automático que implica el reconocimiento y clasificación de señales de tráfico a partir de imágenes o secuencias de video (Liu et al., 2019). Los algoritmos de visión artificial para la detección de señales de tráfico se relacionan directamente con sus atributos distintivos. Principalmente, las señales de tráfico adoptan formas como triángulos, rectángulos, círculos u octágonos, además de presentar colores (Sheikah et al., 2016). Los colores empleados en las señales de tráfico suelen ser colores básicos como rojo, azul, negro, blanco, amarillo y, de forma menos frecuente, verde. Por ende, los enfoques de detección se clasifican principalmente en métodos basados en color y forma para determinar la característica de la imagen (Fan y Zhang, 2015). En el contexto de la visión por computadora, el reconocimiento de imágenes se refiere a la habilidad del software para identificar elementos, individuos, lugares, escritos y actividades en imágenes. Para llevar a cabo dicha identificación, los sistemas computacionales pueden emplear tecnologías de visión por computadora en combinación con cámaras y software basado en inteligencia artificial. (SearchEnterpriseAI).
+
+**1.4. Variable respuesta**
+
+-   ***Variable***: Exactitud de predicción.
+
+-   ***Valores usuales de operación***: Entre 0 y 100.
+
+-   ***Precisión de medición***: Porcentaje.
+
+-   ***Instrumento de medida***: No aplica.
+
+**1.5. Variables de control**
+
++-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+------------------------------------------------------+
+| *Variable*      | *Valores usuales de operación* | *Precisión de medición* | *Instrumento de medida* | *Configuración propuesta* | *Efecto predicho*                                    |
++=================+================================+=========================+=========================+===========================+======================================================+
+| *Convoluciones* | Entre 1 y 10                   | Número entero           | No aplica               | \[1, 2\]                  | La exactitud de predicción aumentará a mayor número. |
++-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+------------------------------------------------------+
+| *Filtros*       | Entre 1 y 100                  | Número entero           | No aplica               | \[4, 16\]                 | La exactitud de predicción aumentará a mayor número. |
++-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+------------------------------------------------------+
+| *Densa*         | Entre 1 y 1000                 | Número entero           | No aplica               | \[65, 128\]               | La exactitud de predicción aumentará a mayor número. |
++-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+------------------------------------------------------+
+
+: Variables de control
+
+**1.6. Factores controlables**
+
+Listado de factores que se mantendrán constantes en el experimento:
+
+Factores externos al modelo
+
++------------+-----------------+-------------------------+-------------------------+------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| *Variable* | *Nivel deseado* | *Precisión de medición* | *Instrumento de medida* | *Control*                                                                          | *Impacto esperado*                                                                                                                                                                                    |
++============+=================+=========================+=========================+====================================================================================+=======================================================================================================================================================================================================+
+| *Dataset*  | Superior a 1000 | Imágenes                | No aplica               | Se usarán las mismas imágenes de entrenamiento y validación para todos los modelos | Obtención de una mejor comprensión de cómo diferentes configuraciones afectan el rendimiento del modelo, con el fin de identificar la arquitectura más adecuada para mejorar la exactitud predictiva. |
++------------+-----------------+-------------------------+-------------------------+------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+: Variables de control
+
+Factores internos del modelo
+
++--------------------------+------------------------------------+-------------------------+-------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| *Variable*               | *Nivel deseado*                    | *Precisión de medición* | *Instrumento de medida* | *Control*                                                                                                                        | *Impacto esperado*                                                                                                                                                                                                                                                                     |
++==========================+====================================+=========================+=========================+==================================================================================================================================+========================================================================================================================================================================================================================================================================================+
+| *Funcion de activación*  | Depende de la función seleccionada | No aplica               | No aplica               | Se aplicará la función de activación RELU para las capas convolucionales y la primera capa densa, y softwax para la última capa. | Obtenención de una consistencia en el comportamiento de los modelos y en una extracción de características más uniforme a lo largo de las capas.                                                                                                                                       |
++--------------------------+------------------------------------+-------------------------+-------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| *Compilación del modelo* | No aplica                          | No aplica               | No aplica               | Se usarán los parametros:                                                                                                        | Aseguramiento de la coherencia en el proceso de entrenamiento y evaluación. Esto garantiza que todos los modelos sean entrenados y evaluados de manera similar, facilitando la comparación de sus desempeños y simplificando la gestión de los experimentos de aprendizaje automático. |
+|                          |                                    |                         |                         |                                                                                                                                  |                                                                                                                                                                                                                                                                                        |
+|                          |                                    |                         |                         | loss='binary_crossentropy'                                                                                                       |                                                                                                                                                                                                                                                                                        |
+|                          |                                    |                         |                         |                                                                                                                                  |                                                                                                                                                                                                                                                                                        |
+|                          |                                    |                         |                         | optimizer='adam'                                                                                                                 |                                                                                                                                                                                                                                                                                        |
+|                          |                                    |                         |                         |                                                                                                                                  |                                                                                                                                                                                                                                                                                        |
+|                          |                                    |                         |                         | metrics=\['accuracy'\]                                                                                                           |                                                                                                                                                                                                                                                                                        |
++--------------------------+------------------------------------+-------------------------+-------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+: Variables de control
+
+**1.7. Factores no controlables**
+
+Listado de factores que no se mantendrán constantes en el experimento:
+
+Factores externos al modelo
+
++--------------------------------------+-----------------+-------------------------+-------------------------+----------------------------------------------+-----------------------------------------------------------------------------------+
+| *Variable*                           | *Nivel deseado* | *Precisión de medición* | *Instrumento de medida* | Estrategia                                   | *Efectos anticipados*                                                             |
++======================================+=================+=========================+=========================+==============================================+===================================================================================+
+| *Procesamiento computacional*        | No aplica       | No aplica               | No aplica               | Uso de configuraciones idénticas de hardware | Variación en el tiempo de procesamiento, limitando el número de muestras a tomar. |
++--------------------------------------+-----------------+-------------------------+-------------------------+----------------------------------------------+-----------------------------------------------------------------------------------+
+| *Tiempo de entrenamiento por modelo* | Entre 0 y 60    | Minutos                 | Cronómetro              | Uso de configuraciones idénticas de hardware | Limitación en el número de muestras a tomar.                                      |
++--------------------------------------+-----------------+-------------------------+-------------------------+----------------------------------------------+-----------------------------------------------------------------------------------+
+
+: Variables de control
+
+Factores internos del modelo CNN
+
++------------+-----------------+-------------------------+-------------------------+--------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| *Variable* | *Nivel deseado* | *Precisión de medición* | *Instrumento de medida* | *Estrategia*             | Efectos anticipados                                                                                                                                                                                                                                                                                                          |
++============+=================+=========================+=========================+==========================+==============================================================================================================================================================================================================================================================================================================================+
+| *Pesos*    | Entre 0 y 1     | Número real             | No aplica               | Inicialización aleatoria | La inicialización aleatoria de pesos en una red neuronal convolucional promueve la diversidad desde el inicio del entrenamiento, ayudando a evitar mínimos locales y aumentando la capacidad del modelo para adaptarse a diferentes conjuntos de datos. Esto mejora la capacidad de generalización y la robustez del modelo. |
++------------+-----------------+-------------------------+-------------------------+--------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+: Variables de control
+
+**1.8. Interacciones**
+
+Los ensayos en cada tratamiento deben realizarse de manera separada tomando una de las repeticiones de cada tratamiento y ubicarlos a una distancia que el calor de una vela no pueda afectar la otra, se deben encender al mismo instante y esperar la combustión de las primeras 4 velas con diferente tratamiento durante un periodo de tiempo donde se apague la hasta la ultima vela, teniendo en cuenta que el registro de la combustión en cada vela debe ser tomado cuando esta se apague en su totalidad, el terminar el primer ensayo se debe proceder con el segundo de la misma forma hasta lograr abordar las cinco replicas y la cuantificación de los tiempos de combustión en cada una de las velas, se debe evitar encender todas las velas al mismo instante, ya que el calor que se produce alrededor de estas podría alterar los tratamientos al ocasionar derretimiento de la cera en algunas de las velas que se encuentren en una posición donde puedan recibir mayor radiación de calor por velas que se encuentren próximas y de este modo crear un sesgo en la combustión total de alguna de los tratamientos y ocasionar errores en el registro de los tiempos totales de combustión ocasionando alteración en el experimento.
+
+**1.9. Restricciones**
+
+Las restricciones que se tuvieron en cuenta para la realización del experimento estuvieron enfocadas en que algunas podrían afectar el diseño al igual que los objetivos de los estudios por lo cual nos aseguramos de las siguientes: Seguridad: fue fundamental para evitar posible incendio dentro del cuarto debido a una combustión alterada que pudiera estar fuera de control y provocara encendido del entorno del experimento. Ventilación: el experimento se realizó en un área ventilada de manera regulada que permitió la combustión de las velas, pero a la vez que estas no se apagaran ni diseminara la llama por acción del viento. Espacio y condiciones físicas del cuarto: Se procuró que este espacio fuera el más adecuado en cuestión de área para la combustión segura de las velas. Manipulación de las velas: Las velas desde el primer instante se planificó su ubicación en el cuarto y en la tabla al igual que el momento del encendido, evitando que las distancias no afectaran el entorno por medio del derrame de la cera de las velas ni la diseminación de la llama dentro del cuarto que pudieran provocar posibles incendios o quemaduras al responsable de la ejecución del experimento. Material y equipo de seguridad: Se tuvieron en cuenta todas las precauciones para la manipulación de las velas que pudiera provocar accidentes en el proceso de realización del experimento. Residuos y limpieza: posterior a la realización del experimento se realizó el debido proceso para la separación de la será de la tabla al igual que el barrido de todo material que quedo de residuo luego de la aplicación del experimento.
+
+Este diseño experimental se realizó en un cuarto aislado para poder tener control sobre alguna de las siguientes variables: Temperatura: Esta se mantuvo alrededor de los 28° C. Humedad relativa: Se mantuvo alrededor del 70%. Velas: Las velas con la cual se llevo a cabo los experimentos fueron del mismo tamaño para cada tratamiento y con la misma composición de cera, con una altura de 1 cm cada una y un diámetro de 2 cm, las mechas del mismo diámetro, pero con diferentes longitudes en cada uno de los tratamientos, T1= 1cm, T2=1.5cm, T3= 2 cm, y T4= 2.5 cm, cada tratamiento se repitió 5 veces.
+
+Los ensayos se realizaron en cinco intervalos de tiempo donde en cada ensayo se encendió una vela por cada tratamiento sobre una tabla de acero inoxidable de (70x15x5) cm, el registro de la combustión en cada ensayo se llevó a cabo aproximadamente durante 37 minutos, tomando como tiempo total de combustión en las velas cuando la mecha se apagaba totalmente.
+
+Se espera que la temperatura, la humedad relativa, la composición y el volumen de las velas tengan un impacto mínimo en la combustión, por el contrario, se espera que cualquier cambio en la combustión de las velas se deba principalmente a la longitud de la mecha, permitiendo analizar de manera efectiva el impacto en el proceso de combustión de las velas.
+
+**1.10. Diseño**
+
+![](imagenes/velas.jpeg)
+
+**Diseño Experimental:** Se utilizará un diseño completamente aleatorizado con cuatro niveles de mecha donde se mide el tiempo de combustión de las velas.
+
+**Factor:** Longitud de la mecha.
+
+**Tratamientos:**
+
+-   ***T1***: Mecha 1 cm de longitud.
+
+-   ***T2***: Mecha 1,5 cm longitud.
+
+-   ***T3***: Mecha 2 cm longitud.
+
+-   ***T4***: Mecha 2,5 cm longitud.
+
+**Materiales:**
+
+-   Velas idénticas en tamaño y composición con mechas de diferentes longitudes.
+
+-   Soportes para velas.
+
+-   Cronómetro.
+
+-   Encendedor.
+
+**Procedimiento:**
+
+-   Cortar las mechas de manera uniforme en tres grupos con diferentes longitudes.
+
+-   Fijar las mechas en las velas correspondientes según los grupos establecidos.
+
+-   Encender cada vela al mismo tiempo y colocarlas en soportes idénticos.
+
+-   Registrar el tiempo desde que se encienden hasta que se apagan por completo.
+
+-   Repetir el experimento con varias velas para obtener datos adicionales.
+
+**Análisis de Datos:** Comparar el tiempo promedio de combustión entre los cuatro tipos de longitud de las mechas utilizando análisis estadísticos, como el análisis de varianza (ANOVA) de un factor.
+
+**Hipótesis:** Se espera que velas con mechas de mayor longitud tengan una duración de combustión más larga.
+
+**Resultados Esperados:** Se espera que las velas con mechas de mayor longitud tengan una duración de combustión más larga en comparación con las mechas de menor longitud, de acuerdo con la hipótesis.
+
+**1.11. Descripción**
+
+La técnica de análisis y presentación utilizada en este experimento de 1 factor con 4 tratamientos se basa en una combinación de herramientas estadísticas y gráficas diseñadas para explorar y comunicar los resultados de manera efectiva.
+
+**Gráficas** Se utilizan histogramas para visualizar la distribución de los datos en cada tratamiento, lo que permite una comprensión rápida de la forma y la dispersión de los datos. Los gráficos de cajas para comparar la distribución de los datos entre los diferentes tratamientos, mostrando la mediana, los cuartiles y los valores atípicos y los gráficos de dispersión para explorar la relación entre variables, como los valores ajustados y los residuos.
+
+**ANOVAs:** Se realiza un ANOVA para comparar las medias de los tratamientos y determinar si hay diferencias significativas entre ellos. Se evalúa la significancia estadística, lo que proporciona información sobre la variabilidad entre los tratamientos en relación con la variabilidad dentro de los tratamientos. Después de realizar el ANOVA, se realiza la prueba Tukey como una prueba para comparar todas las combinaciones posibles de pares de tratamientos y determinar qué diferencias son significativas.
+
+**Modelos de Efectos, Medias y Regresión:** Se utilizan diferentes modelos para analizar los datos según la pregunta de investigación. El modelo de efectos considera cada tratamiento como un factor independiente, mientras que el modelo de medias agrupa los tratamientos y compara las medias globales. El modelo de regresión permite explorar la relación entre la variable dependiente y las variables independientes.
+
+**Pruebas de Homocedasticidad y Normalidad:** Se realizan pruebas de homocedasticidad para evaluar si la varianza de los residuos es constante en todos los tratamientos.
+
+Las pruebas de normalidad Anderson-Darling, Shapiro-Wilk, Jarque-Bera, Kolmogorov-Smirnov se utilizarán para verificar si los residuos siguen una distribución normal.
+
+**Valores Ajustados vs Residuales e Independencia de Errores:** Con las pruebas Levene, Bartlett, Breusch-Pagan y Durbin-Watson, Se examina la relación entre los valores ajustados y los residuos para evaluar la idoneidad del modelo. Además, se verifica la independencia de errores para garantizar que los errores no estén correlacionados entre sí
+
+**Comparación entre Tratamientos:** Se realizan comparaciones entre tratamientos utilizando los métodos de la diferencia significativa menos significativa (LSD) y la diferencia significativa honesta (HSD) para identificar las diferencias significativas entre los tratamientos y agruparlos en categorías homogéneas.
+
+En resumen, esta técnica de análisis y presentación utiliza una variedad de herramientas estadísticas y gráficas para explorar y comunicar los resultados de manera efectiva en un experimento de 1 factor con 4 tratamientos. Se enfoca en la comparación de medias, la relación entre variables, la evaluación de la normalidad y homocedasticidad de los residuos, y la identificación de diferencias significativas entre tratamientos.
+
+**1.12. Responsable de coordinación**
+
+Juan Carlos Gaviria Chaverra.
+
+**1.13. Premuestreo**
+
+No se realizará premuestreo por las siguientes razones:
+
+Simplicidad del experimento: El diseño experimental es directo y no implica procedimientos complicados. Consiste en encender velas con diferentes longitudes de mecha y medir la duración de la combustión. Dado que el procedimiento es simple y fácil de ejecutar, no se requiere una fase preliminar de recolección de datos para ajustar o validar el método experimental.
+
+Condiciones experimentales bien definidas: Las condiciones del experimento, como el ambiente de prueba y los materiales utilizados, son conocidas y estables. Se llevará a cabo en un entorno controlado y las velas utilizadas serán consistentes en calidad y composición. Por lo tanto, se puede tener confianza en la replicabilidad de los resultados sin la necesidad de un premuestreo para ajustar o validar estas condiciones.
+
+Recursos limitados: Los recursos disponibles, como tiempo, dinero y personal, son limitados.
+
+**2. Análisis**
+
+**2.1 Datos**
+
+```{r}
+#| echo: false
+
+datos <- suppressWarnings(read_excel("datos/datos.xlsx"))
+datos$convoluciones <- as.factor(datos$convoluciones)
+datos$filtros <- as.factor(datos$filtros)
+datos$densa <- as.factor(datos$densa)
+head(datos, 50)
+```
+
+```{r}
+#| echo: false
+C1_F4_D64 <-  subset(datos, datos$tratamiento =="C1_F4_D64")
+C1_F4_D128 <-  subset(datos, datos$tratamiento =="C1_F4_D128")
+C1_F16_D64 <-  subset(datos, datos$tratamiento =="C1_F16_D64")
+C1_F16_D128 <-  subset(datos, datos$tratamiento =="C1_F16_D128")
+C2_F4_D64 <-  subset(datos, datos$tratamiento =="C2_F4_D64")
+C2_F4_D128 <-  subset(datos, datos$tratamiento =="C2_F4_D128")
+C2_F16_D64 <-  subset(datos, datos$tratamiento =="C2_F16_D64")
+C2_F16_D128 <-  subset(datos, datos$tratamiento =="C2_F16_D128")
+```
+
+**2.2. Análisis exploratorio**
+
+```{r}
+#| echo: false
+ 
+ggplot(datos,aes(x=tratamiento, y=exactitud, group=tratamiento))+
+  geom_boxplot()+
+  scale_y_continuous(breaks = seq(0, 20000, by = 1))+
+  labs(title = "Gráfico de cajas", x = "Tratamientos", y = "Exactitud") 
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+ 
+ggplot(datos,aes(x=convoluciones, y=exactitud, group=tratamiento))+
+  geom_boxplot()+
+  scale_y_continuous(breaks = seq(0, 20000, by = 1))+
+  labs(title = "Gráfico de cajas", x = "Convoluciones", y = "Exactitud") 
+
+
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+ 
+ggplot(datos,aes(x=filtros, y=exactitud, group=tratamiento))+
+  geom_boxplot()+
+  scale_y_continuous(breaks = seq(0, 20000, by = 1))+
+  labs(title = "Gráfico de cajas", x = "Filtros", y = "Exactitud") 
+
+
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+ 
+ggplot(datos,aes(x=densa, y=exactitud, group=tratamiento))+
+  geom_boxplot()+
+  scale_y_continuous(breaks = seq(0, 20000, by = 1))+
+  labs(title = "Gráfico de cajas", x = "Capa densa", y = "Exactitud") 
+
+
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+ggplot(datos, aes(x = convoluciones,  y = exactitud, group = convoluciones)) +
+  geom_boxplot(fill = "turquoise", color = "turquoise4") + 
+  xlab("convoluciones") +
+  ylab("exactitud")  
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+ggplot(datos, aes(x = filtros,  y = exactitud, group = filtros)) +
+  geom_boxplot(fill = "turquoise", color = "turquoise4") + 
+  xlab("filtros") +
+  ylab("exactitud")  
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+ggplot(datos, aes(x = densa,  y = exactitud, group = densa)) +
+  geom_boxplot(fill = "turquoise", color = "turquoise4") + 
+  xlab("densa") +
+  ylab("exactitud")  
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+tapply(datos$exactitud, datos$convoluciones, summary)
+tapply(datos$exactitud, datos$filtros, summary)
+tapply(datos$exactitud, datos$densa, summary)  
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+# Histograma de exactitud
+ggplot(datos, aes(x = exactitud)) +
+  geom_histogram(fill = "turquoise", color = "turquoise4")  
+```
+Interpretaciones ...
+
+
+**x.x.Gráficos de medias**
+
+```{r}
+#| echo: false
+#  
+require(gplots)
+par(mfrow=c(1,3))
+plotmeans(datos$exactitud  ~ datos$convoluciones, xlab="convoluciones", ylab="Promedio de exactitud")
+plotmeans(datos$exactitud  ~ datos$filtros, xlab="filtros", ylab="Promedio de exactitud")
+plotmeans(datos$exactitud  ~ datos$densa, xlab="densa", ylab="Promedio de exactitud")
+
+mean(datos$exactitud)
+
+require(graphics)
+plot.design(datos$exactitud ~ datos$convoluciones + datos$filtros  + datos$densa,
+            col= "coral", xlab="Efectos", ylab="Promedio de exactitud")
+
+par(mfrow=c(1,3))
+interaction.plot(datos$convoluciones, datos$filtros, datos$exactitud, 
+                  xlab="convoluciones", ylab="Promedio de exactitud")
+interaction.plot(datos$convoluciones, datos$densa, datos$exactitud, 
+                 xlab="convoluciones", ylab="Promedio de exactitud")
+interaction.plot(datos$filtros, datos$densa,datos$ exactitud, 
+                 xlab="filtros", ylab="Promedio de exactitud")
+  
+```
+Interpretaciones ...
+
+
+**x.x.ANOVA**
+```{r}
+#| echo: false
+# Usar datos1: datos codificados como factores
+modelo <-  aov(exactitud ~ convoluciones*filtros*densa, data=datos)
+summary(modelo)
+
+modelo1 <- aov(exactitud ~ filtros*densa + convoluciones*densa + convoluciones*filtros, data=datos)
+summary(modelo1)
+
+residuales <- rstandard(modelo1)
+
+library(car)
+qqPlot(residuales)
+
+require(nortest)
+shapiro.test(residuales)
+ad.test(residuales)  
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+# Usar datos2: datos codificados como valores numericos
+
+modelolm <-  lm(exactitud ~ as.numeric(convoluciones)*as.numeric(filtros)*as.numeric(densa), data=datos)
+summary(modelolm)
+
+modelolm6 <-  lm(exactitud ~ as.numeric(convoluciones)*as.numeric(filtros)*as.numeric(densa), data=datos)
+summary(modelolm6)  
+```
+Interpretaciones ...
+
+
+**x.x.Diagrama de Pareto de efectos estandarizados**
+```{r}
+#| echo: false
+# 
+
+efectos <- c(-5.6, -22.3, 31.1, -7.3, -9.6, 47.0, -1.9)
+se_efecto <- sqrt(21/4)
+efectos_est <- efectos/se_efecto
+efectos_est_ord <- sort(abs(efectos/se_efecto))
+names(efectos_est_ord) <- c("TCdensa", "T", "TC", "Tdensa", "C", "densa", "Cdensa")
+#efectos_est_ord  <- relabels()
+ 
+barplot(efectos_est_ord , horiz=TRUE, las=1, 
+        col="darkcyan")
+abline(v=qt(0.975, 8), col="black", lwd=3, lty =3)  
+```
+Interpretaciones ...
+
+
+**x.x.Sin la interaccion triple**
+```{r}
+#| echo: false
+# 
+modelo1 <-  aov(exactitud ~ convoluciones*filtros + convoluciones*densa + filtros*densa, datos)
+summary(modelo1)
+
+modelolm1 <-  lm(exactitud ~ as.numeric(convoluciones)*as.numeric(filtros) +
+                  as.numeric(convoluciones)*as.numeric(densa) + 
+                  as.numeric(filtros)*as.numeric(densa), data=datos)
+summary(modelolm1)
+```
+Interpretaciones ...
+
+
+**x.x.Identificacion de outlier**
+```{r}
+#| echo: false
+# 
+# Esta es una prueba estadistica para identificar puntos outliers
+outlierTest(modelolm1)
+
+plot(fitted(modelolm1), residuals(modelolm1))
+```
+Interpretaciones ...
+
+
+**x.x.Eliminacion de outlier** 
+```{r}
+#| echo: false
+# 
+#datos1 <- datos[-11,]
+datos1 <- datos[]
+
+# datos1 <- datos[-c(11, 5),] # 2 outliers en la posici?n 11 y 5
+
+datos1$convoluciones <- as.factor(datos1$convoluciones)
+datos1$filtros <- as.factor(datos1$filtros)
+datos1$densa <- as.factor(datos1$densa)
+
+modelo2 <-  aov(datos1$exactitud ~ datos1$convoluciones*datos1$filtros + 
+                  datos1$convoluciones*datos1$densa + datos1$filtros*datos1$densa)
+summary(modelo2)
+
+modelo2 <- aov(exactitud ~ convoluciones*filtros + convoluciones*densa + filtros*densa, datos1)
+summary(modelo2)
+
+modelolm2 <-  lm(datos1$exactitud ~ as.numeric(datos1$convoluciones)*as.numeric(datos1$filtros) +
+                  as.numeric(datos1$convoluciones)*as.numeric(datos1$densa) + 
+                  as.numeric(datos1$filtros)*as.numeric(datos1$densa))
+summary(modelolm2)
+```
+Interpretaciones ...
+
+
+**x.x.Análisis de residuales**
+```{r}
+#| echo: false
+#---------------- ----------------
+residuales <- rstandard(modelo2)
+summary(residuales)
+```
+Interpretaciones ...
+
+
+**Prueba de normalidad**
+```{r}
+#| echo: false
+# 
+require(car)
+par(mfrow=c(1,3))
+qqPlot(residuales, xlab="Cuantiles teoricos", ylab="Cuantiles muestrales", main="Gr?fico cuantil-cuantil")
+hist(residuales, xlab="Residuales", ylab="Frecuencia", main="Histograma")
+boxplot(residuales, xlab="Residuales",  main="Gr?fico de cajas")
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+require(nortest)
+shapiro.test(residuales)
+ad.test(residuales)
+```
+Interpretaciones ...
+
+
+**Prueba de varianza constante**
+```{r}
+#| echo: false
+# 
+valores_ajustados<-fitted(modelo2)
+
+par(mfrow=c(2,2))
+plot(valores_ajustados, residuales, xlab="Valores ajustados", ylab="Residuales")
+abline(h=0, col = "gray60")
+plot(as.numeric(datos1$convoluciones), residuales, xlab="convoluciones", ylab="Residuales")
+abline(h=0, col = "gray60")
+plot(as.numeric(datos1$filtros), residuales, xlab="filtros", ylab="Residuales")
+abline(h=0, col = "gray60")
+plot(as.numeric(datos1$densa), residuales, xlab="densa", ylab="Residuales")
+abline(h=0, col = "gray60")
+
+require(car)
+
+leveneTest(exactitud ~ convoluciones, data=datos1)
+leveneTest(exactitud ~ filtros, data=datos1)
+leveneTest(exactitud ~ densa, data=datos1)
+
+leveneTest(exactitud ~ convoluciones*filtros, data=datos1)
+leveneTest(exactitud ~ convoluciones*densa, data=datos1)
+leveneTest(exactitud ~ densa*filtros, data=datos1)
+
+require(lmtest)
+bptest(modelo2)
+
+#require(car)
+#bartlett.test(exactitud,convoluciones)
+#bartlett.test(exactitud ~ convoluciones)
+```
+Interpretaciones ...
+
+
+**Prueba de independencia**
+
+```{r}
+#| echo: false
+# 
+par(mfrow=c(1,3))
+plot(residuales, pch=16, ylab="Residuales", xlab="Orden", main="Gr?fico de Orden vs Residuales")
+abline(h=0)
+acf(residuales,ylim=c(-1,1), main="Grafico de ACF")
+pacf(residuales,ylim=c(-1,1), main="Grafico de PACF", ylab="PACF")
+
+require(lmtest)
+dwtest(modelo2,alternative="two.sided")
+```
+Interpretaciones ...
+
+
+**x.x. Gráfico de superficie de respuesta**
+```{r}
+#| echo: false
+# #----------------  Eemplo de 
+# Ecuaci?n modelo de regresi?n (7)
+# a= convoluciones, b= filtros, c=densa 
+# ygorro = 60.2958 - 3.7583*a - 10.2417*b + 14.6167*c -4.5958*a*b -3.8792*a*c + 22.5792*b*c
+# ygorro = 60.2958 - 3.7583*x - 10.2417*y + 14.6167*(-1) -4.5958*x*y -3.8792*x*(-1) + 22.5792*y*(-1)
+# ygorro = 60.2958 - 3.7583*x - 10.2417*y - 14.6167 -4.5958*x*y +3.8792*x - 22.5792*y
+# ygorro = (60.2958- 14.6167) - (3.7583*-3.8792)*x - (10.2417+ 22.5792)*y  -4.5958*x*y  
+# ygorro = 45.6791 + 0.1209*x -32.8209*y -4.5958*x*y
+
+par(mfrow=c(1,2))
+# Superficie de respuesta para c=-1
+x     <-  seq(-1, 1, 0.1) # x=convoluciones
+y     <-  seq(-1, 1, 0.1) # y=filtros
+model <-  function (x, y){45.6791 +0.1209*x -32.8209*y -4.5958*x*y}
+z     <-  outer(x, y ,model)
+
+persp(x,y,z, phi=30, theta=130, xlab="convoluciones", ylab="filtros", 
+      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      expand=0.9, ticktype = "detailed")
+contour(x,y,z,nlevels=30)
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+par(mfrow=c(1,2))
+# Superficie de respuesta para c=1
+x     <-  seq(-1, 1, 0.1) 
+y     <-  seq(-1, 1, 0.1)
+model <-  function (x, y){74.9125 - 7.6375*x +12.3375*y -4.5958*x*y}
+z     <-  outer(x, y ,model)
+persp(x,y,z, phi=30, theta=20, xlab="convoluciones", ylab="filtros", 
+      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      expand=0.9, ticktype = "detailed")
+contour(x,y,z,nlevels=30)
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+par(mfrow=c(1,2))
+# Superficie de respuesta para b=-1
+x     <-  seq(-1, 1, 0.1) 
+y     <-  seq(-1, 1, 0.1)
+model <-  function (x, y){70.5375 + 0.8375*x -7.9625*y -3.8792*x*y }
+z     <-  outer(x, y ,model)
+persp(x,y,z, phi=30, theta=120, xlab="convoluciones", ylab="densa", 
+      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      expand=0.9, ticktype = "detailed")
+contour(x,y,z,nlevels=30)
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+par(mfrow=c(1,2))
+# Superficie de respuesta para b=1
+x     <-  seq(-1, 1, 0.1) 
+y     <-  seq(-1, 1, 0.1)
+model <-  function (x, y){50.0541 -8.3541*x + 37.1959*y -3.8792*x*y }
+z     <-  outer(x, y ,model)
+persp(x,y,z, phi=30, theta=120, xlab="convoluciones", ylab="densa", 
+      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      expand=0.9, ticktype = "detailed")
+contour(x,y,z,nlevels=30)
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+par(mfrow=c(1,2))
+# Superficie de respuesta para a=-1
+x     <-  seq(-1, 1, 0.1) 
+y     <-  seq(-1, 1, 0.1)
+model <-  function (x, y){64.0541-5.6459*x + 18.4959*y + 22.5792*x*y}
+z     <-  outer(x, y ,model)
+persp(x,y,z, phi=30, theta=30, xlab="filtros", ylab="densa", 
+      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      expand=0.9, ticktype = "detailed")
+contour(x,y,z,nlevels=30)
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+par(mfrow=c(1,2))
+# Superficie de respuesta para a=1 
+x     <-  seq(-1, 1, 0.1) 
+y     <-  seq(-1, 1, 0.1)
+model <-  function (x, y){ 56.5375 - 14.8375*x + 10.7375*y + 22.5792*x*y}
+z     <-  outer(x, y ,model)
+persp(x,y,z, phi=30, theta=20, xlab="filtros", ylab="densa", 
+      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      expand=0.9, ticktype = "detailed")
+contour(x,y,z,nlevels=30)
+```
+Interpretaciones ...
+
+
+**Grafico con plotly**
+```{r}
+#| echo: false
+# 
+library(plotly)
+fig <- plot_ly(x=x, y=y, z=z)
+fig <- fig %>% add_surface()
+fig
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+#
+library(plotly)
+fig <- plot_ly(x=x, y=y, z=z) %>% add_surface(
+  contours = list(
+    z = list(
+      show=TRUE,
+      usecolormap=TRUE,
+      highlightcolor="#ff0000",
+      project=list(z=TRUE)
+    )
+  )
+)
+fig <- fig %>% layout(
+  scene = list(
+    camera=list(
+      eye = list(x=1.87, y=0.88, z=-0.64)
+    )
+  )
+)
+
+fig
+```
+Interpretaciones ...
+
+
+**x.x. Comparaciones múltiples**
+```{r}
+#| echo: false
+# Comparaciones múltiples
+require(agricolae)
+#LSD.test(modelo2, "densa", console=TRUE, group=FALSE)
+#plot(LSD.test(modelo2, "convoluciones", group = FALSE,console = T))
+
+#TukeyHSD(modelo2, "convoluciones",ordered = T)
+```
+Interpretaciones ...
+
+```{r}
+#| echo: false
+#Tamaño de muestra = Número de réplicas
+
+# Cálculo de potencia para replicas predeterminadas
+# Considerando el tamaño del efecto
+# D es la mínima diferencia entre los niveles del factor A
+# sigma^2 es la vaianza de todos los datos 
+# f.a <- sqrt((a*D^2)/(2*b*sigma^2))
+
+# D es la mínima diferencia entre los niveles del factor B
+# sigma^2 es la vaianza de todos los datos 
+# f.b <- sqrt((b*D^2)/(2*a*sigma^2))
+
+require(pwr2)
+# Factor A convoluciones y Factor B filtros
+f.a <- sqrt((2*0.4^2)/(2*2*var(datos$exactitud)))
+f.b <- sqrt((2*12.5^2)/(2*2*var(datos$exactitud)))
+P1 <- pwr.2way(a=2, b=2, alpha = 0.05, size.A = 3, size.B = 3, f.A = f.a, f.B = f.b)
+
+require(pwr2)
+# Factor A convoluciones y Factor B densa
+f.a <- sqrt((2*0.4^2)/(2*2*var(datos$exactitud)))
+f.b <- sqrt((2*5.3^2)/(2*2*var(datos$exactitud)))
+P2 <- pwr.2way(a=2, b=2, alpha = 0.05, size.A = 3, size.B = 3, f.A = f.a, f.B = f.b)
+
+require(pwr2)
+# Factor A convoluciones y Factor B filtros
+f.a <- sqrt((2*12.5^2)/(2*2*var(datos$exactitud)))
+f.b <- sqrt((2*5.3^2)/(2*2*var(datos$exactitud)))
+P3 <- tres <- pwr.2way(a=2, b=2, alpha = 0.05, size.A = 3, size.B = 3, f.A = f.a, f.B = f.b)
+
+potencia <- min(cbind(P1$power, P2$power, P3$power))
+potencia
+```
+Interpretaciones ...
+
+
+**x.x. Cálculo de réplicas**
+```{r}
+#| echo: false
+# Cálculo de réplicas para alpha y beta definidos
+# Factor A convoluciones y Factor B filtros
+f.a <- sqrt((2*0.4^2)/(2*2*var(datos$exactitud)))
+f.b <- sqrt((2*12.5^2)/(2*2*var(datos$exactitud)))
+n1 <- ss.2way(a=2, b=2, alpha = 0.1, beta = 0.1, f.A = f.a, f.B = f.b, B=100)
+
+# Factor A convoluciones y Factor B densa
+f.a <- sqrt((2*0.4^2)/(2*2*var(datos$exactitud)))
+f.b <- sqrt((2*5.3^2)/(2*2*var(datos$exactitud)))
+n2 <- ss.2way(a=2, b=2, alpha = 0.1, beta = 0.1, f.A = f.a, f.B = f.b, B=100)
+
+# Factor A convoluciones y Factor B filtros
+f.a <- sqrt((2*12.5^2)/(2*2*var(datos$exactitud)))
+f.b <- sqrt((2*5.3^2)/(2*2*var(datos$exactitud)))
+n3 <- ss.2way(a=2, b=2, alpha = 0.1, beta = 0.1, f.A = f.a, f.B = f.b, B=100)
+
+replicas <- min(cbind(n1$n, n2$n, n3$n))
+replicas
+```
+Interpretaciones ...
+
+# Referencias
+
+Al-Rousan, Taleb M. y Abdullahi A. Umar. Evaluación de los niveles de comprensión de las señales de tráfico entre los conductores en el Emirato de Abu Dhabi, Emiratos Árabes Unidos. Infraestructuras 6, núm. 9 (2021): 122. https://doi.org/10.3390/infrastructures6090122.
+
+Fan, Y., Zhang, W. Detección y clasificación de señales de tráfico para sistemas avanzados de asistencia al conductor. En la 12.ª Conferencia Internacional sobre Sistemas Difusos y Descubrimiento de Conocimiento (FSKD), 2015, págs. 1335-1339.
+
+Gu J., Wang Z., Kuen J., Ma L., Shahroudy A., Shuai B., Liu T., Wang X., Wang L., Wang G., Cai J., Chen T. Avances recientes en redes neuronales convolucionales. Reconocimiento de patrones, 2018, N 77, págs. 354-377. https://doi.org/10.1016/J.PATCOG.2017.10.013.
+
+Indolia S., Goswami AK, Mishra SP, Asopa P. Comprensión conceptual de la red neuronal convolucional: un enfoque de aprendizaje profundo. Procedia Informática, 2018, N 132, págs. 679 – 688. https://doi.org/10.1016/J.PROCS.2018.05.069
+
+Liu, S. Li, F. Chang e Y. Wang, "Métodos de detección de señales de tráfico basados en visión artificial: revisión, análisis y perspectivas", en IEEE Access, vol. 7, págs. 86578-86596, 2019, https://doi.org/10.1109/ACCESS.2019.2924947.
+
+Organización mundial de la salud (OMS) 2022. Lesiones por accidentes de tráfico, “Organización Mundial de la Salud (OMS)”, \[en línea\], https://www.who.int/newsroom/factsheets/detail/road-lesiones de trafico.
+
+Sheikh, AA, Kole, A., Maity, T. Detección y clasificación de señales de tráfico mediante funciones de color y redes neuronales. En Conferencia Internacional sobre Instrumentación y Energía de Control Inteligente (ICICPI), 2016, págs. 307-311.
+
+Reconocimiento de imágenes, SearchEnterpriseAI \[en línea\] Disponible: https://www.techtarget.com/searchenterpriseai/definition/imagerecognition \[Consultado el 19 de abril de 2024\].

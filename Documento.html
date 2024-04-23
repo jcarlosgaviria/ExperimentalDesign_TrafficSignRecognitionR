@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>documento</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Documento_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Documento_files/libs/quarto-html/quarto.js"></script>
+<script src="Documento_files/libs/quarto-html/popper.min.js"></script>
+<script src="Documento_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Documento_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Documento_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Documento_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Documento_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Documento_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Documento_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="Documento_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="Documento_files/libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="Documento_files/libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="Documento_files/libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="Documento_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="Documento_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="Documento_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="Documento_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<style>
+
+html {
+  font-size: 12px;
+}
+
+body {
+  font-size: 0.75rem;
+}
+
+h3 {
+  text-align: left;
+}
+
+.center h2 {
+  text-align: center;
+}
+
+.center h3 {
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.left h2 {
+  text-align: left;
+}
+
+.left h3 {
+  text-align: left;
+}
+
+p {
+  text-align: justify !important
+}
+
+code{
+  text-wrap: balance;
+}
+
+</style>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="diseño-factorial" class="level2 center">
+<h2 class="center anchored" data-anchor-id="diseño-factorial">Diseño factorial</h2>
+<section id="juan-carlos-gaviria-chaverra-andrés-orlando-lópez-henao" class="level3 center">
+<h3 class="center anchored" data-anchor-id="juan-carlos-gaviria-chaverra-andrés-orlando-lópez-henao">Juan Carlos Gaviria Chaverra, Andrés Orlando López Henao</h3>
+<p><strong>1. Plan y ejecución del experimento</strong></p>
+<p><strong>1.1. Título del experimento</strong></p>
+<p>Influencia de la arquitectura de redes neuronales convolucionales en la exactitud de predicción de señales de tránsito.</p>
+<p><strong>1.2. Objetivos</strong></p>
+<p>Evaluar cómo diferentes arquitecturas de redes neuronales convolucionales afectan la exactitud de predicción de señales de tránsito.</p>
+<p><strong>1.3. Marco teórico</strong></p>
+<p>Se ha observado un incremento significativo en la cantidad de fatalidades ocasionadas por percances automovilísticos a nivel global, siendo la causa primordial la falta de familiaridad con las indicaciones viales y las vías, aunque la razón más común es en parte el desconocimiento de ciertas señales viales específicas (OMS, 2022). Los incidentes de tránsito representan para la mayoría de las naciones un 3% de su producto interno bruto (PIB). Entre los años 2015 y 2030, se estima que estos incidentes tendrán un costo para la economía mundial de 1,8 billones de dólares, lo que equivale al 0,12% del PIB global (Al-Rousan et al., 2021). El aprendizaje automático consiste en un conjunto de técnicas y procedimientos destinados a generar inteligencia artificial mediante el uso de algoritmos y grandes volúmenes de datos con el fin de simular el proceso de aprendizaje (Gu et al., 2108). El aprendizaje profundo, como una subdivisión del aprendizaje automático, se basa en arquitecturas de redes neuronales con múltiples capas internas, tales como las Redes Neuronales Convolucionales (CNN) (Indolia et al., 2018). La identificación de señales de tráfico (TSR por sus siglas en inglés) constituye una tarea de visión artificial y aprendizaje automático que implica el reconocimiento y clasificación de señales de tráfico a partir de imágenes o secuencias de video (Liu et al., 2019). Los algoritmos de visión artificial para la detección de señales de tráfico se relacionan directamente con sus atributos distintivos. Principalmente, las señales de tráfico adoptan formas como triángulos, rectángulos, círculos u octágonos, además de presentar colores (Sheikah et al., 2016). Los colores empleados en las señales de tráfico suelen ser colores básicos como rojo, azul, negro, blanco, amarillo y, de forma menos frecuente, verde. Por ende, los enfoques de detección se clasifican principalmente en métodos basados en color y forma para determinar la característica de la imagen (Fan y Zhang, 2015). En el contexto de la visión por computadora, el reconocimiento de imágenes se refiere a la habilidad del software para identificar elementos, individuos, lugares, escritos y actividades en imágenes. Para llevar a cabo dicha identificación, los sistemas computacionales pueden emplear tecnologías de visión por computadora en combinación con cámaras y software basado en inteligencia artificial. (SearchEnterpriseAI).</p>
+<p><strong>1.4. Variable respuesta</strong></p>
+<ul>
+<li><p><strong><em>Variable</em></strong>: Exactitud de predicción.</p></li>
+<li><p><strong><em>Valores usuales de operación</em></strong>: Entre 0 y 100.</p></li>
+<li><p><strong><em>Precisión de medición</em></strong>: Porcentaje.</p></li>
+<li><p><strong><em>Instrumento de medida</em></strong>: No aplica.</p></li>
+</ul>
+<p><strong>1.5. Variables de control</strong></p>
+<table class="table">
+<caption>Variables de control</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Variable</em></th>
+<th><em>Valores usuales de operación</em></th>
+<th><em>Precisión de medición</em></th>
+<th><em>Instrumento de medida</em></th>
+<th><em>Configuración propuesta</em></th>
+<th><em>Efecto predicho</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Convoluciones</em></td>
+<td>Entre 1 y 10</td>
+<td>Número entero</td>
+<td>No aplica</td>
+<td>[1, 2]</td>
+<td>La exactitud de predicción aumentará a mayor número.</td>
+</tr>
+<tr class="even">
+<td><em>Filtros</em></td>
+<td>Entre 1 y 100</td>
+<td>Número entero</td>
+<td>No aplica</td>
+<td>[4, 16]</td>
+<td>La exactitud de predicción aumentará a mayor número.</td>
+</tr>
+<tr class="odd">
+<td><em>Densa</em></td>
+<td>Entre 1 y 1000</td>
+<td>Número entero</td>
+<td>No aplica</td>
+<td>[65, 128]</td>
+<td>La exactitud de predicción aumentará a mayor número.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.6. Factores controlables</strong></p>
+<p>Listado de factores que se mantendrán constantes en el experimento:</p>
+<p>Factores externos al modelo</p>
+<table class="table">
+<caption>Variables de control</caption>
+<colgroup>
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 22%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Variable</em></th>
+<th><em>Nivel deseado</em></th>
+<th><em>Precisión de medición</em></th>
+<th><em>Instrumento de medida</em></th>
+<th><em>Control</em></th>
+<th><em>Impacto esperado</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Dataset</em></td>
+<td>Superior a 1000</td>
+<td>Imágenes</td>
+<td>No aplica</td>
+<td>Se usarán las mismas imágenes de entrenamiento y validación para todos los modelos</td>
+<td>Obtención de una mejor comprensión de cómo diferentes configuraciones afectan el rendimiento del modelo, con el fin de identificar la arquitectura más adecuada para mejorar la exactitud predictiva.</td>
+</tr>
+</tbody>
+</table>
+<p>Factores internos del modelo</p>
+<table class="table">
+<caption>Variables de control</caption>
+<colgroup>
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 24%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Variable</em></th>
+<th><em>Nivel deseado</em></th>
+<th><em>Precisión de medición</em></th>
+<th><em>Instrumento de medida</em></th>
+<th><em>Control</em></th>
+<th><em>Impacto esperado</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Funcion de activación</em></td>
+<td>Depende de la función seleccionada</td>
+<td>No aplica</td>
+<td>No aplica</td>
+<td>Se aplicará la función de activación RELU para las capas convolucionales y la primera capa densa, y softwax para la última capa.</td>
+<td>Obtenención de una consistencia en el comportamiento de los modelos y en una extracción de características más uniforme a lo largo de las capas.</td>
+</tr>
+<tr class="even">
+<td><em>Compilación del modelo</em></td>
+<td>No aplica</td>
+<td>No aplica</td>
+<td>No aplica</td>
+<td><p>Se usarán los parametros:</p>
+<p>loss=‘binary_crossentropy’</p>
+<p>optimizer=‘adam’</p>
+<p>metrics=[‘accuracy’]</p></td>
+<td>Aseguramiento de la coherencia en el proceso de entrenamiento y evaluación. Esto garantiza que todos los modelos sean entrenados y evaluados de manera similar, facilitando la comparación de sus desempeños y simplificando la gestión de los experimentos de aprendizaje automático.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.7. Factores no controlables</strong></p>
+<p>Listado de factores que no se mantendrán constantes en el experimento:</p>
+<p>Factores externos al modelo</p>
+<table class="table">
+<caption>Variables de control</caption>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 19%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Variable</em></th>
+<th><em>Nivel deseado</em></th>
+<th><em>Precisión de medición</em></th>
+<th><em>Instrumento de medida</em></th>
+<th>Estrategia</th>
+<th><em>Efectos anticipados</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Procesamiento computacional</em></td>
+<td>No aplica</td>
+<td>No aplica</td>
+<td>No aplica</td>
+<td>Uso de configuraciones idénticas de hardware</td>
+<td>Variación en el tiempo de procesamiento, limitando el número de muestras a tomar.</td>
+</tr>
+<tr class="even">
+<td><em>Tiempo de entrenamiento por modelo</em></td>
+<td>Entre 0 y 60</td>
+<td>Minutos</td>
+<td>Cronómetro</td>
+<td>Uso de configuraciones idénticas de hardware</td>
+<td>Limitación en el número de muestras a tomar.</td>
+</tr>
+</tbody>
+</table>
+<p>Factores internos del modelo CNN</p>
+<table class="table">
+<caption>Variables de control</caption>
+<colgroup>
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Variable</em></th>
+<th><em>Nivel deseado</em></th>
+<th><em>Precisión de medición</em></th>
+<th><em>Instrumento de medida</em></th>
+<th><em>Estrategia</em></th>
+<th>Efectos anticipados</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Pesos</em></td>
+<td>Entre 0 y 1</td>
+<td>Número real</td>
+<td>No aplica</td>
+<td>Inicialización aleatoria</td>
+<td>La inicialización aleatoria de pesos en una red neuronal convolucional promueve la diversidad desde el inicio del entrenamiento, ayudando a evitar mínimos locales y aumentando la capacidad del modelo para adaptarse a diferentes conjuntos de datos. Esto mejora la capacidad de generalización y la robustez del modelo.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.8. Interacciones</strong></p>
+<p>Los ensayos en cada tratamiento deben realizarse de manera separada tomando una de las repeticiones de cada tratamiento y ubicarlos a una distancia que el calor de una vela no pueda afectar la otra, se deben encender al mismo instante y esperar la combustión de las primeras 4 velas con diferente tratamiento durante un periodo de tiempo donde se apague la hasta la ultima vela, teniendo en cuenta que el registro de la combustión en cada vela debe ser tomado cuando esta se apague en su totalidad, el terminar el primer ensayo se debe proceder con el segundo de la misma forma hasta lograr abordar las cinco replicas y la cuantificación de los tiempos de combustión en cada una de las velas, se debe evitar encender todas las velas al mismo instante, ya que el calor que se produce alrededor de estas podría alterar los tratamientos al ocasionar derretimiento de la cera en algunas de las velas que se encuentren en una posición donde puedan recibir mayor radiación de calor por velas que se encuentren próximas y de este modo crear un sesgo en la combustión total de alguna de los tratamientos y ocasionar errores en el registro de los tiempos totales de combustión ocasionando alteración en el experimento.</p>
+<p><strong>1.9. Restricciones</strong></p>
+<p>Las restricciones que se tuvieron en cuenta para la realización del experimento estuvieron enfocadas en que algunas podrían afectar el diseño al igual que los objetivos de los estudios por lo cual nos aseguramos de las siguientes: Seguridad: fue fundamental para evitar posible incendio dentro del cuarto debido a una combustión alterada que pudiera estar fuera de control y provocara encendido del entorno del experimento. Ventilación: el experimento se realizó en un área ventilada de manera regulada que permitió la combustión de las velas, pero a la vez que estas no se apagaran ni diseminara la llama por acción del viento. Espacio y condiciones físicas del cuarto: Se procuró que este espacio fuera el más adecuado en cuestión de área para la combustión segura de las velas. Manipulación de las velas: Las velas desde el primer instante se planificó su ubicación en el cuarto y en la tabla al igual que el momento del encendido, evitando que las distancias no afectaran el entorno por medio del derrame de la cera de las velas ni la diseminación de la llama dentro del cuarto que pudieran provocar posibles incendios o quemaduras al responsable de la ejecución del experimento. Material y equipo de seguridad: Se tuvieron en cuenta todas las precauciones para la manipulación de las velas que pudiera provocar accidentes en el proceso de realización del experimento. Residuos y limpieza: posterior a la realización del experimento se realizó el debido proceso para la separación de la será de la tabla al igual que el barrido de todo material que quedo de residuo luego de la aplicación del experimento.</p>
+<p>Este diseño experimental se realizó en un cuarto aislado para poder tener control sobre alguna de las siguientes variables: Temperatura: Esta se mantuvo alrededor de los 28° C. Humedad relativa: Se mantuvo alrededor del 70%. Velas: Las velas con la cual se llevo a cabo los experimentos fueron del mismo tamaño para cada tratamiento y con la misma composición de cera, con una altura de 1 cm cada una y un diámetro de 2 cm, las mechas del mismo diámetro, pero con diferentes longitudes en cada uno de los tratamientos, T1= 1cm, T2=1.5cm, T3= 2 cm, y T4= 2.5 cm, cada tratamiento se repitió 5 veces.</p>
+<p>Los ensayos se realizaron en cinco intervalos de tiempo donde en cada ensayo se encendió una vela por cada tratamiento sobre una tabla de acero inoxidable de (70x15x5) cm, el registro de la combustión en cada ensayo se llevó a cabo aproximadamente durante 37 minutos, tomando como tiempo total de combustión en las velas cuando la mecha se apagaba totalmente.</p>
+<p>Se espera que la temperatura, la humedad relativa, la composición y el volumen de las velas tengan un impacto mínimo en la combustión, por el contrario, se espera que cualquier cambio en la combustión de las velas se deba principalmente a la longitud de la mecha, permitiendo analizar de manera efectiva el impacto en el proceso de combustión de las velas.</p>
+<p><strong>1.10. Diseño</strong></p>
+<p><img src="imagenes/velas.jpeg" class="img-fluid"></p>
+<p><strong>Diseño Experimental:</strong> Se utilizará un diseño completamente aleatorizado con cuatro niveles de mecha donde se mide el tiempo de combustión de las velas.</p>
+<p><strong>Factor:</strong> Longitud de la mecha.</p>
+<p><strong>Tratamientos:</strong></p>
+<ul>
+<li><p><strong><em>T1</em></strong>: Mecha 1 cm de longitud.</p></li>
+<li><p><strong><em>T2</em></strong>: Mecha 1,5 cm longitud.</p></li>
+<li><p><strong><em>T3</em></strong>: Mecha 2 cm longitud.</p></li>
+<li><p><strong><em>T4</em></strong>: Mecha 2,5 cm longitud.</p></li>
+</ul>
+<p><strong>Materiales:</strong></p>
+<ul>
+<li><p>Velas idénticas en tamaño y composición con mechas de diferentes longitudes.</p></li>
+<li><p>Soportes para velas.</p></li>
+<li><p>Cronómetro.</p></li>
+<li><p>Encendedor.</p></li>
+</ul>
+<p><strong>Procedimiento:</strong></p>
+<ul>
+<li><p>Cortar las mechas de manera uniforme en tres grupos con diferentes longitudes.</p></li>
+<li><p>Fijar las mechas en las velas correspondientes según los grupos establecidos.</p></li>
+<li><p>Encender cada vela al mismo tiempo y colocarlas en soportes idénticos.</p></li>
+<li><p>Registrar el tiempo desde que se encienden hasta que se apagan por completo.</p></li>
+<li><p>Repetir el experimento con varias velas para obtener datos adicionales.</p></li>
+</ul>
+<p><strong>Análisis de Datos:</strong> Comparar el tiempo promedio de combustión entre los cuatro tipos de longitud de las mechas utilizando análisis estadísticos, como el análisis de varianza (ANOVA) de un factor.</p>
+<p><strong>Hipótesis:</strong> Se espera que velas con mechas de mayor longitud tengan una duración de combustión más larga.</p>
+<p><strong>Resultados Esperados:</strong> Se espera que las velas con mechas de mayor longitud tengan una duración de combustión más larga en comparación con las mechas de menor longitud, de acuerdo con la hipótesis.</p>
+<p><strong>1.11. Descripción</strong></p>
+<p>La técnica de análisis y presentación utilizada en este experimento de 1 factor con 4 tratamientos se basa en una combinación de herramientas estadísticas y gráficas diseñadas para explorar y comunicar los resultados de manera efectiva.</p>
+<p><strong>Gráficas</strong> Se utilizan histogramas para visualizar la distribución de los datos en cada tratamiento, lo que permite una comprensión rápida de la forma y la dispersión de los datos. Los gráficos de cajas para comparar la distribución de los datos entre los diferentes tratamientos, mostrando la mediana, los cuartiles y los valores atípicos y los gráficos de dispersión para explorar la relación entre variables, como los valores ajustados y los residuos.</p>
+<p><strong>ANOVAs:</strong> Se realiza un ANOVA para comparar las medias de los tratamientos y determinar si hay diferencias significativas entre ellos. Se evalúa la significancia estadística, lo que proporciona información sobre la variabilidad entre los tratamientos en relación con la variabilidad dentro de los tratamientos. Después de realizar el ANOVA, se realiza la prueba Tukey como una prueba para comparar todas las combinaciones posibles de pares de tratamientos y determinar qué diferencias son significativas.</p>
+<p><strong>Modelos de Efectos, Medias y Regresión:</strong> Se utilizan diferentes modelos para analizar los datos según la pregunta de investigación. El modelo de efectos considera cada tratamiento como un factor independiente, mientras que el modelo de medias agrupa los tratamientos y compara las medias globales. El modelo de regresión permite explorar la relación entre la variable dependiente y las variables independientes.</p>
+<p><strong>Pruebas de Homocedasticidad y Normalidad:</strong> Se realizan pruebas de homocedasticidad para evaluar si la varianza de los residuos es constante en todos los tratamientos.</p>
+<p>Las pruebas de normalidad Anderson-Darling, Shapiro-Wilk, Jarque-Bera, Kolmogorov-Smirnov se utilizarán para verificar si los residuos siguen una distribución normal.</p>
+<p><strong>Valores Ajustados vs Residuales e Independencia de Errores:</strong> Con las pruebas Levene, Bartlett, Breusch-Pagan y Durbin-Watson, Se examina la relación entre los valores ajustados y los residuos para evaluar la idoneidad del modelo. Además, se verifica la independencia de errores para garantizar que los errores no estén correlacionados entre sí</p>
+<p><strong>Comparación entre Tratamientos:</strong> Se realizan comparaciones entre tratamientos utilizando los métodos de la diferencia significativa menos significativa (LSD) y la diferencia significativa honesta (HSD) para identificar las diferencias significativas entre los tratamientos y agruparlos en categorías homogéneas.</p>
+<p>En resumen, esta técnica de análisis y presentación utiliza una variedad de herramientas estadísticas y gráficas para explorar y comunicar los resultados de manera efectiva en un experimento de 1 factor con 4 tratamientos. Se enfoca en la comparación de medias, la relación entre variables, la evaluación de la normalidad y homocedasticidad de los residuos, y la identificación de diferencias significativas entre tratamientos.</p>
+<p><strong>1.12. Responsable de coordinación</strong></p>
+<p>Juan Carlos Gaviria Chaverra.</p>
+<p><strong>1.13. Premuestreo</strong></p>
+<p>No se realizará premuestreo por las siguientes razones:</p>
+<p>Simplicidad del experimento: El diseño experimental es directo y no implica procedimientos complicados. Consiste en encender velas con diferentes longitudes de mecha y medir la duración de la combustión. Dado que el procedimiento es simple y fácil de ejecutar, no se requiere una fase preliminar de recolección de datos para ajustar o validar el método experimental.</p>
+<p>Condiciones experimentales bien definidas: Las condiciones del experimento, como el ambiente de prueba y los materiales utilizados, son conocidas y estables. Se llevará a cabo en un entorno controlado y las velas utilizadas serán consistentes en calidad y composición. Por lo tanto, se puede tener confianza en la replicabilidad de los resultados sin la necesidad de un premuestreo para ajustar o validar estas condiciones.</p>
+<p>Recursos limitados: Los recursos disponibles, como tiempo, dinero y personal, son limitados.</p>
+<p><strong>2. Análisis</strong></p>
+<p><strong>2.1 Datos</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50 × 6
+   orden tratamiento convoluciones filtros densa exactitud
+   &lt;dbl&gt; &lt;chr&gt;       &lt;fct&gt;         &lt;fct&gt;   &lt;fct&gt;     &lt;dbl&gt;
+ 1     1 C1_F4_D64   1             4       64         81.0
+ 2     2 C1_F4_D128  1             4       128        85.4
+ 3     3 C1_F16_D64  1             16      64         85.9
+ 4     4 C1_F16_D128 1             16      128        90.9
+ 5     5 C2_F4_D64   2             4       64         76.5
+ 6     6 C2_F4_D128  2             4       128        84.9
+ 7     7 C2_F16_D64  2             16      64         92.3
+ 8     8 C2_F16_D128 2             16      128        96.5
+ 9     9 C1_F4_D64   1             4       64         82.1
+10    10 C1_F4_D128  1             4       128        86.7
+# ℹ 40 more rows</code></pre>
+</div>
+</div>
+<p><strong>2.2. Análisis exploratorio</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>$`1`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  78.84   86.47   91.05   90.28   94.22   98.37 
+
+$`2`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  74.46   90.79   96.67   93.95   98.52   99.62 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`4`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  74.46   85.27   90.29   89.73   95.00   99.02 
+
+$`16`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  84.22   91.32   95.25   94.50   98.18   99.62 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`64`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  74.46   85.73   91.64   90.15   94.42   99.14 
+
+$`128`
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  83.72   90.66   95.26   94.08   98.03   99.62 </code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>x.x.Gráficos de medias</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 92.11468</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-14-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>x.x.ANOVA</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+convoluciones                1  269.8   269.8  10.767 0.001595 ** 
+filtros                      1  456.7   456.7  18.228 5.89e-05 ***
+densa                        1  309.6   309.6  12.357 0.000764 ***
+convoluciones:filtros        1   31.5    31.5   1.256 0.266124    
+convoluciones:densa          1    1.9     1.9   0.074 0.786039    
+filtros:densa                1    6.2     6.2   0.248 0.619857    
+convoluciones:filtros:densa  1   42.1    42.1   1.680 0.199089    
+Residuals                   72 1804.1    25.1                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+filtros                1  456.7   456.7  18.060 6.24e-05 ***
+densa                  1  309.6   309.6  12.243  0.00080 ***
+convoluciones          1  269.8   269.8  10.667  0.00166 ** 
+filtros:densa          1    6.2     6.2   0.246  0.62145    
+densa:convoluciones    1    1.9     1.9   0.074  0.78699    
+filtros:convoluciones  1   31.5    31.5   1.244  0.26827    
+Residuals             73 1846.2    25.3                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21  5</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  residuales
+W = 0.97293, p-value = 0.08737</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Anderson-Darling normality test
+
+data:  residuales
+A = 0.69564, p-value = 0.06672</code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = exactitud ~ as.numeric(convoluciones) * as.numeric(filtros) * 
+    as.numeric(densa), data = datos)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-13.351  -3.772   1.317   3.330   9.475 
+
+Coefficients:
+                                                                Estimate
+(Intercept)                                                       97.628
+as.numeric(convoluciones)                                        -14.062
+as.numeric(filtros)                                              -10.368
+as.numeric(densa)                                                 -8.364
+as.numeric(convoluciones):as.numeric(filtros)                     11.213
+as.numeric(convoluciones):as.numeric(densa)                        9.314
+as.numeric(filtros):as.numeric(densa)                              7.589
+as.numeric(convoluciones):as.numeric(filtros):as.numeric(densa)   -5.803
+                                                                Std. Error
+(Intercept)                                                         17.698
+as.numeric(convoluciones)                                           11.193
+as.numeric(filtros)                                                 11.193
+as.numeric(densa)                                                   11.193
+as.numeric(convoluciones):as.numeric(filtros)                        7.079
+as.numeric(convoluciones):as.numeric(densa)                          7.079
+as.numeric(filtros):as.numeric(densa)                                7.079
+as.numeric(convoluciones):as.numeric(filtros):as.numeric(densa)      4.477
+                                                                t value
+(Intercept)                                                       5.516
+as.numeric(convoluciones)                                        -1.256
+as.numeric(filtros)                                              -0.926
+as.numeric(densa)                                                -0.747
+as.numeric(convoluciones):as.numeric(filtros)                     1.584
+as.numeric(convoluciones):as.numeric(densa)                       1.316
+as.numeric(filtros):as.numeric(densa)                             1.072
+as.numeric(convoluciones):as.numeric(filtros):as.numeric(densa)  -1.296
+                                                                Pr(&gt;|t|)    
+(Intercept)                                                     5.14e-07 ***
+as.numeric(convoluciones)                                          0.213    
+as.numeric(filtros)                                                0.357    
+as.numeric(densa)                                                  0.457    
+as.numeric(convoluciones):as.numeric(filtros)                      0.118    
+as.numeric(convoluciones):as.numeric(densa)                        0.192    
+as.numeric(filtros):as.numeric(densa)                              0.287    
+as.numeric(convoluciones):as.numeric(filtros):as.numeric(densa)    0.199    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.006 on 72 degrees of freedom
+Multiple R-squared:  0.3826,    Adjusted R-squared:  0.3225 
+F-statistic: 6.373 on 7 and 72 DF,  p-value: 7.699e-06</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = exactitud ~ as.numeric(convoluciones) * as.numeric(filtros) * 
+    as.numeric(densa), data = datos)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-13.351  -3.772   1.317   3.330   9.475 
+
+Coefficients:
+                                                                Estimate
+(Intercept)                                                       97.628
+as.numeric(convoluciones)                                        -14.062
+as.numeric(filtros)                                              -10.368
+as.numeric(densa)                                                 -8.364
+as.numeric(convoluciones):as.numeric(filtros)                     11.213
+as.numeric(convoluciones):as.numeric(densa)                        9.314
+as.numeric(filtros):as.numeric(densa)                              7.589
+as.numeric(convoluciones):as.numeric(filtros):as.numeric(densa)   -5.803
+                                                                Std. Error
+(Intercept)                                                         17.698
+as.numeric(convoluciones)                                           11.193
+as.numeric(filtros)                                                 11.193
+as.numeric(densa)                                                   11.193
+as.numeric(convoluciones):as.numeric(filtros)                        7.079
+as.numeric(convoluciones):as.numeric(densa)                          7.079
+as.numeric(filtros):as.numeric(densa)                                7.079
+as.numeric(convoluciones):as.numeric(filtros):as.numeric(densa)      4.477
+                                                                t value
+(Intercept)                                                       5.516
+as.numeric(convoluciones)                                        -1.256
+as.numeric(filtros)                                              -0.926
+as.numeric(densa)                                                -0.747
+as.numeric(convoluciones):as.numeric(filtros)                     1.584
+as.numeric(convoluciones):as.numeric(densa)                       1.316
+as.numeric(filtros):as.numeric(densa)                             1.072
+as.numeric(convoluciones):as.numeric(filtros):as.numeric(densa)  -1.296
+                                                                Pr(&gt;|t|)    
+(Intercept)                                                     5.14e-07 ***
+as.numeric(convoluciones)                                          0.213    
+as.numeric(filtros)                                                0.357    
+as.numeric(densa)                                                  0.457    
+as.numeric(convoluciones):as.numeric(filtros)                      0.118    
+as.numeric(convoluciones):as.numeric(densa)                        0.192    
+as.numeric(filtros):as.numeric(densa)                              0.287    
+as.numeric(convoluciones):as.numeric(filtros):as.numeric(densa)    0.199    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.006 on 72 degrees of freedom
+Multiple R-squared:  0.3826,    Adjusted R-squared:  0.3225 
+F-statistic: 6.373 on 7 and 72 DF,  p-value: 7.699e-06</code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>x.x.Diagrama de Pareto de efectos estandarizados</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>x.x.Sin la interaccion triple</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                      Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+convoluciones          1  269.8   269.8  10.667  0.00166 ** 
+filtros                1  456.7   456.7  18.060 6.24e-05 ***
+densa                  1  309.6   309.6  12.243  0.00080 ***
+convoluciones:filtros  1   31.5    31.5   1.244  0.26827    
+convoluciones:densa    1    1.9     1.9   0.074  0.78699    
+filtros:densa          1    6.2     6.2   0.246  0.62145    
+Residuals             73 1846.2    25.3                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = exactitud ~ as.numeric(convoluciones) * as.numeric(filtros) + 
+    as.numeric(convoluciones) * as.numeric(densa) + as.numeric(filtros) * 
+    as.numeric(densa), data = datos)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-14.076  -3.219   0.844   3.740   8.749 
+
+Coefficients:
+                                              Estimate Std. Error t value
+(Intercept)                                     78.043      9.256   8.432
+as.numeric(convoluciones)                       -1.006      4.902  -0.205
+as.numeric(filtros)                              2.688      4.902   0.548
+as.numeric(densa)                                4.693      4.902   0.957
+as.numeric(convoluciones):as.numeric(filtros)    2.509      2.249   1.116
+as.numeric(convoluciones):as.numeric(densa)      0.610      2.249   0.271
+as.numeric(filtros):as.numeric(densa)           -1.115      2.249  -0.496
+                                              Pr(&gt;|t|)    
+(Intercept)                                   2.17e-12 ***
+as.numeric(convoluciones)                        0.838    
+as.numeric(filtros)                              0.585    
+as.numeric(densa)                                0.342    
+as.numeric(convoluciones):as.numeric(filtros)    0.268    
+as.numeric(convoluciones):as.numeric(densa)      0.787    
+as.numeric(filtros):as.numeric(densa)            0.621    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.029 on 73 degrees of freedom
+Multiple R-squared:  0.3682,    Adjusted R-squared:  0.3162 
+F-statistic: 7.089 on 6 and 73 DF,  p-value: 5.656e-06</code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>x.x.Identificacion de outlier</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>No Studentized residuals with Bonferroni p &lt; 0.05
+Largest |rstudent|:
+    rstudent unadjusted p-value Bonferroni p
+21 -3.097868          0.0027789      0.22231</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>x.x.Eliminacion de outlier</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                                    Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+datos1$convoluciones                 1  269.8   269.8  10.667  0.00166 ** 
+datos1$filtros                       1  456.7   456.7  18.060 6.24e-05 ***
+datos1$densa                         1  309.6   309.6  12.243  0.00080 ***
+datos1$convoluciones:datos1$filtros  1   31.5    31.5   1.244  0.26827    
+datos1$convoluciones:datos1$densa    1    1.9     1.9   0.074  0.78699    
+datos1$filtros:datos1$densa          1    6.2     6.2   0.246  0.62145    
+Residuals                           73 1846.2    25.3                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+convoluciones          1  269.8   269.8  10.667  0.00166 ** 
+filtros                1  456.7   456.7  18.060 6.24e-05 ***
+densa                  1  309.6   309.6  12.243  0.00080 ***
+convoluciones:filtros  1   31.5    31.5   1.244  0.26827    
+convoluciones:densa    1    1.9     1.9   0.074  0.78699    
+filtros:densa          1    6.2     6.2   0.246  0.62145    
+Residuals             73 1846.2    25.3                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = datos1$exactitud ~ as.numeric(datos1$convoluciones) * 
+    as.numeric(datos1$filtros) + as.numeric(datos1$convoluciones) * 
+    as.numeric(datos1$densa) + as.numeric(datos1$filtros) * as.numeric(datos1$densa))
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-14.076  -3.219   0.844   3.740   8.749 
+
+Coefficients:
+                                                            Estimate Std. Error
+(Intercept)                                                   78.043      9.256
+as.numeric(datos1$convoluciones)                              -1.006      4.902
+as.numeric(datos1$filtros)                                     2.688      4.902
+as.numeric(datos1$densa)                                       4.693      4.902
+as.numeric(datos1$convoluciones):as.numeric(datos1$filtros)    2.509      2.249
+as.numeric(datos1$convoluciones):as.numeric(datos1$densa)      0.610      2.249
+as.numeric(datos1$filtros):as.numeric(datos1$densa)           -1.115      2.249
+                                                            t value Pr(&gt;|t|)
+(Intercept)                                                   8.432 2.17e-12
+as.numeric(datos1$convoluciones)                             -0.205    0.838
+as.numeric(datos1$filtros)                                    0.548    0.585
+as.numeric(datos1$densa)                                      0.957    0.342
+as.numeric(datos1$convoluciones):as.numeric(datos1$filtros)   1.116    0.268
+as.numeric(datos1$convoluciones):as.numeric(datos1$densa)     0.271    0.787
+as.numeric(datos1$filtros):as.numeric(datos1$densa)          -0.496    0.621
+                                                               
+(Intercept)                                                 ***
+as.numeric(datos1$convoluciones)                               
+as.numeric(datos1$filtros)                                     
+as.numeric(datos1$densa)                                       
+as.numeric(datos1$convoluciones):as.numeric(datos1$filtros)    
+as.numeric(datos1$convoluciones):as.numeric(datos1$densa)      
+as.numeric(datos1$filtros):as.numeric(datos1$densa)            
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.029 on 73 degrees of freedom
+Multiple R-squared:  0.3682,    Adjusted R-squared:  0.3162 
+F-statistic: 7.089 on 6 and 73 DF,  p-value: 5.656e-06</code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>x.x.Análisis de residuales</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-2.9301 -0.6700  0.1757  0.0000  0.7785  1.8213 </code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>Prueba de normalidad</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21  5</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  residuales
+W = 0.97293, p-value = 0.08737</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Anderson-Darling normality test
+
+data:  residuales
+A = 0.69564, p-value = 0.06672</code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>Prueba de varianza constante</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  1  0.1638 0.6868
+      78               </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value  Pr(&gt;F)  
+group  1  6.6793 0.01162 *
+      78                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  1  2.7184 0.1032
+      78               </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value    Pr(&gt;F)    
+group  3  6.4349 0.0006094 ***
+      76                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  3    2.13 0.1034
+      76               </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value   Pr(&gt;F)   
+group  3  5.5594 0.001673 **
+      76                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  modelo2
+BP = 34.66, df = 6, p-value = 5.015e-06</code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>Prueba de independencia</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Durbin-Watson test
+
+data:  modelo2
+DW = 0.58876, p-value = 1.458e-12
+alternative hypothesis: true autocorrelation is not 0</code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>x.x. Gráfico de superficie de respuesta</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>Grafico con plotly</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'plotly' was built under R version 4.3.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'plotly'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:ggplot2':
+
+    last_plot</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    filter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:graphics':
+
+    layout</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-893245be4539936e8c20" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-893245be4539936e8c20">{"x":{"visdat":{"5f944eea21a7":["function () ","plotlyVisDat"]},"cur_data":"5f944eea21a7","attrs":{"5f944eea21a7":{"x":[-1,-0.90000000000000002,-0.80000000000000004,-0.69999999999999996,-0.59999999999999998,-0.5,-0.39999999999999991,-0.29999999999999993,-0.19999999999999996,-0.099999999999999978,0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.60000000000000009,0.70000000000000018,0.80000000000000004,0.90000000000000013,1],"y":[-1,-0.90000000000000002,-0.80000000000000004,-0.69999999999999996,-0.59999999999999998,-0.5,-0.39999999999999991,-0.29999999999999993,-0.19999999999999996,-0.099999999999999978,0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.60000000000000009,0.70000000000000018,0.80000000000000004,0.90000000000000013,1],"z":[[83.216700000000003,82.032530000000008,80.84836,79.664190000000005,78.48002000000001,77.295850000000002,76.111679999999993,74.927509999999998,73.743340000000003,72.559169999999995,71.375,70.190830000000005,69.006660000000011,67.822490000000002,66.638319999999993,65.454149999999998,64.26997999999999,63.085809999999995,61.90164,60.717470000000006,59.533299999999997],[79.475030000000004,78.516651999999993,77.558273999999997,76.599896000000001,75.641517999999991,74.683139999999995,73.724761999999998,72.766384000000002,71.808006000000006,70.849627999999996,69.891249999999999,68.932872000000003,67.974494000000007,67.016115999999997,66.057738000000001,65.099360000000004,64.140981999999994,63.182603999999998,62.224226000000002,61.265848000000005,60.307469999999995],[75.733360000000005,75.000774000000007,74.268187999999995,73.535601999999997,72.803016,72.070430000000002,71.33784399999999,70.605258000000006,69.872672000000009,69.140085999999997,68.407499999999999,67.674914000000001,66.942328000000003,66.209741999999991,65.477155999999994,64.74457000000001,64.011983999999998,63.279397999999993,62.546812000000003,61.814226000000005,61.081639999999993],[71.991690000000006,71.484895999999992,70.978101999999993,70.471307999999993,69.964513999999994,69.457719999999995,68.950925999999995,68.444131999999996,67.937337999999997,67.430543999999998,66.923749999999998,66.416955999999999,65.910162,65.403368,64.896574000000001,64.389780000000002,63.882985999999995,63.376191999999996,62.869398000000004,62.362604000000005,61.855809999999998],[68.250020000000006,67.969018000000005,67.68801599999999,67.407014000000004,67.126012000000003,66.845010000000002,66.564008000000001,66.283006,66.002003999999999,65.721001999999999,65.439999999999998,65.158997999999997,64.877995999999996,64.596993999999995,64.315991999999994,64.034990000000008,63.753987999999993,63.472985999999992,63.191983999999998,62.910982000000004,62.629979999999996],[64.508350000000007,64.453140000000005,64.397930000000002,64.34272,64.287509999999997,64.232300000000009,64.177090000000007,64.121880000000004,64.066670000000002,64.011460000000014,63.956250000000004,63.901040000000002,63.845830000000007,63.790620000000011,63.735409999999995,63.680199999999999,63.624990000000004,63.569780000000009,63.514569999999999,63.459360000000004,63.404150000000008],[60.766679999999994,60.937261999999997,61.107843999999993,61.278425999999996,61.449007999999992,61.619589999999995,61.790171999999991,61.960753999999994,62.131335999999997,62.301918000000001,62.472499999999997,62.643082,62.813664000000003,62.984245999999992,63.154827999999995,63.325410000000005,63.495991999999994,63.666573999999997,63.837156,64.007738000000003,64.178319999999999],[57.025009999999995,57.421384000000003,57.817757999999998,58.214131999999999,58.610506000000001,59.006880000000002,59.403253999999997,59.799628000000006,60.196002,60.592376000000009,60.988750000000003,61.385124000000005,61.781498000000006,62.177872000000008,62.574245999999995,62.970620000000004,63.366994000000005,63.763368000000007,64.159741999999994,64.556116000000003,64.952490000000012],[53.283339999999995,53.905506000000003,54.527671999999995,55.149838000000003,55.772004000000003,56.394170000000003,57.016336000000003,57.638502000000003,58.260668000000003,58.882834000000003,59.505000000000003,60.12716600000001,60.749332000000003,61.371498000000003,61.993664000000003,62.615830000000003,63.237996000000003,63.86016200000001,64.482327999999995,65.104494000000003,65.72666000000001],[49.541669999999996,50.389628000000002,51.237586,52.085543999999999,52.933501999999997,53.781460000000003,54.629418000000001,55.477376000000007,56.325333999999998,57.173292000000004,58.021250000000002,58.869208000000008,59.717166000000006,60.565123999999997,61.413082000000003,62.261040000000001,63.108998000000007,63.956956000000005,64.804913999999997,65.652872000000002,66.500830000000008],[45.799999999999997,46.873750000000001,47.947499999999998,49.021250000000002,50.094999999999999,51.168750000000003,52.2425,53.316250000000004,54.390000000000001,55.463750000000005,56.537500000000001,57.611250000000005,58.685000000000002,59.758749999999999,60.832500000000003,61.90625,62.980000000000004,64.053750000000008,65.127499999999998,66.201250000000002,67.275000000000006],[42.058329999999998,43.357872,44.657413999999996,45.956955999999998,47.256497999999993,48.556040000000003,49.855581999999998,51.155124000000001,52.454666000000003,53.754208000000006,55.053750000000001,56.353292000000003,57.652834000000006,58.952376000000001,60.251918000000003,61.551459999999999,62.851002000000008,64.150543999999996,65.450085999999999,66.749628000000001,68.049170000000004],[38.316659999999992,39.841994,41.367327999999993,42.892662000000001,44.417995999999995,45.943330000000003,47.468663999999997,48.993998000000005,50.519331999999999,52.044666000000007,53.57,55.095334000000008,56.620668000000002,58.146002000000003,59.671336000000004,61.196669999999997,62.722004000000005,64.247337999999999,65.772672,67.298006000000001,68.823340000000002],[34.574989999999993,36.326115999999999,38.077241999999998,39.828367999999998,41.579493999999997,43.330620000000003,45.081745999999995,46.832872000000002,48.583998000000001,50.335124,52.08625,53.837376000000006,55.588502000000005,57.339627999999998,59.090754000000004,60.841879999999996,62.593006000000003,64.344132000000002,66.095258000000001,67.846384,69.59751],[30.833319999999993,32.810237999999998,34.787155999999996,36.764074000000001,38.740991999999991,40.717909999999996,42.694827999999994,44.671745999999999,46.648663999999997,48.625582000000001,50.602499999999999,52.579418000000004,54.556336000000002,56.533253999999999,58.510172000000004,60.487090000000002,62.464008000000007,64.440926000000005,66.417844000000002,68.394762,70.371680000000012],[27.091649999999994,29.294359999999998,31.497069999999994,33.699779999999997,35.902489999999993,38.105199999999996,40.30791,42.510620000000003,44.713329999999999,46.916040000000002,49.118749999999999,51.321460000000002,53.524169999999998,55.726879999999994,57.929590000000005,60.132300000000001,62.335010000000004,64.537720000000007,66.740430000000003,68.94314,71.145849999999996],[23.349979999999992,25.778481999999997,28.206983999999991,30.635486,33.063987999999995,35.492489999999997,37.920991999999998,40.349494,42.777995999999995,45.206498000000003,47.634999999999998,50.063502000000007,52.492004000000001,54.920505999999996,57.349008000000005,59.777509999999999,62.206012000000001,64.634513999999996,67.063016000000005,69.491517999999999,71.920020000000008],[19.608309999999989,22.262603999999993,24.916897999999989,27.571191999999996,30.225485999999993,32.879779999999997,35.534073999999997,38.188367999999997,40.842661999999997,43.496955999999997,46.151249999999997,48.805544000000005,51.459838000000005,54.114131999999998,56.768426000000005,59.422719999999998,62.077014000000005,64.731307999999999,67.385602000000006,70.039895999999999,72.694190000000006],[15.866640000000007,18.746726000000002,21.626812000000001,24.506898000000007,27.386984000000002,30.267070000000004,33.147156000000003,36.027242000000008,38.907328000000007,41.787414000000005,44.667500000000004,47.54758600000001,50.427672000000008,53.307758,56.187844000000005,59.067930000000004,61.94801600000001,64.828102000000001,67.708188000000007,70.588274000000013,73.468360000000004],[12.124970000000005,15.230848000000002,18.336725999999999,21.442604000000003,24.548482,27.654360000000004,30.760238000000001,33.866116000000005,36.971994000000002,40.077872000000006,43.183750000000003,46.289628000000008,49.395506000000012,52.501384000000002,55.607262000000006,58.713140000000003,61.819018000000007,64.924896000000004,68.030774000000008,71.136652000000012,74.242530000000002],[8.383300000000002,11.714970000000001,15.04664,18.378310000000006,21.709980000000002,25.041650000000004,28.373320000000003,31.704990000000006,35.036660000000005,38.368330000000007,41.700000000000003,45.031670000000005,48.363340000000008,51.695010000000003,55.026680000000006,58.358350000000002,61.690020000000004,65.021690000000007,68.353360000000009,71.685030000000012,75.0167]],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"x":[-1,-0.90000000000000002,-0.80000000000000004,-0.69999999999999996,-0.59999999999999998,-0.5,-0.39999999999999991,-0.29999999999999993,-0.19999999999999996,-0.099999999999999978,0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.60000000000000009,0.70000000000000018,0.80000000000000004,0.90000000000000013,1],"y":[-1,-0.90000000000000002,-0.80000000000000004,-0.69999999999999996,-0.59999999999999998,-0.5,-0.39999999999999991,-0.29999999999999993,-0.19999999999999996,-0.099999999999999978,0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.60000000000000009,0.70000000000000018,0.80000000000000004,0.90000000000000013,1],"z":[[83.216700000000003,82.032530000000008,80.84836,79.664190000000005,78.48002000000001,77.295850000000002,76.111679999999993,74.927509999999998,73.743340000000003,72.559169999999995,71.375,70.190830000000005,69.006660000000011,67.822490000000002,66.638319999999993,65.454149999999998,64.26997999999999,63.085809999999995,61.90164,60.717470000000006,59.533299999999997],[79.475030000000004,78.516651999999993,77.558273999999997,76.599896000000001,75.641517999999991,74.683139999999995,73.724761999999998,72.766384000000002,71.808006000000006,70.849627999999996,69.891249999999999,68.932872000000003,67.974494000000007,67.016115999999997,66.057738000000001,65.099360000000004,64.140981999999994,63.182603999999998,62.224226000000002,61.265848000000005,60.307469999999995],[75.733360000000005,75.000774000000007,74.268187999999995,73.535601999999997,72.803016,72.070430000000002,71.33784399999999,70.605258000000006,69.872672000000009,69.140085999999997,68.407499999999999,67.674914000000001,66.942328000000003,66.209741999999991,65.477155999999994,64.74457000000001,64.011983999999998,63.279397999999993,62.546812000000003,61.814226000000005,61.081639999999993],[71.991690000000006,71.484895999999992,70.978101999999993,70.471307999999993,69.964513999999994,69.457719999999995,68.950925999999995,68.444131999999996,67.937337999999997,67.430543999999998,66.923749999999998,66.416955999999999,65.910162,65.403368,64.896574000000001,64.389780000000002,63.882985999999995,63.376191999999996,62.869398000000004,62.362604000000005,61.855809999999998],[68.250020000000006,67.969018000000005,67.68801599999999,67.407014000000004,67.126012000000003,66.845010000000002,66.564008000000001,66.283006,66.002003999999999,65.721001999999999,65.439999999999998,65.158997999999997,64.877995999999996,64.596993999999995,64.315991999999994,64.034990000000008,63.753987999999993,63.472985999999992,63.191983999999998,62.910982000000004,62.629979999999996],[64.508350000000007,64.453140000000005,64.397930000000002,64.34272,64.287509999999997,64.232300000000009,64.177090000000007,64.121880000000004,64.066670000000002,64.011460000000014,63.956250000000004,63.901040000000002,63.845830000000007,63.790620000000011,63.735409999999995,63.680199999999999,63.624990000000004,63.569780000000009,63.514569999999999,63.459360000000004,63.404150000000008],[60.766679999999994,60.937261999999997,61.107843999999993,61.278425999999996,61.449007999999992,61.619589999999995,61.790171999999991,61.960753999999994,62.131335999999997,62.301918000000001,62.472499999999997,62.643082,62.813664000000003,62.984245999999992,63.154827999999995,63.325410000000005,63.495991999999994,63.666573999999997,63.837156,64.007738000000003,64.178319999999999],[57.025009999999995,57.421384000000003,57.817757999999998,58.214131999999999,58.610506000000001,59.006880000000002,59.403253999999997,59.799628000000006,60.196002,60.592376000000009,60.988750000000003,61.385124000000005,61.781498000000006,62.177872000000008,62.574245999999995,62.970620000000004,63.366994000000005,63.763368000000007,64.159741999999994,64.556116000000003,64.952490000000012],[53.283339999999995,53.905506000000003,54.527671999999995,55.149838000000003,55.772004000000003,56.394170000000003,57.016336000000003,57.638502000000003,58.260668000000003,58.882834000000003,59.505000000000003,60.12716600000001,60.749332000000003,61.371498000000003,61.993664000000003,62.615830000000003,63.237996000000003,63.86016200000001,64.482327999999995,65.104494000000003,65.72666000000001],[49.541669999999996,50.389628000000002,51.237586,52.085543999999999,52.933501999999997,53.781460000000003,54.629418000000001,55.477376000000007,56.325333999999998,57.173292000000004,58.021250000000002,58.869208000000008,59.717166000000006,60.565123999999997,61.413082000000003,62.261040000000001,63.108998000000007,63.956956000000005,64.804913999999997,65.652872000000002,66.500830000000008],[45.799999999999997,46.873750000000001,47.947499999999998,49.021250000000002,50.094999999999999,51.168750000000003,52.2425,53.316250000000004,54.390000000000001,55.463750000000005,56.537500000000001,57.611250000000005,58.685000000000002,59.758749999999999,60.832500000000003,61.90625,62.980000000000004,64.053750000000008,65.127499999999998,66.201250000000002,67.275000000000006],[42.058329999999998,43.357872,44.657413999999996,45.956955999999998,47.256497999999993,48.556040000000003,49.855581999999998,51.155124000000001,52.454666000000003,53.754208000000006,55.053750000000001,56.353292000000003,57.652834000000006,58.952376000000001,60.251918000000003,61.551459999999999,62.851002000000008,64.150543999999996,65.450085999999999,66.749628000000001,68.049170000000004],[38.316659999999992,39.841994,41.367327999999993,42.892662000000001,44.417995999999995,45.943330000000003,47.468663999999997,48.993998000000005,50.519331999999999,52.044666000000007,53.57,55.095334000000008,56.620668000000002,58.146002000000003,59.671336000000004,61.196669999999997,62.722004000000005,64.247337999999999,65.772672,67.298006000000001,68.823340000000002],[34.574989999999993,36.326115999999999,38.077241999999998,39.828367999999998,41.579493999999997,43.330620000000003,45.081745999999995,46.832872000000002,48.583998000000001,50.335124,52.08625,53.837376000000006,55.588502000000005,57.339627999999998,59.090754000000004,60.841879999999996,62.593006000000003,64.344132000000002,66.095258000000001,67.846384,69.59751],[30.833319999999993,32.810237999999998,34.787155999999996,36.764074000000001,38.740991999999991,40.717909999999996,42.694827999999994,44.671745999999999,46.648663999999997,48.625582000000001,50.602499999999999,52.579418000000004,54.556336000000002,56.533253999999999,58.510172000000004,60.487090000000002,62.464008000000007,64.440926000000005,66.417844000000002,68.394762,70.371680000000012],[27.091649999999994,29.294359999999998,31.497069999999994,33.699779999999997,35.902489999999993,38.105199999999996,40.30791,42.510620000000003,44.713329999999999,46.916040000000002,49.118749999999999,51.321460000000002,53.524169999999998,55.726879999999994,57.929590000000005,60.132300000000001,62.335010000000004,64.537720000000007,66.740430000000003,68.94314,71.145849999999996],[23.349979999999992,25.778481999999997,28.206983999999991,30.635486,33.063987999999995,35.492489999999997,37.920991999999998,40.349494,42.777995999999995,45.206498000000003,47.634999999999998,50.063502000000007,52.492004000000001,54.920505999999996,57.349008000000005,59.777509999999999,62.206012000000001,64.634513999999996,67.063016000000005,69.491517999999999,71.920020000000008],[19.608309999999989,22.262603999999993,24.916897999999989,27.571191999999996,30.225485999999993,32.879779999999997,35.534073999999997,38.188367999999997,40.842661999999997,43.496955999999997,46.151249999999997,48.805544000000005,51.459838000000005,54.114131999999998,56.768426000000005,59.422719999999998,62.077014000000005,64.731307999999999,67.385602000000006,70.039895999999999,72.694190000000006],[15.866640000000007,18.746726000000002,21.626812000000001,24.506898000000007,27.386984000000002,30.267070000000004,33.147156000000003,36.027242000000008,38.907328000000007,41.787414000000005,44.667500000000004,47.54758600000001,50.427672000000008,53.307758,56.187844000000005,59.067930000000004,61.94801600000001,64.828102000000001,67.708188000000007,70.588274000000013,73.468360000000004],[12.124970000000005,15.230848000000002,18.336725999999999,21.442604000000003,24.548482,27.654360000000004,30.760238000000001,33.866116000000005,36.971994000000002,40.077872000000006,43.183750000000003,46.289628000000008,49.395506000000012,52.501384000000002,55.607262000000006,58.713140000000003,61.819018000000007,64.924896000000004,68.030774000000008,71.136652000000012,74.242530000000002],[8.383300000000002,11.714970000000001,15.04664,18.378310000000006,21.709980000000002,25.041650000000004,28.373320000000003,31.704990000000006,35.036660000000005,38.368330000000007,41.700000000000003,45.031670000000005,48.363340000000008,51.695010000000003,55.026680000000006,58.358350000000002,61.690020000000004,65.021690000000007,68.353360000000009,71.685030000000012,75.0167]],"type":"surface","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-edfa3ebdda7950b70338" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-edfa3ebdda7950b70338">{"x":{"visdat":{"5f946e461785":["function () ","plotlyVisDat"]},"cur_data":"5f946e461785","attrs":{"5f946e461785":{"x":[-1,-0.90000000000000002,-0.80000000000000004,-0.69999999999999996,-0.59999999999999998,-0.5,-0.39999999999999991,-0.29999999999999993,-0.19999999999999996,-0.099999999999999978,0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.60000000000000009,0.70000000000000018,0.80000000000000004,0.90000000000000013,1],"y":[-1,-0.90000000000000002,-0.80000000000000004,-0.69999999999999996,-0.59999999999999998,-0.5,-0.39999999999999991,-0.29999999999999993,-0.19999999999999996,-0.099999999999999978,0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.60000000000000009,0.70000000000000018,0.80000000000000004,0.90000000000000013,1],"z":[[83.216700000000003,82.032530000000008,80.84836,79.664190000000005,78.48002000000001,77.295850000000002,76.111679999999993,74.927509999999998,73.743340000000003,72.559169999999995,71.375,70.190830000000005,69.006660000000011,67.822490000000002,66.638319999999993,65.454149999999998,64.26997999999999,63.085809999999995,61.90164,60.717470000000006,59.533299999999997],[79.475030000000004,78.516651999999993,77.558273999999997,76.599896000000001,75.641517999999991,74.683139999999995,73.724761999999998,72.766384000000002,71.808006000000006,70.849627999999996,69.891249999999999,68.932872000000003,67.974494000000007,67.016115999999997,66.057738000000001,65.099360000000004,64.140981999999994,63.182603999999998,62.224226000000002,61.265848000000005,60.307469999999995],[75.733360000000005,75.000774000000007,74.268187999999995,73.535601999999997,72.803016,72.070430000000002,71.33784399999999,70.605258000000006,69.872672000000009,69.140085999999997,68.407499999999999,67.674914000000001,66.942328000000003,66.209741999999991,65.477155999999994,64.74457000000001,64.011983999999998,63.279397999999993,62.546812000000003,61.814226000000005,61.081639999999993],[71.991690000000006,71.484895999999992,70.978101999999993,70.471307999999993,69.964513999999994,69.457719999999995,68.950925999999995,68.444131999999996,67.937337999999997,67.430543999999998,66.923749999999998,66.416955999999999,65.910162,65.403368,64.896574000000001,64.389780000000002,63.882985999999995,63.376191999999996,62.869398000000004,62.362604000000005,61.855809999999998],[68.250020000000006,67.969018000000005,67.68801599999999,67.407014000000004,67.126012000000003,66.845010000000002,66.564008000000001,66.283006,66.002003999999999,65.721001999999999,65.439999999999998,65.158997999999997,64.877995999999996,64.596993999999995,64.315991999999994,64.034990000000008,63.753987999999993,63.472985999999992,63.191983999999998,62.910982000000004,62.629979999999996],[64.508350000000007,64.453140000000005,64.397930000000002,64.34272,64.287509999999997,64.232300000000009,64.177090000000007,64.121880000000004,64.066670000000002,64.011460000000014,63.956250000000004,63.901040000000002,63.845830000000007,63.790620000000011,63.735409999999995,63.680199999999999,63.624990000000004,63.569780000000009,63.514569999999999,63.459360000000004,63.404150000000008],[60.766679999999994,60.937261999999997,61.107843999999993,61.278425999999996,61.449007999999992,61.619589999999995,61.790171999999991,61.960753999999994,62.131335999999997,62.301918000000001,62.472499999999997,62.643082,62.813664000000003,62.984245999999992,63.154827999999995,63.325410000000005,63.495991999999994,63.666573999999997,63.837156,64.007738000000003,64.178319999999999],[57.025009999999995,57.421384000000003,57.817757999999998,58.214131999999999,58.610506000000001,59.006880000000002,59.403253999999997,59.799628000000006,60.196002,60.592376000000009,60.988750000000003,61.385124000000005,61.781498000000006,62.177872000000008,62.574245999999995,62.970620000000004,63.366994000000005,63.763368000000007,64.159741999999994,64.556116000000003,64.952490000000012],[53.283339999999995,53.905506000000003,54.527671999999995,55.149838000000003,55.772004000000003,56.394170000000003,57.016336000000003,57.638502000000003,58.260668000000003,58.882834000000003,59.505000000000003,60.12716600000001,60.749332000000003,61.371498000000003,61.993664000000003,62.615830000000003,63.237996000000003,63.86016200000001,64.482327999999995,65.104494000000003,65.72666000000001],[49.541669999999996,50.389628000000002,51.237586,52.085543999999999,52.933501999999997,53.781460000000003,54.629418000000001,55.477376000000007,56.325333999999998,57.173292000000004,58.021250000000002,58.869208000000008,59.717166000000006,60.565123999999997,61.413082000000003,62.261040000000001,63.108998000000007,63.956956000000005,64.804913999999997,65.652872000000002,66.500830000000008],[45.799999999999997,46.873750000000001,47.947499999999998,49.021250000000002,50.094999999999999,51.168750000000003,52.2425,53.316250000000004,54.390000000000001,55.463750000000005,56.537500000000001,57.611250000000005,58.685000000000002,59.758749999999999,60.832500000000003,61.90625,62.980000000000004,64.053750000000008,65.127499999999998,66.201250000000002,67.275000000000006],[42.058329999999998,43.357872,44.657413999999996,45.956955999999998,47.256497999999993,48.556040000000003,49.855581999999998,51.155124000000001,52.454666000000003,53.754208000000006,55.053750000000001,56.353292000000003,57.652834000000006,58.952376000000001,60.251918000000003,61.551459999999999,62.851002000000008,64.150543999999996,65.450085999999999,66.749628000000001,68.049170000000004],[38.316659999999992,39.841994,41.367327999999993,42.892662000000001,44.417995999999995,45.943330000000003,47.468663999999997,48.993998000000005,50.519331999999999,52.044666000000007,53.57,55.095334000000008,56.620668000000002,58.146002000000003,59.671336000000004,61.196669999999997,62.722004000000005,64.247337999999999,65.772672,67.298006000000001,68.823340000000002],[34.574989999999993,36.326115999999999,38.077241999999998,39.828367999999998,41.579493999999997,43.330620000000003,45.081745999999995,46.832872000000002,48.583998000000001,50.335124,52.08625,53.837376000000006,55.588502000000005,57.339627999999998,59.090754000000004,60.841879999999996,62.593006000000003,64.344132000000002,66.095258000000001,67.846384,69.59751],[30.833319999999993,32.810237999999998,34.787155999999996,36.764074000000001,38.740991999999991,40.717909999999996,42.694827999999994,44.671745999999999,46.648663999999997,48.625582000000001,50.602499999999999,52.579418000000004,54.556336000000002,56.533253999999999,58.510172000000004,60.487090000000002,62.464008000000007,64.440926000000005,66.417844000000002,68.394762,70.371680000000012],[27.091649999999994,29.294359999999998,31.497069999999994,33.699779999999997,35.902489999999993,38.105199999999996,40.30791,42.510620000000003,44.713329999999999,46.916040000000002,49.118749999999999,51.321460000000002,53.524169999999998,55.726879999999994,57.929590000000005,60.132300000000001,62.335010000000004,64.537720000000007,66.740430000000003,68.94314,71.145849999999996],[23.349979999999992,25.778481999999997,28.206983999999991,30.635486,33.063987999999995,35.492489999999997,37.920991999999998,40.349494,42.777995999999995,45.206498000000003,47.634999999999998,50.063502000000007,52.492004000000001,54.920505999999996,57.349008000000005,59.777509999999999,62.206012000000001,64.634513999999996,67.063016000000005,69.491517999999999,71.920020000000008],[19.608309999999989,22.262603999999993,24.916897999999989,27.571191999999996,30.225485999999993,32.879779999999997,35.534073999999997,38.188367999999997,40.842661999999997,43.496955999999997,46.151249999999997,48.805544000000005,51.459838000000005,54.114131999999998,56.768426000000005,59.422719999999998,62.077014000000005,64.731307999999999,67.385602000000006,70.039895999999999,72.694190000000006],[15.866640000000007,18.746726000000002,21.626812000000001,24.506898000000007,27.386984000000002,30.267070000000004,33.147156000000003,36.027242000000008,38.907328000000007,41.787414000000005,44.667500000000004,47.54758600000001,50.427672000000008,53.307758,56.187844000000005,59.067930000000004,61.94801600000001,64.828102000000001,67.708188000000007,70.588274000000013,73.468360000000004],[12.124970000000005,15.230848000000002,18.336725999999999,21.442604000000003,24.548482,27.654360000000004,30.760238000000001,33.866116000000005,36.971994000000002,40.077872000000006,43.183750000000003,46.289628000000008,49.395506000000012,52.501384000000002,55.607262000000006,58.713140000000003,61.819018000000007,64.924896000000004,68.030774000000008,71.136652000000012,74.242530000000002],[8.383300000000002,11.714970000000001,15.04664,18.378310000000006,21.709980000000002,25.041650000000004,28.373320000000003,31.704990000000006,35.036660000000005,38.368330000000007,41.700000000000003,45.031670000000005,48.363340000000008,51.695010000000003,55.026680000000006,58.358350000000002,61.690020000000004,65.021690000000007,68.353360000000009,71.685030000000012,75.0167]],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"camera":{"eye":{"x":1.8700000000000001,"y":0.88,"z":-0.64000000000000001}},"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"x":[-1,-0.90000000000000002,-0.80000000000000004,-0.69999999999999996,-0.59999999999999998,-0.5,-0.39999999999999991,-0.29999999999999993,-0.19999999999999996,-0.099999999999999978,0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.60000000000000009,0.70000000000000018,0.80000000000000004,0.90000000000000013,1],"y":[-1,-0.90000000000000002,-0.80000000000000004,-0.69999999999999996,-0.59999999999999998,-0.5,-0.39999999999999991,-0.29999999999999993,-0.19999999999999996,-0.099999999999999978,0,0.10000000000000009,0.20000000000000018,0.30000000000000004,0.40000000000000013,0.5,0.60000000000000009,0.70000000000000018,0.80000000000000004,0.90000000000000013,1],"z":[[83.216700000000003,82.032530000000008,80.84836,79.664190000000005,78.48002000000001,77.295850000000002,76.111679999999993,74.927509999999998,73.743340000000003,72.559169999999995,71.375,70.190830000000005,69.006660000000011,67.822490000000002,66.638319999999993,65.454149999999998,64.26997999999999,63.085809999999995,61.90164,60.717470000000006,59.533299999999997],[79.475030000000004,78.516651999999993,77.558273999999997,76.599896000000001,75.641517999999991,74.683139999999995,73.724761999999998,72.766384000000002,71.808006000000006,70.849627999999996,69.891249999999999,68.932872000000003,67.974494000000007,67.016115999999997,66.057738000000001,65.099360000000004,64.140981999999994,63.182603999999998,62.224226000000002,61.265848000000005,60.307469999999995],[75.733360000000005,75.000774000000007,74.268187999999995,73.535601999999997,72.803016,72.070430000000002,71.33784399999999,70.605258000000006,69.872672000000009,69.140085999999997,68.407499999999999,67.674914000000001,66.942328000000003,66.209741999999991,65.477155999999994,64.74457000000001,64.011983999999998,63.279397999999993,62.546812000000003,61.814226000000005,61.081639999999993],[71.991690000000006,71.484895999999992,70.978101999999993,70.471307999999993,69.964513999999994,69.457719999999995,68.950925999999995,68.444131999999996,67.937337999999997,67.430543999999998,66.923749999999998,66.416955999999999,65.910162,65.403368,64.896574000000001,64.389780000000002,63.882985999999995,63.376191999999996,62.869398000000004,62.362604000000005,61.855809999999998],[68.250020000000006,67.969018000000005,67.68801599999999,67.407014000000004,67.126012000000003,66.845010000000002,66.564008000000001,66.283006,66.002003999999999,65.721001999999999,65.439999999999998,65.158997999999997,64.877995999999996,64.596993999999995,64.315991999999994,64.034990000000008,63.753987999999993,63.472985999999992,63.191983999999998,62.910982000000004,62.629979999999996],[64.508350000000007,64.453140000000005,64.397930000000002,64.34272,64.287509999999997,64.232300000000009,64.177090000000007,64.121880000000004,64.066670000000002,64.011460000000014,63.956250000000004,63.901040000000002,63.845830000000007,63.790620000000011,63.735409999999995,63.680199999999999,63.624990000000004,63.569780000000009,63.514569999999999,63.459360000000004,63.404150000000008],[60.766679999999994,60.937261999999997,61.107843999999993,61.278425999999996,61.449007999999992,61.619589999999995,61.790171999999991,61.960753999999994,62.131335999999997,62.301918000000001,62.472499999999997,62.643082,62.813664000000003,62.984245999999992,63.154827999999995,63.325410000000005,63.495991999999994,63.666573999999997,63.837156,64.007738000000003,64.178319999999999],[57.025009999999995,57.421384000000003,57.817757999999998,58.214131999999999,58.610506000000001,59.006880000000002,59.403253999999997,59.799628000000006,60.196002,60.592376000000009,60.988750000000003,61.385124000000005,61.781498000000006,62.177872000000008,62.574245999999995,62.970620000000004,63.366994000000005,63.763368000000007,64.159741999999994,64.556116000000003,64.952490000000012],[53.283339999999995,53.905506000000003,54.527671999999995,55.149838000000003,55.772004000000003,56.394170000000003,57.016336000000003,57.638502000000003,58.260668000000003,58.882834000000003,59.505000000000003,60.12716600000001,60.749332000000003,61.371498000000003,61.993664000000003,62.615830000000003,63.237996000000003,63.86016200000001,64.482327999999995,65.104494000000003,65.72666000000001],[49.541669999999996,50.389628000000002,51.237586,52.085543999999999,52.933501999999997,53.781460000000003,54.629418000000001,55.477376000000007,56.325333999999998,57.173292000000004,58.021250000000002,58.869208000000008,59.717166000000006,60.565123999999997,61.413082000000003,62.261040000000001,63.108998000000007,63.956956000000005,64.804913999999997,65.652872000000002,66.500830000000008],[45.799999999999997,46.873750000000001,47.947499999999998,49.021250000000002,50.094999999999999,51.168750000000003,52.2425,53.316250000000004,54.390000000000001,55.463750000000005,56.537500000000001,57.611250000000005,58.685000000000002,59.758749999999999,60.832500000000003,61.90625,62.980000000000004,64.053750000000008,65.127499999999998,66.201250000000002,67.275000000000006],[42.058329999999998,43.357872,44.657413999999996,45.956955999999998,47.256497999999993,48.556040000000003,49.855581999999998,51.155124000000001,52.454666000000003,53.754208000000006,55.053750000000001,56.353292000000003,57.652834000000006,58.952376000000001,60.251918000000003,61.551459999999999,62.851002000000008,64.150543999999996,65.450085999999999,66.749628000000001,68.049170000000004],[38.316659999999992,39.841994,41.367327999999993,42.892662000000001,44.417995999999995,45.943330000000003,47.468663999999997,48.993998000000005,50.519331999999999,52.044666000000007,53.57,55.095334000000008,56.620668000000002,58.146002000000003,59.671336000000004,61.196669999999997,62.722004000000005,64.247337999999999,65.772672,67.298006000000001,68.823340000000002],[34.574989999999993,36.326115999999999,38.077241999999998,39.828367999999998,41.579493999999997,43.330620000000003,45.081745999999995,46.832872000000002,48.583998000000001,50.335124,52.08625,53.837376000000006,55.588502000000005,57.339627999999998,59.090754000000004,60.841879999999996,62.593006000000003,64.344132000000002,66.095258000000001,67.846384,69.59751],[30.833319999999993,32.810237999999998,34.787155999999996,36.764074000000001,38.740991999999991,40.717909999999996,42.694827999999994,44.671745999999999,46.648663999999997,48.625582000000001,50.602499999999999,52.579418000000004,54.556336000000002,56.533253999999999,58.510172000000004,60.487090000000002,62.464008000000007,64.440926000000005,66.417844000000002,68.394762,70.371680000000012],[27.091649999999994,29.294359999999998,31.497069999999994,33.699779999999997,35.902489999999993,38.105199999999996,40.30791,42.510620000000003,44.713329999999999,46.916040000000002,49.118749999999999,51.321460000000002,53.524169999999998,55.726879999999994,57.929590000000005,60.132300000000001,62.335010000000004,64.537720000000007,66.740430000000003,68.94314,71.145849999999996],[23.349979999999992,25.778481999999997,28.206983999999991,30.635486,33.063987999999995,35.492489999999997,37.920991999999998,40.349494,42.777995999999995,45.206498000000003,47.634999999999998,50.063502000000007,52.492004000000001,54.920505999999996,57.349008000000005,59.777509999999999,62.206012000000001,64.634513999999996,67.063016000000005,69.491517999999999,71.920020000000008],[19.608309999999989,22.262603999999993,24.916897999999989,27.571191999999996,30.225485999999993,32.879779999999997,35.534073999999997,38.188367999999997,40.842661999999997,43.496955999999997,46.151249999999997,48.805544000000005,51.459838000000005,54.114131999999998,56.768426000000005,59.422719999999998,62.077014000000005,64.731307999999999,67.385602000000006,70.039895999999999,72.694190000000006],[15.866640000000007,18.746726000000002,21.626812000000001,24.506898000000007,27.386984000000002,30.267070000000004,33.147156000000003,36.027242000000008,38.907328000000007,41.787414000000005,44.667500000000004,47.54758600000001,50.427672000000008,53.307758,56.187844000000005,59.067930000000004,61.94801600000001,64.828102000000001,67.708188000000007,70.588274000000013,73.468360000000004],[12.124970000000005,15.230848000000002,18.336725999999999,21.442604000000003,24.548482,27.654360000000004,30.760238000000001,33.866116000000005,36.971994000000002,40.077872000000006,43.183750000000003,46.289628000000008,49.395506000000012,52.501384000000002,55.607262000000006,58.713140000000003,61.819018000000007,64.924896000000004,68.030774000000008,71.136652000000012,74.242530000000002],[8.383300000000002,11.714970000000001,15.04664,18.378310000000006,21.709980000000002,25.041650000000004,28.373320000000003,31.704990000000006,35.036660000000005,38.368330000000007,41.700000000000003,45.031670000000005,48.363340000000008,51.695010000000003,55.026680000000006,58.358350000000002,61.690020000000004,65.021690000000007,68.353360000000009,71.685030000000012,75.0167]],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>x.x. Comparaciones múltiples</strong></p>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: pwr2</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.05240248</code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<p><strong>x.x. Cálculo de réplicas</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+<p>Interpretaciones …</p>
+</section>
+</section>
+<section id="referencias" class="level1">
+<h1>Referencias</h1>
+<p>Al-Rousan, Taleb M. y Abdullahi A. Umar. Evaluación de los niveles de comprensión de las señales de tráfico entre los conductores en el Emirato de Abu Dhabi, Emiratos Árabes Unidos. Infraestructuras 6, núm. 9 (2021): 122. https://doi.org/10.3390/infrastructures6090122.</p>
+<p>Fan, Y., Zhang, W. Detección y clasificación de señales de tráfico para sistemas avanzados de asistencia al conductor. En la 12.ª Conferencia Internacional sobre Sistemas Difusos y Descubrimiento de Conocimiento (FSKD), 2015, págs. 1335-1339.</p>
+<p>Gu J., Wang Z., Kuen J., Ma L., Shahroudy A., Shuai B., Liu T., Wang X., Wang L., Wang G., Cai J., Chen T. Avances recientes en redes neuronales convolucionales. Reconocimiento de patrones, 2018, N 77, págs. 354-377. https://doi.org/10.1016/J.PATCOG.2017.10.013.</p>
+<p>Indolia S., Goswami AK, Mishra SP, Asopa P. Comprensión conceptual de la red neuronal convolucional: un enfoque de aprendizaje profundo. Procedia Informática, 2018, N 132, págs. 679 – 688. https://doi.org/10.1016/J.PROCS.2018.05.069</p>
+<p>Liu, S. Li, F. Chang e Y. Wang, “Métodos de detección de señales de tráfico basados en visión artificial: revisión, análisis y perspectivas”, en IEEE Access, vol.&nbsp;7, págs. 86578-86596, 2019, https://doi.org/10.1109/ACCESS.2019.2924947.</p>
+<p>Organización mundial de la salud (OMS) 2022. Lesiones por accidentes de tráfico, “Organización Mundial de la Salud (OMS)”, [en línea], https://www.who.int/newsroom/factsheets/detail/road-lesiones de trafico.</p>
+<p>Sheikh, AA, Kole, A., Maity, T. Detección y clasificación de señales de tráfico mediante funciones de color y redes neuronales. En Conferencia Internacional sobre Instrumentación y Energía de Control Inteligente (ICICPI), 2016, págs. 307-311.</p>
+<p>Reconocimiento de imágenes, SearchEnterpriseAI [en línea] Disponible: https://www.techtarget.com/searchenterpriseai/definition/imagerecognition [Consultado el 19 de abril de 2024].</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
