@@ -285,9 +285,15 @@ Se espera que la temperatura, la humedad relativa, la composición y el volumen 
 
 ![](imagenes/velas.jpeg)
 
-**Diseño Experimental:** Se utilizará un diseño completamente aleatorizado con cuatro niveles de mecha donde se mide el tiempo de combustión de las velas.
+**Diseño Experimental:** **:** Se utilizará un diseño factorial la cual involucra tres componentes: el numero de convoluciones, numero de filtros aplicados a cada convolucion y el numero de neuronas de la capa densa con lo cual se logrará medir el reconocimiento de señales de tráficos (TSDR) mediante el uso de una red neuronal convolucional (CNN) para determinar la significancia estadística de los efectos de los factores y sus interacciones para comprender como influyen en conjunto en la esactitud de la prediccion de la red neuronal al reconocer las imagenes de tránsito
 
-**Factor:** Longitud de la mecha.
+**Factor:**
+
+*Convoluciones: Número de convoluciones*
+
+*Filtros: Número de filtros aplicados en cada convolución*
+
+*Densa: Número de neuronas de la capa densa final de la red neuronal*
 
 **Tratamientos:**
 
@@ -397,6 +403,7 @@ ggplot(datos,aes(x=tratamiento, y=exactitud, group=tratamiento))+
   scale_y_continuous(breaks = seq(0, 20000, by = 1))+
   labs(title = "Gráfico de cajas", x = "Tratamientos", y = "Exactitud") 
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -409,6 +416,7 @@ ggplot(datos,aes(x=convoluciones, y=exactitud, group=tratamiento))+
 
 
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -421,6 +429,7 @@ ggplot(datos,aes(x=filtros, y=exactitud, group=tratamiento))+
 
 
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -433,6 +442,7 @@ ggplot(datos,aes(x=densa, y=exactitud, group=tratamiento))+
 
 
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -442,6 +452,7 @@ ggplot(datos, aes(x = convoluciones,  y = exactitud, group = convoluciones)) +
   xlab("convoluciones") +
   ylab("exactitud")  
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -451,6 +462,7 @@ ggplot(datos, aes(x = filtros,  y = exactitud, group = filtros)) +
   xlab("filtros") +
   ylab("exactitud")  
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -460,6 +472,7 @@ ggplot(datos, aes(x = densa,  y = exactitud, group = densa)) +
   xlab("densa") +
   ylab("exactitud")  
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -468,6 +481,7 @@ tapply(datos$exactitud, datos$convoluciones, summary)
 tapply(datos$exactitud, datos$filtros, summary)
 tapply(datos$exactitud, datos$densa, summary)  
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -476,8 +490,8 @@ Interpretaciones ...
 ggplot(datos, aes(x = exactitud)) +
   geom_histogram(fill = "turquoise", color = "turquoise4")  
 ```
-Interpretaciones ...
 
+Interpretaciones ...
 
 **x.x.Gráficos de medias**
 
@@ -505,10 +519,11 @@ interaction.plot(datos$filtros, datos$densa,datos$ exactitud,
                  xlab="filtros", ylab="Promedio de exactitud")
   
 ```
+
 Interpretaciones ...
 
-
 **x.x.ANOVA**
+
 ```{r}
 #| echo: false
 # Usar datos1: datos codificados como factores
@@ -527,6 +542,7 @@ require(nortest)
 shapiro.test(residuales)
 ad.test(residuales)  
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -539,10 +555,11 @@ summary(modelolm)
 modelolm6 <-  lm(exactitud ~ as.numeric(convoluciones)*as.numeric(filtros)*as.numeric(densa), data=datos)
 summary(modelolm6)  
 ```
+
 Interpretaciones ...
 
-
 **x.x.Diagrama de Pareto de efectos estandarizados**
+
 ```{r}
 #| echo: false
 # 
@@ -558,10 +575,11 @@ barplot(efectos_est_ord , horiz=TRUE, las=1,
         col="darkcyan")
 abline(v=qt(0.975, 8), col="black", lwd=3, lty =3)  
 ```
+
 Interpretaciones ...
 
-
 **x.x.Sin la interaccion triple**
+
 ```{r}
 #| echo: false
 # 
@@ -573,10 +591,11 @@ modelolm1 <-  lm(exactitud ~ as.numeric(convoluciones)*as.numeric(filtros) +
                   as.numeric(filtros)*as.numeric(densa), data=datos)
 summary(modelolm1)
 ```
+
 Interpretaciones ...
 
-
 **x.x.Identificacion de outlier**
+
 ```{r}
 #| echo: false
 # 
@@ -585,10 +604,11 @@ outlierTest(modelolm1)
 
 plot(fitted(modelolm1), residuals(modelolm1))
 ```
+
 Interpretaciones ...
 
+**x.x.Eliminacion de outlier**
 
-**x.x.Eliminacion de outlier** 
 ```{r}
 #| echo: false
 # 
@@ -613,20 +633,22 @@ modelolm2 <-  lm(datos1$exactitud ~ as.numeric(datos1$convoluciones)*as.numeric(
                   as.numeric(datos1$filtros)*as.numeric(datos1$densa))
 summary(modelolm2)
 ```
+
 Interpretaciones ...
 
-
 **x.x.Análisis de residuales**
+
 ```{r}
 #| echo: false
 #---------------- ----------------
 residuales <- rstandard(modelo2)
 summary(residuales)
 ```
+
 Interpretaciones ...
 
-
 **Prueba de normalidad**
+
 ```{r}
 #| echo: false
 # 
@@ -636,6 +658,7 @@ qqPlot(residuales, xlab="Cuantiles teoricos", ylab="Cuantiles muestrales", main=
 hist(residuales, xlab="Residuales", ylab="Frecuencia", main="Histograma")
 boxplot(residuales, xlab="Residuales",  main="Gr?fico de cajas")
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -644,10 +667,11 @@ require(nortest)
 shapiro.test(residuales)
 ad.test(residuales)
 ```
+
 Interpretaciones ...
 
-
 **Prueba de varianza constante**
+
 ```{r}
 #| echo: false
 # 
@@ -680,8 +704,8 @@ bptest(modelo2)
 #bartlett.test(exactitud,convoluciones)
 #bartlett.test(exactitud ~ convoluciones)
 ```
-Interpretaciones ...
 
+Interpretaciones ...
 
 **Prueba de independencia**
 
@@ -697,10 +721,11 @@ pacf(residuales,ylim=c(-1,1), main="Grafico de PACF", ylab="PACF")
 require(lmtest)
 dwtest(modelo2,alternative="two.sided")
 ```
+
 Interpretaciones ...
 
-
 **x.x. Gráfico de superficie de respuesta**
+
 ```{r}
 #| echo: false
 # #----------------  Eemplo de 
@@ -724,6 +749,7 @@ persp(x,y,z, phi=30, theta=130, xlab="convoluciones", ylab="filtros",
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -739,6 +765,7 @@ persp(x,y,z, phi=30, theta=20, xlab="convoluciones", ylab="filtros",
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -754,6 +781,7 @@ persp(x,y,z, phi=30, theta=120, xlab="convoluciones", ylab="densa",
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -769,6 +797,7 @@ persp(x,y,z, phi=30, theta=120, xlab="convoluciones", ylab="densa",
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -784,6 +813,7 @@ persp(x,y,z, phi=30, theta=30, xlab="filtros", ylab="densa",
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -799,10 +829,11 @@ persp(x,y,z, phi=30, theta=20, xlab="filtros", ylab="densa",
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
+
 Interpretaciones ...
 
-
 **Grafico con plotly**
+
 ```{r}
 #| echo: false
 # 
@@ -811,6 +842,7 @@ fig <- plot_ly(x=x, y=y, z=z)
 fig <- fig %>% add_surface()
 fig
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -837,10 +869,11 @@ fig <- fig %>% layout(
 
 fig
 ```
+
 Interpretaciones ...
 
-
 **x.x. Comparaciones múltiples**
+
 ```{r}
 #| echo: false
 # Comparaciones múltiples
@@ -850,6 +883,7 @@ require(agricolae)
 
 #TukeyHSD(modelo2, "convoluciones",ordered = T)
 ```
+
 Interpretaciones ...
 
 ```{r}
@@ -887,10 +921,11 @@ P3 <- tres <- pwr.2way(a=2, b=2, alpha = 0.05, size.A = 3, size.B = 3, f.A = f.a
 potencia <- min(cbind(P1$power, P2$power, P3$power))
 potencia
 ```
+
 Interpretaciones ...
 
-
 **x.x. Cálculo de réplicas**
+
 ```{r}
 #| echo: false
 # Cálculo de réplicas para alpha y beta definidos
@@ -912,8 +947,8 @@ n3 <- ss.2way(a=2, b=2, alpha = 0.1, beta = 0.1, f.A = f.a, f.B = f.b, B=100)
 replicas <- min(cbind(n1$n, n2$n, n3$n))
 replicas
 ```
-Interpretaciones ...
 
+Interpretaciones ...
 
 # Referencias
 
@@ -923,11 +958,11 @@ Fan, Y., Zhang, W. Detección y clasificación de señales de tráfico para sist
 
 Gu J., Wang Z., Kuen J., Ma L., Shahroudy A., Shuai B., Liu T., Wang X., Wang L., Wang G., Cai J., Chen T. Avances recientes en redes neuronales convolucionales. Reconocimiento de patrones, 2018, N 77, págs. 354-377. https://doi.org/10.1016/J.PATCOG.2017.10.013.
 
-Indolia S., Goswami AK, Mishra SP, Asopa P. Comprensión conceptual de la red neuronal convolucional: un enfoque de aprendizaje profundo. Procedia Informática, 2018, N 132, págs. 679 – 688. https://doi.org/10.1016/J.PROCS.2018.05.069
+Indolia S., Goswami AK, Mishra SP, Asopa P. Comprensión conceptual de la red neuronal convolucional: un enfoque de aprendizaje profundo. Procedia Informática, 2018, N 132, págs. 679 -- 688. https://doi.org/10.1016/J.PROCS.2018.05.069
 
 Liu, S. Li, F. Chang e Y. Wang, "Métodos de detección de señales de tráfico basados en visión artificial: revisión, análisis y perspectivas", en IEEE Access, vol. 7, págs. 86578-86596, 2019, https://doi.org/10.1109/ACCESS.2019.2924947.
 
-Organización mundial de la salud (OMS) 2022. Lesiones por accidentes de tráfico, “Organización Mundial de la Salud (OMS)”, \[en línea\], https://www.who.int/newsroom/factsheets/detail/road-lesiones de trafico.
+Organización mundial de la salud (OMS) 2022. Lesiones por accidentes de tráfico, "Organización Mundial de la Salud (OMS)", \[en línea\], https://www.who.int/newsroom/factsheets/detail/road-lesiones de trafico.
 
 Sheikh, AA, Kole, A., Maity, T. Detección y clasificación de señales de tráfico mediante funciones de color y redes neuronales. En Conferencia Internacional sobre Instrumentación y Energía de Control Inteligente (ICICPI), 2016, págs. 307-311.
 
