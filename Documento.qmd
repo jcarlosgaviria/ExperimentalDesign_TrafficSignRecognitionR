@@ -287,7 +287,7 @@ Se espera que la temperatura, la humedad relativa, la composición y el volumen 
 
 **Diseño Experimental:** **:** Se utilizará un diseño factorial la cual involucra tres componentes: el numero de convoluciones, numero de filtros aplicados a cada convolucion y el numero de neuronas de la capa densa con lo cual se logrará medir el reconocimiento de señales de tráficos (TSDR) mediante el uso de una red neuronal convolucional (CNN) para determinar la significancia estadística de los efectos de los factores y sus interacciones para comprender como influyen en conjunto en la esactitud de la prediccion de la red neuronal al reconocer las imagenes de tránsito
 
-**Factor:**
+**Factor: xxxx**
 
 *Convoluciones: Número de convoluciones*
 
