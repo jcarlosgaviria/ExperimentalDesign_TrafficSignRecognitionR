@@ -289,11 +289,11 @@ Se espera que la temperatura, la humedad relativa, la composición y el volumen 
 
 **Factor:**
 
-*Convoluciones: Número de convoluciones*
+Convoluciones: Número de convoluciones
 
-*Filtros: Número de filtros aplicados en cada convolución*
+Filtros: Número de filtros aplicados en cada convolución
 
-*Densa: Número de neuronas de la capa densa final de la red neuronal*
+Densa: Número de neuronas de la capa densa final de la red neuronal
 
 **Tratamientos:**
 
@@ -448,7 +448,9 @@ ggplot(datos,aes(x=tratamiento, y=exactitud, group=tratamiento))+
   labs(title = "Gráfico de cajas", x = "Tratamientos", y = "Exactitud") 
 ```
 
-Interpretaciones ...
+**Interpretación**
+
+En este análisis exploratorio de los tratamientos con respecto a la exactitud, podemos observar que posiblemente existan diferencias significativas entre algunos de los tratamientos con respecto al comportamiento del modelo de red neuronal, uno de los que mayor distancia toma con respecto a los otros es el arreglo C2_F16_D128, si se observa se puede ver, que los arreglos C1_F16_D64, C1_F4_D128, C1_F4_D64, están aparentemente distanciado del ya mencionado C2_F16_D128 quien por otro lado parece ser es el de mayor porcentaje de exactitud a la hora de predecir las imágenes de tránsito para corroborar dichas apreciaciones deberemos realizar un análisis de factores de efetos principales que permita establecer los valores de significancia entre los arreglos y la exactitud que brinda el modelo.
 
 ```{r}
 #| echo: false
@@ -461,7 +463,9 @@ ggplot(datos,aes(x=convoluciones, y=exactitud, group=tratamiento))+
 
 ```
 
-Interpretaciones ...
+Interpretaciones
+
+Para el caso de estas interacciones entre convoluciones y la exactitud de manera exploratoria podemos ver que el numero de 2 convoluciones parece no distanciarse de una manera significativa de aquellos que solo presentan 1 convolución, por lo cual en este caso si es muy pertinente poder realizar un análisis mas detallado en las pruebas de significancia de las interacciones entre factores que nos puedan dar una mayor claridad de la relación entre estas dos características dentro del modelo de red neuronal.
 
 ```{r}
 #| echo: false
