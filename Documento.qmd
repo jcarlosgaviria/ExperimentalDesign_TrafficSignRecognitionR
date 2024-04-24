@@ -493,7 +493,9 @@ ggplot(datos,aes(x=densa, y=exactitud, group=tratamiento))+
 
 ```
 
-Interpretaciones ...
+Interpretaciones
+
+Entre la exactitud y capa densa parece nuevamente no haber diferencias ya que todas las cajas están en posiciones muy similares o almenos no se observa que alguna de ellas tome distancias considerables sobre las otras por lo que también es pertinente poder realizar pruebas de significancias que permitan comprobar dicho supuesto ya que de manera exploratoria no es claro que pueda haber diferencias.  
 
 ```{r}
 #| echo: false
@@ -503,7 +505,9 @@ ggplot(datos, aes(x = convoluciones,  y = exactitud, group = convoluciones)) +
   ylab("exactitud")  
 ```
 
-Interpretaciones ...
+Interpretaciones
+
+Mediante estos gráficos directos de caja entre exactitud y convoluciones es muchísimo mas claro ver que posiblemente no existan diferencias significativas entre la exactitud y la convolución ya que las cajas muestran tener unas formas y traslapes muy similares lo que posiblemente nos haría descartar dicha posibilidad que el p-value este por encima de 0,05.
 
 ```{r}
 #| echo: false
@@ -513,7 +517,9 @@ ggplot(datos, aes(x = filtros,  y = exactitud, group = filtros)) +
   ylab("exactitud")  
 ```
 
-Interpretaciones ...
+Interpretaciones
+
+Mediante estos gráficos directos de caja, entre exactitud y filtros de manera exploratoria podemos ver la similitud en la distancia de las cajas con respeto a sus cuartiles, aunque la media pareciera inclinarse para el uso de 16 filtro no pareciera que esa distancia entre medias con respecto a los 4 filtros pueda llegar a presentar diferencia significativa sin embargo es importante poder comprobar este supuesto con la prueba de factores.  
 
 ```{r}
 #| echo: false
@@ -523,7 +529,9 @@ ggplot(datos, aes(x = densa,  y = exactitud, group = densa)) +
   ylab("exactitud")  
 ```
 
-Interpretaciones ...
+Interpretaciones
+
+A través de la visualización de gráficos de caja comparativos entre la exactitud y la densidad de forma exploratoria, podemos observar similitudes en la distribución de los datos en términos de sus cuartiles. Aunque la media parece favorecer el uso de 128 neuronas en lugar de 64, no parece haber una diferencia significativa entre las medias de ambas configuraciones. No obstante, para validar esta suposición, nuevamente es crucial realizar pruebas de factores.
 
 ```{r}
 #| echo: false
