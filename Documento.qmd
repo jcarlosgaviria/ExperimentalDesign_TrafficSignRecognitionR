@@ -478,7 +478,9 @@ ggplot(datos,aes(x=filtros, y=exactitud, group=tratamiento))+
 
 ```
 
-Interpretaciones ...
+Interpretaciones
+
+Entre la exactitud y el factor filtro parece seguir el mismo comportamiento que el factor convolucional ya que no es claro poder observar diferencias directa entre este factor y la exactitud de igual modo debemos apelar al análisis de factores directos que permitan mostrar el valor de la significancia para con estas métricas poder concluir si realmente existen diferencias significativas directas entre este factor y la exactitud.
 
 ```{r}
 #| echo: false
