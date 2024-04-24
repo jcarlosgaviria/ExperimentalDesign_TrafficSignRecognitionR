@@ -287,7 +287,7 @@ Se espera que la temperatura, la humedad relativa, la composición y el volumen 
 
 **Diseño Experimental:** **:** Se utilizará un diseño factorial la cual involucra tres componentes: el numero de convoluciones, numero de filtros aplicados a cada convolucion y el numero de neuronas de la capa densa con lo cual se logrará medir el reconocimiento de señales de tráficos (TSDR) mediante el uso de una red neuronal convolucional (CNN) para determinar la significancia estadística de los efectos de los factores y sus interacciones para comprender como influyen en conjunto en la esactitud de la prediccion de la red neuronal al reconocer las imagenes de tránsito
 
-**Factor: xxxx**
+**Factor:**
 
 *Convoluciones: Número de convoluciones*
 
@@ -297,41 +297,85 @@ Se espera que la temperatura, la humedad relativa, la composición y el volumen 
 
 **Tratamientos:**
 
--   ***T1***: Mecha 1 cm de longitud.
+La nomenclatura usada para identificar cada tratamiento es: Cx_Fy_Dz
 
--   ***T2***: Mecha 1,5 cm longitud.
+x: Representa el número de convoluciones
 
--   ***T3***: Mecha 2 cm longitud.
+y: representa número de filtros
 
--   ***T4***: Mecha 2,5 cm longitud.
+z: numero de neuronas de la capa densa
+
+de la combinación de los niveles de los factores, convoluciones, filtros y numero de neuronasde la capa densa surgen los siguientes 8 tratamientos.
+
+C1_F4_D64
+
+C1_F4_D128
+
+C1_F16_D64
+
+C1_F16_D128
+
+C2_F4_D64
+
+C2_F4_D128
+
+C2_F16_D64
+
+C2_F16_D128
 
 **Materiales:**
 
--   Velas idénticas en tamaño y composición con mechas de diferentes longitudes.
+-   **Hardware de computación:** Google colab
 
--   Soportes para velas.
+-   **Software de desarrollo y entrenamiento:** TensorFlow, PyTorch o Keras
 
--   Cronómetro.
+-   **Conjunto de imágenes graficas:** Datase imágenes de trafico
 
--   Encendedor.
+-   **Herramientas de procesamiento de imágenes:** Python Imaging Library
+
+-   **Entorno de experimentación:** Servicio en la nube
+
+-   **Herramientas de análisis estadístico:** Lenguaje de programación R-studio
+
+-   **Documentación y registro:** Información de acceso libre
 
 **Procedimiento:**
 
--   Cortar las mechas de manera uniforme en tres grupos con diferentes longitudes.
+-   Definición de los factores
 
--   Fijar las mechas en las velas correspondientes según los grupos establecidos.
+-   Determinar los niveles de los factores
 
--   Encender cada vela al mismo tiempo y colocarlas en soportes idénticos.
+-   Diseño del experimento factorial
 
--   Registrar el tiempo desde que se encienden hasta que se apagan por completo.
+-   Entrenamiento y evaluación de la CNN
 
--   Repetir el experimento con varias velas para obtener datos adicionales.
+-   Realización del análisis factorial:
 
-**Análisis de Datos:** Comparar el tiempo promedio de combustión entre los cuatro tipos de longitud de las mechas utilizando análisis estadísticos, como el análisis de varianza (ANOVA) de un factor.
+-   Optimización y validación
 
-**Hipótesis:** Se espera que velas con mechas de mayor longitud tengan una duración de combustión más larga.
+-   Iteración y refinamiento
 
-**Resultados Esperados:** Se espera que las velas con mechas de mayor longitud tengan una duración de combustión más larga en comparación con las mechas de menor longitud, de acuerdo con la hipótesis.
+**Análisis de Datos:** Analizar la exactitud de los modelos para cada una de las configuraciones de la CNN que permitan establecer las interacciones que brinden los mejores porcentajes de predicción de las imágenes de tráfico dentro del diseño de análisis factorial de nivel
+
+**Hipótesis:**
+
+**Hipótesis de efecto principal**: Las convulsiones, filtros y densas no tienen efectos principales significativos sobre la exactitud de la red neuronal convolucional (CNN).
+
+**Hipótesis de interacciones:** Las interacciones entre los diferentes factores no afectan conjuntamente el la exactitud de la red neuronal convolucional (CNN).
+
+**Hipótesis de no linealidad:** Los efectos de los factores son lineales**.**
+
+**Hipótesis de optimización:** No existe una combinación optima de factoresque maximice la exactitud de la red neuronal convolucional.
+
+**Resultados Esperados:**
+
+**Efectos principales:** Se espera que ciertos factores tengan impactos significativos en la exactitud de la red neuronal convolucional**.**
+
+**Interacciones entre factores:** Se espera que se encuentren diferencias significativas entre los factores.
+
+**Tendencias no lineales:** Quelos efectos de ciertos factores no sean lineales.
+
+**Configuraciones optimas:** Quelas configuraciones optimas maximicen la exactitud de la red neuronal convolucional.
 
 **1.11. Descripción**
 
