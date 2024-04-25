@@ -555,7 +555,12 @@ interaction.plot(datos$filtros, datos$densa,datos$ exactitud,
   
 ```
 
-Interpretaciones ...
+Interpretaciones
+
+En estos 3 gráfico podemos observar de manera exploratoria como se distribuyen las medias con respecto a cada uno de los factores, pero además las diferencias que existen dentro de los valores de cada factor, en la primera grafica vemos que en el caso de las convoluciones se observa que la media con respecto a 2 capas es superior a la de 1 capa, pero en la gráfica; las pestañas se traslapan, lo que indica que a pesar de ser medias diferentes, posiblemente no existan diferencias entre los valores conjuntos, caso contrario se puede observar en las medias de los filtros y densas; logramos ver que en el primero, la media de 16 filtros  es muy superior a la de 4, además vemos que en el gráfico las pestañas nos se traslapan, lo que en esta gráfica, podría darnos luces de la existencia de diferencias significativas en el uso de mayores filtros en la red neuronal, algo similar observamos en el factor densa, aunque son menores las diferencia entre las medias de 64 y 128 neuronas, también vemos que 128 podría funcionar mejor que 64 con respecto al modelo de exactitud de la red neuronal. 
+Ya en el segundo gráfico observamos que entre los tres factores el que mas representan fuerza en la exactitud del modelo son el numero de filtros en segundo lugar el numero de neuronas y por ultimo las convoluciones, pero si miramos en detalle observamos que las diferencias entre los tres factores son muy mínimas situación que permite pensar que posiblemente no existan diferencias entre las interacciones.
+Ya en la 3 gráfica es evidente poder considerar que al no haber cruce entre las líneas para ninguno de los factores se podrían considerar la no existencia de diferencias significativa almenos dentro de ellos por lo cual es pertinente poder realizar la prueba entre factores para mirar si posiblemente existen diferencias entre las interacciones.
+
 
 **2.3. ANOVA**
 
@@ -578,7 +583,9 @@ shapiro.test(residuales)
 ad.test(residuales)  
 ```
 
-Interpretaciones ...
+Interpretaciones
+
+Luego de realizar la prueba de normalidad de los datos con una prueba de Shapiro-Wilk: p-value de 0.08737 y otra de Anderson-Darling p-value de 0.06672, además de las pruebas de homocedasticidad Levane con valores de p-value de 0.1032221 además de la prueba de independencia de Durbin-Watson con p-value de xxxxxxx procedemos al confirmar todos los supuestos a realizar el análisis de varianza multifactorial lo cual En esta análisis de varianza multifactorial podemos ver la existencia de diferencias significativas de la variable de respuesta exactitud con respecto a cada uno de los factores, convoluciones, filtros y densa ya que observamos en el p-value de la prueba está por debajo de 0,05 lo que establece y corrobora la existencia de diferencias significativas en cada uno de los factores para cada uno de los factores con respecto a la variable de respuesta exactitud de predicción de la red en el caso de la lectura de las imágenes, caso contrario muestran las interacciones dobles; convoluciones:filtros, convoluciones:densa, filtros:densa, donde encontramos que estas interacciones sus p-value están por encima de 0,05, al igual que las interacciones entre los tres factores convoluciones.filtro:densa por lo cual podemos concluir la no existencia de diferencias significativas entre las interacciones, lo cual podríamos decir que estas no aportan a los porcentajes de exactitud del modelo de red neuronal convolucional (CNN).
 
 ```{r}
 #| echo: false
