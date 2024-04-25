@@ -106,22 +106,24 @@ code{
 <p><strong>1.3. Marco teórico</strong></p>
 <p>Se ha observado un incremento significativo en la cantidad de fatalidades ocasionadas por percances automovilísticos a nivel global, siendo la causa primordial la falta de familiaridad con las indicaciones viales y las vías, aunque la razón más común es en parte el desconocimiento de ciertas señales viales específicas (OMS, 2022). Los incidentes de tránsito representan para la mayoría de las naciones un 3% de su producto interno bruto (PIB). Entre los años 2015 y 2030, se estima que estos incidentes tendrán un costo para la economía mundial de 1,8 billones de dólares, lo que equivale al 0,12% del PIB global (Al-Rousan et al., 2021). El aprendizaje automático consiste en un conjunto de técnicas y procedimientos destinados a generar inteligencia artificial mediante el uso de algoritmos y grandes volúmenes de datos con el fin de simular el proceso de aprendizaje (Gu et al., 2108). El aprendizaje profundo, como una subdivisión del aprendizaje automático, se basa en arquitecturas de redes neuronales con múltiples capas internas, tales como las Redes Neuronales Convolucionales (CNN) (Indolia et al., 2018). La identificación de señales de tráfico (TSR por sus siglas en inglés) constituye una tarea de visión artificial y aprendizaje automático que implica el reconocimiento y clasificación de señales de tráfico a partir de imágenes o secuencias de video (Liu et al., 2019). Los algoritmos de visión artificial para la detección de señales de tráfico se relacionan directamente con sus atributos distintivos. Principalmente, las señales de tráfico adoptan formas como triángulos, rectángulos, círculos u octágonos, además de presentar colores (Sheikah et al., 2016). Los colores empleados en las señales de tráfico suelen ser colores básicos como rojo, azul, negro, blanco, amarillo y, de forma menos frecuente, verde. Por ende, los enfoques de detección se clasifican principalmente en métodos basados en color y forma para determinar la característica de la imagen (Fan y Zhang, 2015). En el contexto de la visión por computadora, el reconocimiento de imágenes se refiere a la habilidad del software para identificar elementos, individuos, lugares, escritos y actividades en imágenes. Para llevar a cabo dicha identificación, los sistemas computacionales pueden emplear tecnologías de visión por computadora en combinación con cámaras y software basado en inteligencia artificial. (SearchEnterpriseAI).</p>
 <p><strong>1.4. Variable respuesta</strong></p>
+<p>Para el experimento, la variable respuesta es:</p>
 <ul>
 <li><p><strong><em>Variable</em></strong>: Exactitud de predicción.</p></li>
 <li><p><strong><em>Valores usuales de operación</em></strong>: Entre 0 y 100.</p></li>
 <li><p><strong><em>Precisión de medición</em></strong>: Porcentaje.</p></li>
-<li><p><strong><em>Instrumento de medida</em></strong>: No aplica.</p></li>
+<li><p><strong><em>Instrumento de medida</em></strong>: Computador.</p></li>
 </ul>
 <p><strong>1.5. Variables de control</strong></p>
+<p>A continuación se describen las variables de control del experimento:</p>
+<p>Tabla 1. Variables de control</p>
 <table class="table">
-<caption>Variables de control</caption>
 <colgroup>
-<col style="width: 9%">
-<col style="width: 17%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 14%">
-<col style="width: 28%">
+<col style="width: 8%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -140,7 +142,7 @@ code{
 <td>Número entero</td>
 <td>No aplica</td>
 <td>[1, 2]</td>
-<td>La exactitud de predicción aumentará a mayor número.</td>
+<td>La exactitud de predicción aumentará a mayor número de convoluciones.</td>
 </tr>
 <tr class="even">
 <td><em>Filtros</em></td>
@@ -148,7 +150,7 @@ code{
 <td>Número entero</td>
 <td>No aplica</td>
 <td>[4, 16]</td>
-<td>La exactitud de predicción aumentará a mayor número.</td>
+<td>La exactitud de predicción aumentará a mayor número de filtros.</td>
 </tr>
 <tr class="odd">
 <td><em>Densa</em></td>
@@ -156,22 +158,21 @@ code{
 <td>Número entero</td>
 <td>No aplica</td>
 <td>[65, 128]</td>
-<td>La exactitud de predicción aumentará a mayor número.</td>
+<td>La exactitud de predicción aumentará a mayor número de neuronas en la capa densa.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>1.6. Factores controlables</strong></p>
-<p>Listado de factores que se mantendrán constantes en el experimento:</p>
-<p>Factores externos al modelo</p>
+<p>En las tablas 2 y 3 se presentan los factores que se mantendrán constantes durante el experimento:</p>
+<p>Tabla 2. Factores externos al modelo CNN</p>
 <table class="table">
-<caption>Variables de control</caption>
 <colgroup>
 <col style="width: 3%">
 <col style="width: 4%">
+<col style="width: 7%">
 <col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 22%">
-<col style="width: 53%">
+<col style="width: 27%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -186,17 +187,16 @@ code{
 <tbody>
 <tr class="odd">
 <td><em>Dataset</em></td>
-<td>Superior a 1000</td>
-<td>Imágenes</td>
+<td>Superior a 70000</td>
+<td>Imágenes de 32x32 píxeles</td>
 <td>No aplica</td>
-<td>Se usarán las mismas imágenes de entrenamiento y validación para todos los modelos</td>
+<td>Se usarán las mismas 58511 imágenes de entrenamiento y 14630 imágenes de validación para todos los modelos</td>
 <td>Obtención de una mejor comprensión de cómo diferentes configuraciones afectan el rendimiento del modelo, con el fin de identificar la arquitectura más adecuada para mejorar la exactitud predictiva.</td>
 </tr>
 </tbody>
 </table>
-<p>Factores internos del modelo</p>
+<p>Tabla 3. Factores internos del modelo CNN</p>
 <table class="table">
-<caption>Variables de control</caption>
 <colgroup>
 <col style="width: 5%">
 <col style="width: 6%">
@@ -238,10 +238,9 @@ code{
 </tbody>
 </table>
 <p><strong>1.7. Factores no controlables</strong></p>
-<p>Listado de factores que no se mantendrán constantes en el experimento:</p>
-<p>Factores externos al modelo</p>
+<p>A continuación se describen en las tablas 4 y 5 los factores que no se mantendrán constantes durante el experimento:</p>
+<p>Tabla 4. Factores externos al modelo CNN</p>
 <table class="table">
-<caption>Variables de control</caption>
 <colgroup>
 <col style="width: 15%">
 <col style="width: 7%">
@@ -279,9 +278,8 @@ code{
 </tr>
 </tbody>
 </table>
-<p>Factores internos del modelo CNN</p>
+<p>Tabla 5. Factores internos modelo CNN</p>
 <table class="table">
-<caption>Variables de control</caption>
 <colgroup>
 <col style="width: 3%">
 <col style="width: 4%">
@@ -312,41 +310,92 @@ code{
 </tbody>
 </table>
 <p><strong>1.8. Interacciones</strong></p>
-<p>Los ensayos en cada tratamiento deben realizarse de manera separada tomando una de las repeticiones de cada tratamiento y ubicarlos a una distancia que el calor de una vela no pueda afectar la otra, se deben encender al mismo instante y esperar la combustión de las primeras 4 velas con diferente tratamiento durante un periodo de tiempo donde se apague la hasta la ultima vela, teniendo en cuenta que el registro de la combustión en cada vela debe ser tomado cuando esta se apague en su totalidad, el terminar el primer ensayo se debe proceder con el segundo de la misma forma hasta lograr abordar las cinco replicas y la cuantificación de los tiempos de combustión en cada una de las velas, se debe evitar encender todas las velas al mismo instante, ya que el calor que se produce alrededor de estas podría alterar los tratamientos al ocasionar derretimiento de la cera en algunas de las velas que se encuentren en una posición donde puedan recibir mayor radiación de calor por velas que se encuentren próximas y de este modo crear un sesgo en la combustión total de alguna de los tratamientos y ocasionar errores en el registro de los tiempos totales de combustión ocasionando alteración en el experimento.</p>
+<ol type="1">
+<li><p>Interacción entre el número de convoluciones y el número de filtros.</p></li>
+<li><p>Interacción entre el número de convoluciones y el número de neuronas de la capa densa.</p></li>
+<li><p>Interacción entre el número de filtros y el número de neuronas de la capa densa.</p></li>
+<li><p>Interacción entre el número de convoluciones, el número de filtros y el número de neuronas de la capa densa.</p></li>
+</ol>
 <p><strong>1.9. Restricciones</strong></p>
-<p>Las restricciones que se tuvieron en cuenta para la realización del experimento estuvieron enfocadas en que algunas podrían afectar el diseño al igual que los objetivos de los estudios por lo cual nos aseguramos de las siguientes: Seguridad: fue fundamental para evitar posible incendio dentro del cuarto debido a una combustión alterada que pudiera estar fuera de control y provocara encendido del entorno del experimento. Ventilación: el experimento se realizó en un área ventilada de manera regulada que permitió la combustión de las velas, pero a la vez que estas no se apagaran ni diseminara la llama por acción del viento. Espacio y condiciones físicas del cuarto: Se procuró que este espacio fuera el más adecuado en cuestión de área para la combustión segura de las velas. Manipulación de las velas: Las velas desde el primer instante se planificó su ubicación en el cuarto y en la tabla al igual que el momento del encendido, evitando que las distancias no afectaran el entorno por medio del derrame de la cera de las velas ni la diseminación de la llama dentro del cuarto que pudieran provocar posibles incendios o quemaduras al responsable de la ejecución del experimento. Material y equipo de seguridad: Se tuvieron en cuenta todas las precauciones para la manipulación de las velas que pudiera provocar accidentes en el proceso de realización del experimento. Residuos y limpieza: posterior a la realización del experimento se realizó el debido proceso para la separación de la será de la tabla al igual que el barrido de todo material que quedo de residuo luego de la aplicación del experimento.</p>
-<p>Este diseño experimental se realizó en un cuarto aislado para poder tener control sobre alguna de las siguientes variables: Temperatura: Esta se mantuvo alrededor de los 28° C. Humedad relativa: Se mantuvo alrededor del 70%. Velas: Las velas con la cual se llevo a cabo los experimentos fueron del mismo tamaño para cada tratamiento y con la misma composición de cera, con una altura de 1 cm cada una y un diámetro de 2 cm, las mechas del mismo diámetro, pero con diferentes longitudes en cada uno de los tratamientos, T1= 1cm, T2=1.5cm, T3= 2 cm, y T4= 2.5 cm, cada tratamiento se repitió 5 veces.</p>
-<p>Los ensayos se realizaron en cinco intervalos de tiempo donde en cada ensayo se encendió una vela por cada tratamiento sobre una tabla de acero inoxidable de (70x15x5) cm, el registro de la combustión en cada ensayo se llevó a cabo aproximadamente durante 37 minutos, tomando como tiempo total de combustión en las velas cuando la mecha se apagaba totalmente.</p>
-<p>Se espera que la temperatura, la humedad relativa, la composición y el volumen de las velas tengan un impacto mínimo en la combustión, por el contrario, se espera que cualquier cambio en la combustión de las velas se deba principalmente a la longitud de la mecha, permitiendo analizar de manera efectiva el impacto en el proceso de combustión de las velas.</p>
+<p>Debido a los altos requisitos computacionales de los experimentos con redes neuronales convolucionales, fue necesario utilizar el servicio en la nube Google Colab. Tanto en sus versiones gratuitas como de pago, este servicio impone límites en el tiempo de ejecución. Cuando se agota este tiempo, es necesario esperar hasta el día siguiente para continuar. Por lo tanto, la principal limitación fue el tiempo de procesamiento proporcionado por el servicio, considerando un tiempo estimado de 10 minutos para el entrenamiento de cada modelo. Dado que se planeaba realizar pruebas con 8 modelos y realizar 10 ejecuciones de cada uno, se requerían al menos 14 horas de tiempo de computación.</p>
 <p><strong>1.10. Diseño</strong></p>
-<p><img src="imagenes/velas.jpeg" class="img-fluid"></p>
-<p><strong>Diseño Experimental:</strong> <strong>:</strong>&nbsp;Se utilizará un diseño factorial la cual involucra tres componentes: el numero de convoluciones, numero de filtros aplicados a cada convolucion y el numero de neuronas de la capa densa con lo cual se logrará medir el reconocimiento de señales de tráficos (TSDR) mediante el uso de una red neuronal convolucional (CNN) para determinar la significancia estadística de los efectos de los factores y sus interacciones para comprender como influyen en conjunto en la esactitud de la prediccion de la red neuronal al reconocer las imagenes de tránsito</p>
-<p><strong>Factor:</strong></p>
-<p>Convoluciones: Número de convoluciones</p>
-<p>Filtros: Número de filtros aplicados en cada convolución</p>
-<p>Densa: Número de neuronas de la capa densa final de la red neuronal</p>
+<p>Se utilizará un diseño factorial el cual involucra tres factores: el numero de convoluciones, numero de filtros aplicados a cada convolucion y el numero de neuronas de la capa densa con lo cual se logrará medir el reconocimiento de señales de tráficos (TSDR) mediante el uso de una red neuronal convolucional (CNN) para determinar la significancia estadística de los efectos de los factores y sus interacciones para comprender como influyen en conjunto en la esactitud de la prediccion de la red neuronal al reconocer las imagenes de tránsito</p>
+<p><strong>Factores:</strong></p>
+<p>Para el experimento se tomaron los siguientes factores:</p>
+<ul>
+<li><p><strong><em>Convoluciones</em></strong>: Número de convoluciones</p></li>
+<li><p><strong><em>Filtros</em></strong>: Número de filtros aplicados en cada convolución</p></li>
+<li><p><strong><em>Densa</em></strong>: Número de neuronas de la capa densa final de la red neuronal</p></li>
+</ul>
 <p><strong>Tratamientos:</strong></p>
-<p>La nomenclatura usada para identificar cada tratamiento es: Cx_Fy_Dz</p>
-<p>x: Representa el número de convoluciones</p>
-<p>y: representa número de filtros</p>
-<p>z: numero de neuronas de la capa densa</p>
-<p>de la combinación de los niveles de los factores, convoluciones, filtros y numero de neuronasde la capa densa surgen los siguientes 8 tratamientos.</p>
-<p>C1_F4_D64</p>
-<p>C1_F4_D128</p>
-<p>C1_F16_D64</p>
-<p>C1_F16_D128</p>
-<p>C2_F4_D64</p>
-<p>C2_F4_D128</p>
-<p>C2_F16_D64</p>
-<p>C2_F16_D128</p>
+<p>La nomenclatura usada para identificar cada tratamiento es <strong>Cx_Fy_Dz</strong> donde: <em>x</em> representa el número de convoluciones, <em>y</em> representa número de filtros y <em>z</em> el numero de neuronas de la capa densa. De la combinación de los niveles de los factores, convoluciones, filtros y neuronas de la capa densa surgen los siguientes 8 tratamientos.</p>
+<p>Tabla 6. Tratamientos</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Identificador</th>
+<th>Convoluciones</th>
+<th>Filtros</th>
+<th>Neuronas capa densa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C1_F4_D64</td>
+<td>1</td>
+<td>4</td>
+<td>64</td>
+</tr>
+<tr class="even">
+<td>C1_F4_D128</td>
+<td>1</td>
+<td>4</td>
+<td>128</td>
+</tr>
+<tr class="odd">
+<td>C1_F16_D64</td>
+<td>1</td>
+<td>16</td>
+<td>64</td>
+</tr>
+<tr class="even">
+<td>C1_F16_D128</td>
+<td>1</td>
+<td>16</td>
+<td>128</td>
+</tr>
+<tr class="odd">
+<td>C2_F4_D64</td>
+<td>2</td>
+<td>4</td>
+<td>64</td>
+</tr>
+<tr class="even">
+<td>C2_F4_D128</td>
+<td>2</td>
+<td>4</td>
+<td>128</td>
+</tr>
+<tr class="odd">
+<td>C2_F16_D64</td>
+<td>2</td>
+<td>16</td>
+<td>64</td>
+</tr>
+<tr class="even">
+<td>C2_F16_D128</td>
+<td>2</td>
+<td>16</td>
+<td>128</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Materiales:</strong></p>
 <ul>
-<li><p><strong>Hardware de computación:</strong> Google colab</p></li>
-<li><p><strong>Software de desarrollo y entrenamiento:</strong> TensorFlow, PyTorch o Keras</p></li>
-<li><p><strong>Conjunto de imágenes graficas:</strong> Datase imágenes de trafico</p></li>
-<li><p><strong>Herramientas de procesamiento de imágenes:</strong> Python Imaging Library</p></li>
-<li><p><strong>Entorno de experimentación:</strong> Servicio en la nube</p></li>
-<li><p><strong>Herramientas de análisis estadístico:</strong> Lenguaje de programación R-studio</p></li>
+<li><p><strong>Entorno de ejecución:</strong> Google colab</p></li>
+<li><p><strong>Lenguaje de programación:</strong> Python (TensorFlow y Keras)</p></li>
+<li><p><strong>Conjunto de datos:</strong> <a href="https://www.kaggle.com/datasets/flo2607/traffic-signs-classification" class="uri">https://www.kaggle.com/datasets/flo2607/traffic-signs-classification</a></p></li>
+<li><p><strong>Herramientas de análisis estadístico:</strong> Lenguaje de programación R</p></li>
 <li><p><strong>Documentación y registro:</strong> Información de acceso libre</p></li>
 </ul>
 <p><strong>Procedimiento:</strong></p>
@@ -371,7 +420,7 @@ code{
 <p><strong>Tendencias no lineales:</strong> Quelos efectos de ciertos factores no sean lineales.</p>
 <p><strong>Configuraciones optimas:</strong> Quelas configuraciones optimas maximicen la exactitud de la red neuronal convolucional.</p>
 <p><strong>1.11. Descripción</strong></p>
-<p>La técnica de análisis y presentación utilizada en este experimento de 1 factor con 4 tratamientos se basa en una combinación de herramientas estadísticas y gráficas diseñadas para explorar y comunicar los resultados de manera efectiva.</p>
+<p>La técnica de análisis y presentación utilizada en este experimento de 3 factores se basa en una combinación de herramientas estadísticas y gráficas diseñadas para explorar y comunicar los resultados de manera efectiva.</p>
 <p><strong>Gráficas</strong> Se utilizan histogramas para visualizar la distribución de los datos en cada tratamiento, lo que permite una comprensión rápida de la forma y la dispersión de los datos. Los gráficos de cajas para comparar la distribución de los datos entre los diferentes tratamientos, mostrando la mediana, los cuartiles y los valores atípicos y los gráficos de dispersión para explorar la relación entre variables, como los valores ajustados y los residuos.</p>
 <p><strong>ANOVAs:</strong> Se realiza un ANOVA para comparar las medias de los tratamientos y determinar si hay diferencias significativas entre ellos. Se evalúa la significancia estadística, lo que proporciona información sobre la variabilidad entre los tratamientos en relación con la variabilidad dentro de los tratamientos. Después de realizar el ANOVA, se realiza la prueba Tukey como una prueba para comparar todas las combinaciones posibles de pares de tratamientos y determinar qué diferencias son significativas.</p>
 <p><strong>Modelos de Efectos, Medias y Regresión:</strong> Se utilizan diferentes modelos para analizar los datos según la pregunta de investigación. El modelo de efectos considera cada tratamiento como un factor independiente, mientras que el modelo de medias agrupa los tratamientos y compara las medias globales. El modelo de regresión permite explorar la relación entre la variable dependiente y las variables independientes.</p>
@@ -381,12 +430,16 @@ code{
 <p><strong>Comparación entre Tratamientos:</strong> Se realizan comparaciones entre tratamientos utilizando los métodos de la diferencia significativa menos significativa (LSD) y la diferencia significativa honesta (HSD) para identificar las diferencias significativas entre los tratamientos y agruparlos en categorías homogéneas.</p>
 <p>En resumen, esta técnica de análisis y presentación utiliza una variedad de herramientas estadísticas y gráficas para explorar y comunicar los resultados de manera efectiva en un experimento de 1 factor con 4 tratamientos. Se enfoca en la comparación de medias, la relación entre variables, la evaluación de la normalidad y homocedasticidad de los residuos, y la identificación de diferencias significativas entre tratamientos.</p>
 <p><strong>1.12. Responsable de coordinación</strong></p>
-<p>Juan Carlos Gaviria Chaverra.</p>
+<p>Andrés Orlando López Henao.</p>
 <p><strong>1.13. Premuestreo</strong></p>
-<p>No se realizará premuestreo por las siguientes razones:</p>
-<p>Simplicidad del experimento: El diseño experimental es directo y no implica procedimientos complicados. Consiste en encender velas con diferentes longitudes de mecha y medir la duración de la combustión. Dado que el procedimiento es simple y fácil de ejecutar, no se requiere una fase preliminar de recolección de datos para ajustar o validar el método experimental.</p>
-<p>Condiciones experimentales bien definidas: Las condiciones del experimento, como el ambiente de prueba y los materiales utilizados, son conocidas y estables. Se llevará a cabo en un entorno controlado y las velas utilizadas serán consistentes en calidad y composición. Por lo tanto, se puede tener confianza en la replicabilidad de los resultados sin la necesidad de un premuestreo para ajustar o validar estas condiciones.</p>
-<p>Recursos limitados: Los recursos disponibles, como tiempo, dinero y personal, son limitados.</p>
+<p>Se llevó a cabo un premuestreo con el fin de establecer la configuración óptima del modelo CNN, buscando alcanzar una precisión superior al 70% sin sacrificar un tiempo de entrenamiento excesivo, dada la limitada capacidad de cómputo proporcionada por el servicio de Google Colab y las restricciones temporales del proyecto.</p>
+<p>Inicialmente, se diseñaron dos modelos CNN:</p>
+<ol type="1">
+<li>Un modelo con 2 capas de convolución, cada una con 4 filtros, y una capa densa con 64 neuronas.</li>
+<li>Un modelo con 4 capas de convolución, cada una con 16 filtros, y una capa densa con 128 neuronas.</li>
+</ol>
+<p>Ambos modelos fueron entrenados durante 3 épocas para evaluar su desempeño y tiempo de entrenamiento. Posteriormente, se incrementó gradualmente el número de épocas con la intención de alcanzar una precisión superior al 90%. Se encontró que el modelo de 2 convoluciones lograba esta precisión con 10 épocas, con un tiempo de entrenamiento medio entre 1 y 1.5 minutos por época. Sin embargo, el modelo de 4 convoluciones, a pesar de su mayor complejidad, no alcanzaba la precisión deseada en un tiempo aceptable, lo que podría atribuirse a la reducción excesiva de la imagen debido a la aplicación de múltiples convoluciones en imágenes tan pequeñas.</p>
+<p>Ante la dificultad de entrenamiento y los límites de capacidad computacional, se evaluó un enfoque más simple con un modelo de 1 convolución, logrando la precisión esperada en menos de 1 minuto de entrenamiento por época, lo que demostró ser más eficiente y efectivo dadas las limitaciones del entorno de cómputo disponible.</p>
 <p><strong>2. Análisis</strong></p>
 <p><strong>2.1 Datos</strong></p>
 <div class="cell">
@@ -417,7 +470,6 @@ code{
 </div>
 </div>
 </div>
-<p><strong>Interpretación</strong></p>
 <p>En este análisis exploratorio de los tratamientos con respecto a la exactitud, podemos observar que posiblemente existan diferencias significativas entre algunos de los tratamientos con respecto al comportamiento del modelo de red neuronal, uno de los que mayor distancia toma con respecto a los otros es el arreglo C2_F16_D128, si se observa se puede ver, que los arreglos C1_F16_D64, C1_F4_D128, C1_F4_D64, están aparentemente distanciado del ya mencionado C2_F16_D128 quien por otro lado parece ser es el de mayor porcentaje de exactitud a la hora de predecir las imágenes de tránsito para corroborar dichas apreciaciones deberemos realizar un análisis de factores de efetos principales que permita establecer los valores de significancia entre los arreglos y la exactitud que brinda el modelo.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -428,7 +480,6 @@ code{
 </div>
 </div>
 </div>
-<p>Interpretaciones</p>
 <p>Para el caso de estas interacciones entre convoluciones y la exactitud de manera exploratoria podemos ver que el numero de 2 convoluciones parece no distanciarse de una manera significativa de aquellos que solo presentan 1 convolución, por lo cual en este caso si es muy pertinente poder realizar un análisis mas detallado en las pruebas de significancia de las interacciones entre factores que nos puedan dar una mayor claridad de la relación entre estas dos características dentro del modelo de red neuronal.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -439,7 +490,6 @@ code{
 </div>
 </div>
 </div>
-<p>Interpretaciones</p>
 <p>Entre la exactitud y el factor filtro parece seguir el mismo comportamiento que el factor convolucional ya que no es claro poder observar diferencias directa entre este factor y la exactitud de igual modo debemos apelar al análisis de factores directos que permitan mostrar el valor de la significancia para con estas métricas poder concluir si realmente existen diferencias significativas directas entre este factor y la exactitud.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -450,7 +500,6 @@ code{
 </div>
 </div>
 </div>
-<p>Interpretaciones</p>
 <p>Entre la exactitud y capa densa parece nuevamente no haber diferencias ya que todas las cajas están en posiciones muy similares o almenos no se observa que alguna de ellas tome distancias considerables sobre las otras por lo que también es pertinente poder realizar pruebas de significancias que permitan comprobar dicho supuesto ya que de manera exploratoria no es claro que pueda haber diferencias. &nbsp;</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -461,7 +510,6 @@ code{
 </div>
 </div>
 </div>
-<p>Interpretaciones</p>
 <p>Mediante estos gráficos directos de caja entre exactitud y convoluciones es muchísimo mas claro ver que posiblemente no existan diferencias significativas entre la exactitud y la convolución ya que las cajas muestran tener unas formas y traslapes muy similares lo que posiblemente nos haría descartar dicha posibilidad que el p-value este por encima de 0,05.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -472,7 +520,6 @@ code{
 </div>
 </div>
 </div>
-<p>Interpretaciones</p>
 <p>Mediante estos gráficos directos de caja, entre exactitud y filtros de manera exploratoria podemos ver la similitud en la distancia de las cajas con respeto a sus cuartiles, aunque la media pareciera inclinarse para el uso de 16 filtro no pareciera que esa distancia entre medias con respecto a los 4 filtros pueda llegar a presentar diferencia significativa sin embargo es importante poder comprobar este supuesto con la prueba de factores. &nbsp;</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -483,10 +530,7 @@ code{
 </div>
 </div>
 </div>
-<p>Interpretaciones</p>
 <p>A través de la visualización de gráficos de caja comparativos entre la exactitud y la densidad de forma exploratoria, podemos observar similitudes en la distribución de los datos en términos de sus cuartiles. Aunque la media parece favorecer el uso de 128 neuronas en lugar de 64, no parece haber una diferencia significativa entre las medias de ambas configuraciones. No obstante, para validar esta suposición, nuevamente es crucial realizar pruebas de factores.</p>
-<p><strong>Datos descriptivos</strong></p>
-<p>A continuación, presentamos un análisis descriptivo para cada uno de los 8 arreglos que se modelaran para la obtención de la red neuronal convolucional lo cual incluye las combinaciones entre los factores de los que para este caso son convoluciones, numero de filtros y numero de neuronas.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>$`1`
@@ -516,7 +560,6 @@ $`128`
   83.72   90.66   95.26   94.08   98.03   99.62 </code></pre>
 </div>
 </div>
-<p>Interpretaciones …</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
@@ -529,8 +572,7 @@ $`128`
 </div>
 </div>
 </div>
-<p>Interpretaciones …</p>
-<p><strong>x.x.Gráficos de medias</strong></p>
+<p><strong>Gráficos de medias</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -557,11 +599,8 @@ $`128`
 </div>
 </div>
 </div>
-<p>Interpretaciones</p>
-<p>En estos 3 gráfico podemos observar de manera exploratoria como se distribuyen las medias con respecto a cada uno de los factores, pero además las diferencias que existen dentro de los valores de cada factor, en la primera grafica vemos que en el caso de las convoluciones se observa que la media con respecto a 2 capas es superior a la de 1 capa, pero en la gráfica; las pestañas se traslapan, lo que indica que a pesar de ser medias diferentes, posiblemente no existan diferencias entre los valores conjuntos, caso contrario se puede observar en las medias de los filtros y densas; logramos ver que en el primero, la media de 16 filtros &nbsp;es muy superior a la de 4, además vemos que en el gráfico las pestañas nos se traslapan, lo que en esta gráfica, podría darnos luces de la existencia de diferencias significativas en el uso de mayores filtros en la red neuronal, algo similar observamos en el factor densa, aunque son menores las diferencia entre las medias de 64 y 128 neuronas, también vemos que 128 podría funcionar mejor que 64 con respecto al modelo de exactitud de la red neuronal.</p>
-<p>Ya en el segundo gráfico observamos que entre los tres factores el que mas representan fuerza en la exactitud del modelo son el numero de filtros en segundo lugar el numero de neuronas y por ultimo las convoluciones, pero si miramos en detalle observamos que las diferencias entre los tres factores son muy mínimas situación que permite pensar que posiblemente no existan diferencias entre las interacciones.</p>
-<p>Ya en la 3 gráfica es evidente poder considerar que al no haber cruce entre las líneas para ninguno de los factores se podrían considerar la no existencia de diferencias significativa almenos dentro de ellos por lo cual es pertinente poder realizar la prueba entre factores para mirar si posiblemente existen diferencias entre las interacciones.</p>
-<p><strong>ANOVA Multifactorial</strong></p>
+<p>Interpretaciones …</p>
+<p><strong>2.3. ANOVA</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>                            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
@@ -613,8 +652,7 @@ data:  residuales
 A = 0.69564, p-value = 0.06672</code></pre>
 </div>
 </div>
-<p>Interpretaciones</p>
-<pre><code>Luego de realizar la prueba de normalidad de los datos con una prueba de Shapiro-Wilk: p-value de 0.08737 y otra de Anderson-Darling p-value de 0.06672, además de las pruebas de homocedasticidad Levane con valores de p-value de xxxxxx además de la prueba de independencia de Durbin-Watson con p-value de xxxxxxx procedemos al confirmar todos los supuestos a realizar el análisis de varianza multifactorial lo cual En esta análisis de varianza multifactorial podemos ver la existencia de diferencias significativas de la variable de respuesta exactitud con respecto a cada uno de los factores, convoluciones, filtros y densa ya que observamos en el p-value de la prueba está por debajo de 0,05 lo que establece y corrobora la existencia de diferencias significativas en cada uno de los factores para cada uno de los factores con respecto a la variable de respuesta exactitud de predicción de la red en el caso de la lectura de las imágenes, caso contrario muestran las interacciones dobles; convoluciones:filtros, convoluciones:densa, filtros:densa, donde encontramos que estas interacciones sus p-value están por encima de 0,05, al igual que las interacciones entre los tres factores convoluciones.filtro:densa por lo cual podemos concluir la no existencia de diferencias significativas entre las interacciones, lo cual podríamos decir que estas no aportan a los porcentajes de exactitud del modelo de red neuronal convolucional (CNN).</code></pre>
+<p>Interpretaciones …</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -726,7 +764,7 @@ F-statistic: 6.373 on 7 and 72 DF,  p-value: 7.699e-06</code></pre>
 </div>
 </div>
 <p>Interpretaciones …</p>
-<p><strong>x.x.Diagrama de Pareto de efectos estandarizados</strong></p>
+<p><strong>2.4. Diagrama de Pareto de efectos estandarizados</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -737,7 +775,7 @@ F-statistic: 6.373 on 7 and 72 DF,  p-value: 7.699e-06</code></pre>
 </div>
 </div>
 <p>Interpretaciones …</p>
-<p><strong>x.x.Sin la interaccion triple</strong></p>
+<p><strong>Sin la interaccion triple</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>                      Df Sum Sq Mean Sq F value   Pr(&gt;F)    
@@ -787,8 +825,7 @@ Multiple R-squared:  0.3682,    Adjusted R-squared:  0.3162
 F-statistic: 7.089 on 6 and 73 DF,  p-value: 5.656e-06</code></pre>
 </div>
 </div>
-<p>Interpretaciones …</p>
-<p><strong>x.x.Identificacion de outlier</strong></p>
+<p><strong>2.5. Identificacion de outlier</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>No Studentized residuals with Bonferroni p &lt; 0.05
@@ -804,8 +841,7 @@ Largest |rstudent|:
 </div>
 </div>
 </div>
-<p>Interpretaciones …</p>
-<p><strong>x.x.Eliminacion de outlier</strong></p>
+<p><strong>Eliminacion de outlier</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>                                    Df Sum Sq Mean Sq F value   Pr(&gt;F)    
@@ -875,15 +911,13 @@ Multiple R-squared:  0.3682,    Adjusted R-squared:  0.3162
 F-statistic: 7.089 on 6 and 73 DF,  p-value: 5.656e-06</code></pre>
 </div>
 </div>
-<p>Interpretaciones …</p>
-<p><strong>x.x.Análisis de residuales</strong></p>
+<p><strong>2.6. Análisis de residuales</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 -2.9301 -0.6700  0.1757  0.0000  0.7785  1.8213 </code></pre>
 </div>
 </div>
-<p>Interpretaciones …</p>
 <p><strong>Prueba de normalidad</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -897,104 +931,39 @@ F-statistic: 7.089 on 6 and 73 DF,  p-value: 5.656e-06</code></pre>
 </div>
 </div>
 </div>
-<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>H0:  los residuales siguen una distribución normal</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>HA:  los residuales no siguen una distribución normal</code></pre>
+</div>
+</div>
+<p><strong>Prueba de normalidad Anderson-Darling</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Anderson-Darling normality test
+
+data:  datos
+A = 0.69564, p-value = 0.06672
+
+Dado que el valor-p  0.06672455  es mayor que el nivel de significancia  0.05  no se rechaza H0, y se concluye que  los residuales siguen una distribución normal .</code></pre>
+</div>
+</div>
+<p><strong>Prueba de normalidad Shapiro-Wilk</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
 
-data:  residuales
-W = 0.97293, p-value = 0.08737</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Anderson-Darling normality test
+data:  datos
+W = 0.97293, p-value = 0.08737
 
-data:  residuales
-A = 0.69564, p-value = 0.06672</code></pre>
+Dado que el valor-p  0.08737433  es mayor que el nivel de significancia  0.05  no se rechaza H0, y se concluye que  los residuales siguen una distribución normal .</code></pre>
 </div>
 </div>
-<p>Interpretaciones …</p>
 <p><strong>Prueba de varianza constante</strong></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Documento_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value Pr(&gt;F)
-group  1  0.1638 0.6868
-      78               </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value  Pr(&gt;F)  
-group  1  6.6793 0.01162 *
-      78                  
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value Pr(&gt;F)
-group  1  2.7184 0.1032
-      78               </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value    Pr(&gt;F)    
-group  3  6.4349 0.0006094 ***
-      76                      
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value Pr(&gt;F)
-group  3    2.13 0.1034
-      76               </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value   Pr(&gt;F)   
-group  3  5.5594 0.001673 **
-      76                    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    studentized Breusch-Pagan test
-
-data:  modelo2
-BP = 34.66, df = 6, p-value = 5.015e-06</code></pre>
-</div>
-</div>
-<p>Interpretaciones …</p>
-<p><strong>Prueba de independencia</strong></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Documento_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Durbin-Watson test
-
-data:  modelo2
-DW = 0.58876, p-value = 1.458e-12
-alternative hypothesis: true autocorrelation is not 0</code></pre>
-</div>
-</div>
-<p>Interpretaciones …</p>
-<p><strong>x.x. Gráfico de superficie de respuesta</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -1004,12 +973,159 @@ alternative hypothesis: true autocorrelation is not 0</code></pre>
 </div>
 </div>
 </div>
-<p>Interpretaciones …</p>
+<p>interpretaciones…</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>H0:  Las varianzas de la precisión son iguales en todos los niveles de la variable convoluciones</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>HA:  Las varianzas de la precisión no son iguales en todos los niveles de la variable convoluciones</code></pre>
+</div>
+</div>
+<p><strong>Prueba de iguadad de varianzas Levene</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  1  0.1638 0.6868
+      78               
+Dado que el valor-p  0.686774  es mayor que el nivel de significancia  0.05  no se rechaza H0, y se concluye que  Las varianzas de la precisión son iguales en todos los niveles de la variable convoluciones .</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>H0:  Las varianzas de la precisión son iguales en todos los niveles de la variable filtros</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>HA:  Las varianzas de la precisión no son iguales en todos los niveles de la variable filtros</code></pre>
+</div>
+</div>
+<p><strong>Prueba de iguadad de varianzas Levene</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value  Pr(&gt;F)  
+group  1  6.6793 0.01162 *
+      78                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Dado que el valor-p  0.01161968  es menor que el nivel de significancia  0.05  se rechaza H0, y se concluye que  Las varianzas de la precisión no son iguales en todos los niveles de la variable filtros .</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>H0:  Las varianzas de la precisión son iguales en todos los niveles de la variable densa</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>HA:  Las varianzas de la precisión no son iguales en todos los niveles de la variable densa</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  1  2.7184 0.1032
+      78               
+Dado que el valor-p  0.1032221  es mayor que el nivel de significancia  0.05  no se rechaza H0, y se concluye que  Las varianzas de la precisión son iguales en todos los niveles de la variable densa .</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>H0:  Las varianzas de la precisión son iguales en todos los niveles de la variable convoluciones y filtros, y sus interacciones</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>HA:  Las varianzas de la precisión no son iguales en todos los niveles de la variable convoluciones y filtros, y sus interacciones</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value    Pr(&gt;F)    
+group  3  6.4349 0.0006094 ***
+      76                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Dado que el valor-p  0.0006094097  es menor que el nivel de significancia  0.05  se rechaza H0, y se concluye que  Las varianzas de la precisión no son iguales en todos los niveles de la variable convoluciones y filtros, y sus interacciones .</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>H0:  Las varianzas de la precisión son iguales en todos los niveles de la variable convoluciones y densa, y sus interacciones</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>HA:  Las varianzas de la precisión no son iguales en todos los niveles de la variable convoluciones y densa, y sus interacciones</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  3    2.13 0.1034
+      76               
+Dado que el valor-p  0.1033795  es mayor que el nivel de significancia  0.05  no se rechaza H0, y se concluye que  Las varianzas de la precisión son iguales en todos los niveles de la variable convoluciones y densa, y sus interacciones .</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>H0:  Las varianzas de la precisión son iguales en todos los niveles de la variable densa y filtros, y sus interacciones</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>HA:  Las varianzas de la precisión no son iguales en todos los niveles de la variable densa y filtros, y sus interacciones</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value   Pr(&gt;F)   
+group  3  5.5594 0.001673 **
+      76                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Dado que el valor-p  0.001672774  es menor que el nivel de significancia  0.05  se rechaza H0, y se concluye que  Las varianzas de la precisión no son iguales en todos los niveles de la variable densa y filtros, y sus interacciones .</code></pre>
+</div>
+</div>
+<p><strong>Prueba de independencia</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Documento_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Documento_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>En el gráfico de dispersión de los residuos en función de su orden dentro del conjunto de datos, no se observa un patrón claro en la distribución de los residuos a lo largo del orden. La mayoría de los residuos parecen estar dispersos aleatoriamente alrededor de la línea horizontal en y = 0, lo que sugiere que no hay un patrón sistemático en la relación entre el orden de los datos y los residuos.</li>
+</ul>
+<p><strong>Pruebas estadísticas</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>H0:  no hay autocorrelación en los residuos.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>HA:  hay autocorrelación en los residuos.</code></pre>
+</div>
+</div>
+<p><strong>Prueba Durbin-Watson</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Durbin-Watson test
+
+data:  datos
+DW = 0.58876, p-value = 7.289e-13
+alternative hypothesis: true autocorrelation is greater than 0
+
+Dado que el valor-p  7.289006e-13  es menor que el nivel de significancia  0.05  se rechaza H0, y se concluye que  hay autocorrelación en los residuos. .[1] "."
+Dado que el DW  0.5887562  no es cercano a 2 no se rechaza H0, y se concluye que  no hay autocorrelación en los residuos. .</code></pre>
+</div>
+</div>
+<p><strong>2.7. Gráfico de superficie de respuesta</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1019,7 +1135,7 @@ alternative hypothesis: true autocorrelation is not 0</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Documento_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Documento_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1029,7 +1145,7 @@ alternative hypothesis: true autocorrelation is not 0</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Documento_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Documento_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1039,7 +1155,7 @@ alternative hypothesis: true autocorrelation is not 0</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Documento_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Documento_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1049,7 +1165,17 @@ alternative hypothesis: true autocorrelation is not 0</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Documento_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Documento_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretaciones …</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Documento_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1080,19 +1206,19 @@ Attaching package: 'plotly'</code></pre>
     layout</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b67f076f8fd83b713f24" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b67f076f8fd83b713f24">{"x":{"visdat":{"36a89162a92":["function () ","plotlyVisDat"]},"cur_data":"36a89162a92","attrs":{"36a89162a92":{"x":[-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],"y":[-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],"z":[[83.2167,82.03253,80.84836,79.66419,78.48002,77.29585,76.11168,74.92751,73.74334,72.55917,71.375,70.19083,69.00666,67.82249,66.63832,65.45415,64.26998,63.08581,61.90164,60.71747,59.5333],[79.47503,78.516652,77.558274,76.599896,75.641518,74.68314,73.724762,72.766384,71.808006,70.849628,69.89125,68.932872,67.974494,67.016116,66.057738,65.09936,64.140982,63.182604,62.224226,61.265848,60.30747],[75.73336,75.000774,74.268188,73.535602,72.803016,72.07043,71.337844,70.605258,69.872672,69.140086,68.4075,67.674914,66.942328,66.209742,65.477156,64.74457,64.011984,63.279398,62.546812,61.814226,61.08164],[71.99169,71.484896,70.978102,70.471308,69.964514,69.45772,68.950926,68.444132,67.937338,67.430544,66.92375,66.416956,65.910162,65.403368,64.896574,64.38978,63.882986,63.376192,62.869398,62.362604,61.85581],[68.25002,67.969018,67.688016,67.407014,67.126012,66.84501,66.564008,66.283006,66.002004,65.721002,65.44,65.158998,64.877996,64.596994,64.315992,64.03499,63.753988,63.472986,63.191984,62.910982,62.62998],[64.50835,64.45314,64.39793,64.34272,64.28751,64.2323,64.17709,64.12188,64.06667,64.01146,63.95625,63.90104,63.84583,63.79062,63.73541,63.6802,63.62499,63.56978,63.51457,63.45936,63.40415],[60.76668,60.937262,61.107844,61.278426,61.449008,61.61959,61.790172,61.960754,62.131336,62.301918,62.4725,62.643082,62.813664,62.984246,63.154828,63.32541,63.495992,63.666574,63.837156,64.007738,64.17832],[57.02501,57.421384,57.817758,58.214132,58.610506,59.00688,59.403254,59.799628,60.196002,60.592376,60.98875,61.385124,61.781498,62.177872,62.574246,62.97062,63.366994,63.763368,64.159742,64.556116,64.95249],[53.28334,53.905506,54.527672,55.149838,55.772004,56.39417,57.016336,57.638502,58.260668,58.882834,59.505,60.127166,60.749332,61.371498,61.993664,62.61583,63.237996,63.860162,64.482328,65.104494,65.72666],[49.54167,50.389628,51.237586,52.085544,52.933502,53.78146,54.629418,55.477376,56.325334,57.173292,58.02125,58.869208,59.717166,60.565124,61.413082,62.26104,63.108998,63.956956,64.804914,65.652872,66.50083],[45.8,46.87375,47.9475,49.02125,50.095,51.16875,52.2425,53.31625,54.39,55.46375,56.5375,57.61125,58.685,59.75875,60.8325,61.90625,62.98,64.05375,65.1275,66.20125,67.275],[42.05833,43.357872,44.657414,45.956956,47.256498,48.55604,49.855582,51.155124,52.454666,53.754208,55.05375,56.353292,57.652834,58.952376,60.251918,61.55146,62.851002,64.150544,65.450086,66.749628,68.04917],[38.31666,39.841994,41.367328,42.892662,44.417996,45.94333,47.468664,48.993998,50.519332,52.044666,53.57,55.095334,56.620668,58.146002,59.671336,61.19667,62.722004,64.247338,65.772672,67.298006,68.82334],[34.57499,36.326116,38.077242,39.828368,41.579494,43.33062,45.081746,46.832872,48.583998,50.335124,52.08625,53.837376,55.588502,57.339628,59.090754,60.84188,62.593006,64.344132,66.095258,67.846384,69.59751],[30.83332,32.810238,34.787156,36.764074,38.740992,40.71791,42.694828,44.671746,46.648664,48.625582,50.6025,52.579418,54.556336,56.533254,58.510172,60.48709,62.464008,64.440926,66.417844,68.394762,70.37168],[27.09165,29.29436,31.49707,33.69978,35.90249,38.1052,40.30791,42.51062,44.71333,46.91604,49.11875,51.32146,53.52417,55.72688,57.92959,60.1323,62.33501,64.53772,66.74043,68.94314,71.14585],[23.34998,25.778482,28.206984,30.635486,33.063988,35.49249,37.920992,40.349494,42.777996,45.206498,47.635,50.063502,52.492004,54.920506,57.349008,59.77751,62.206012,64.634514,67.063016,69.491518,71.92002],[19.60831,22.262604,24.916898,27.571192,30.225486,32.87978,35.534074,38.188368,40.842662,43.496956,46.15125,48.805544,51.459838,54.114132,56.768426,59.42272,62.077014,64.731308,67.385602,70.039896,72.69419],[15.86664,18.746726,21.626812,24.506898,27.386984,30.26707,33.147156,36.027242,38.907328,41.787414,44.6675,47.547586,50.427672,53.307758,56.187844,59.06793,61.948016,64.828102,67.708188,70.588274,73.46836],[12.12497,15.230848,18.336726,21.442604,24.548482,27.65436,30.760238,33.866116,36.971994,40.077872,43.18375,46.289628,49.395506,52.501384,55.607262,58.71314,61.819018,64.924896,68.030774,71.136652,74.24253],[8.3833,11.71497,15.04664,18.37831,21.70998,25.04165,28.37332,31.70499,35.03666,38.36833,41.7,45.03167,48.36334,51.69501,55.02668,58.35835,61.69002,65.02169,68.35336,71.68503,75.0167]],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"x":[-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],"y":[-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],"z":[[83.2167,82.03253,80.84836,79.66419,78.48002,77.29585,76.11168,74.92751,73.74334,72.55917,71.375,70.19083,69.00666,67.82249,66.63832,65.45415,64.26998,63.08581,61.90164,60.71747,59.5333],[79.47503,78.516652,77.558274,76.599896,75.641518,74.68314,73.724762,72.766384,71.808006,70.849628,69.89125,68.932872,67.974494,67.016116,66.057738,65.09936,64.140982,63.182604,62.224226,61.265848,60.30747],[75.73336,75.000774,74.268188,73.535602,72.803016,72.07043,71.337844,70.605258,69.872672,69.140086,68.4075,67.674914,66.942328,66.209742,65.477156,64.74457,64.011984,63.279398,62.546812,61.814226,61.08164],[71.99169,71.484896,70.978102,70.471308,69.964514,69.45772,68.950926,68.444132,67.937338,67.430544,66.92375,66.416956,65.910162,65.403368,64.896574,64.38978,63.882986,63.376192,62.869398,62.362604,61.85581],[68.25002,67.969018,67.688016,67.407014,67.126012,66.84501,66.564008,66.283006,66.002004,65.721002,65.44,65.158998,64.877996,64.596994,64.315992,64.03499,63.753988,63.472986,63.191984,62.910982,62.62998],[64.50835,64.45314,64.39793,64.34272,64.28751,64.2323,64.17709,64.12188,64.06667,64.01146,63.95625,63.90104,63.84583,63.79062,63.73541,63.6802,63.62499,63.56978,63.51457,63.45936,63.40415],[60.76668,60.937262,61.107844,61.278426,61.449008,61.61959,61.790172,61.960754,62.131336,62.301918,62.4725,62.643082,62.813664,62.984246,63.154828,63.32541,63.495992,63.666574,63.837156,64.007738,64.17832],[57.02501,57.421384,57.817758,58.214132,58.610506,59.00688,59.403254,59.799628,60.196002,60.592376,60.98875,61.385124,61.781498,62.177872,62.574246,62.97062,63.366994,63.763368,64.159742,64.556116,64.95249],[53.28334,53.905506,54.527672,55.149838,55.772004,56.39417,57.016336,57.638502,58.260668,58.882834,59.505,60.127166,60.749332,61.371498,61.993664,62.61583,63.237996,63.860162,64.482328,65.104494,65.72666],[49.54167,50.389628,51.237586,52.085544,52.933502,53.78146,54.629418,55.477376,56.325334,57.173292,58.02125,58.869208,59.717166,60.565124,61.413082,62.26104,63.108998,63.956956,64.804914,65.652872,66.50083],[45.8,46.87375,47.9475,49.02125,50.095,51.16875,52.2425,53.31625,54.39,55.46375,56.5375,57.61125,58.685,59.75875,60.8325,61.90625,62.98,64.05375,65.1275,66.20125,67.275],[42.05833,43.357872,44.657414,45.956956,47.256498,48.55604,49.855582,51.155124,52.454666,53.754208,55.05375,56.353292,57.652834,58.952376,60.251918,61.55146,62.851002,64.150544,65.450086,66.749628,68.04917],[38.31666,39.841994,41.367328,42.892662,44.417996,45.94333,47.468664,48.993998,50.519332,52.044666,53.57,55.095334,56.620668,58.146002,59.671336,61.19667,62.722004,64.247338,65.772672,67.298006,68.82334],[34.57499,36.326116,38.077242,39.828368,41.579494,43.33062,45.081746,46.832872,48.583998,50.335124,52.08625,53.837376,55.588502,57.339628,59.090754,60.84188,62.593006,64.344132,66.095258,67.846384,69.59751],[30.83332,32.810238,34.787156,36.764074,38.740992,40.71791,42.694828,44.671746,46.648664,48.625582,50.6025,52.579418,54.556336,56.533254,58.510172,60.48709,62.464008,64.440926,66.417844,68.394762,70.37168],[27.09165,29.29436,31.49707,33.69978,35.90249,38.1052,40.30791,42.51062,44.71333,46.91604,49.11875,51.32146,53.52417,55.72688,57.92959,60.1323,62.33501,64.53772,66.74043,68.94314,71.14585],[23.34998,25.778482,28.206984,30.635486,33.063988,35.49249,37.920992,40.349494,42.777996,45.206498,47.635,50.063502,52.492004,54.920506,57.349008,59.77751,62.206012,64.634514,67.063016,69.491518,71.92002],[19.60831,22.262604,24.916898,27.571192,30.225486,32.87978,35.534074,38.188368,40.842662,43.496956,46.15125,48.805544,51.459838,54.114132,56.768426,59.42272,62.077014,64.731308,67.385602,70.039896,72.69419],[15.86664,18.746726,21.626812,24.506898,27.386984,30.26707,33.147156,36.027242,38.907328,41.787414,44.6675,47.547586,50.427672,53.307758,56.187844,59.06793,61.948016,64.828102,67.708188,70.588274,73.46836],[12.12497,15.230848,18.336726,21.442604,24.548482,27.65436,30.760238,33.866116,36.971994,40.077872,43.18375,46.289628,49.395506,52.501384,55.607262,58.71314,61.819018,64.924896,68.030774,71.136652,74.24253],[8.3833,11.71497,15.04664,18.37831,21.70998,25.04165,28.37332,31.70499,35.03666,38.36833,41.7,45.03167,48.36334,51.69501,55.02668,58.35835,61.69002,65.02169,68.35336,71.68503,75.0167]],"type":"surface","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9aafd72aa41fb6e83e39" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-9aafd72aa41fb6e83e39">{"x":{"visdat":{"6330bfa2b92":["function () ","plotlyVisDat"]},"cur_data":"6330bfa2b92","attrs":{"6330bfa2b92":{"x":[4,5,6,7,8,9,10,11,12,13,14,15,16],"y":[64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128],"z":[[6464.6627,6565.717,6666.7713,6767.8256,6868.8799,6969.9342,7070.9885,7172.0428,7273.0971,7374.1514,7475.2057,7576.26,7677.3143,7778.3686,7879.4229,7980.4772,8081.5315,8182.5858,8283.6401,8384.6944,8485.7487,8586.803,8687.8573,8788.9116,8889.9659,8991.0202,9092.0745,9193.1288,9294.1831,9395.2374,9496.2917,9597.346,9698.4003,9799.4546,9900.5089,10001.5632,10102.6175,10203.6718,10304.7261,10405.7804,10506.8347,10607.889,10708.9433,10809.9976,10911.0519,11012.1062,11113.1605,11214.2148,11315.2691,11416.3234,11517.3777,11618.432,11719.4863,11820.5406,11921.5949,12022.6492,12123.7035,12224.7578,12325.8121,12426.8664,12527.9207,12628.975,12730.0293,12831.0836,12932.1379],[7894.894,8018.5275,8142.161,8265.7945,8389.428,8513.0615,8636.695,8760.3285,8883.962,9007.5955,9131.229,9254.8625,9378.496,9502.1295,9625.763,9749.3965,9873.03,9996.6635,10120.297,10243.9305,10367.564,10491.1975,10614.831,10738.4645,10862.098,10985.7315,11109.365,11232.9985,11356.632,11480.2655,11603.899,11727.5325,11851.166,11974.7995,12098.433,12222.0665,12345.7,12469.3335,12592.967,12716.6005,12840.234,12963.8675,13087.501,13211.1345,13334.768,13458.4015,13582.035,13705.6685,13829.302,13952.9355,14076.569,14200.2025,14323.836,14447.4695,14571.103,14694.7365,14818.37,14942.0035,15065.637,15189.2705,15312.904,15436.5375,15560.171,15683.8045,15807.438],[9325.1253,9471.338,9617.5507,9763.7634,9909.9761,10056.1888,10202.4015,10348.6142,10494.8269,10641.0396,10787.2523,10933.465,11079.6777,11225.8904,11372.1031,11518.3158,11664.5285,11810.7412,11956.9539,12103.1666,12249.3793,12395.592,12541.8047,12688.0174,12834.2301,12980.4428,13126.6555,13272.8682,13419.0809,13565.2936,13711.5063,13857.719,14003.9317,14150.1444,14296.3571,14442.5698,14588.7825,14734.9952,14881.2079,15027.4206,15173.6333,15319.846,15466.0587,15612.2714,15758.4841,15904.6968,16050.9095,16197.1222,16343.3349,16489.5476,16635.7603,16781.973,16928.1857,17074.3984,17220.6111,17366.8238,17513.0365,17659.2492,17805.4619,17951.6746,18097.8873,18244.1,18390.3127,18536.5254,18682.7381],[10755.3566,10924.1485,11092.9404,11261.7323,11430.5242,11599.3161,11768.108,11936.8999,12105.6918,12274.4837,12443.2756,12612.0675,12780.8594,12949.6513,13118.4432,13287.2351,13456.027,13624.8189,13793.6108,13962.4027,14131.1946,14299.9865,14468.7784,14637.5703,14806.3622,14975.1541,15143.946,15312.7379,15481.5298,15650.3217,15819.1136,15987.9055,16156.6974,16325.4893,16494.2812,16663.0731,16831.865,17000.6569,17169.4488,17338.2407,17507.0326,17675.8245,17844.6164,18013.4083,18182.2002,18350.9921,18519.784,18688.5759,18857.3678,19026.1597,19194.9516,19363.7435,19532.5354,19701.3273,19870.1192,20038.9111,20207.703,20376.4949,20545.2868,20714.0787,20882.8706,21051.6625,21220.4544,21389.2463,21558.0382],[12185.5879,12376.959,12568.3301,12759.7012,12951.0723,13142.4434,13333.8145,13525.1856,13716.5567,13907.9278,14099.2989,14290.67,14482.0411,14673.4122,14864.7833,15056.1544,15247.5255,15438.8966,15630.2677,15821.6388,16013.0099,16204.381,16395.7521,16587.1232,16778.4943,16969.8654,17161.2365,17352.6076,17543.9787,17735.3498,17926.7209,18118.092,18309.4631,18500.8342,18692.2053,18883.5764,19074.9475,19266.3186,19457.6897,19649.0608,19840.4319,20031.803,20223.1741,20414.5452,20605.9163,20797.2874,20988.6585,21180.0296,21371.4007,21562.7718,21754.1429,21945.514,22136.8851,22328.2562,22519.6273,22710.9984,22902.3695,23093.7406,23285.1117,23476.4828,23667.8539,23859.225,24050.5961,24241.9672,24433.3383],[13615.8192,13829.7695,14043.7198,14257.6701,14471.6204,14685.5707,14899.521,15113.4713,15327.4216,15541.3719,15755.3222,15969.2725,16183.2228,16397.1731,16611.1234,16825.0737,17039.024,17252.9743,17466.9246,17680.8749,17894.8252,18108.7755,18322.7258,18536.6761,18750.6264,18964.5767,19178.527,19392.4773,19606.4276,19820.3779,20034.3282,20248.2785,20462.2288,20676.1791,20890.1294,21104.0797,21318.03,21531.9803,21745.9306,21959.8809,22173.8312,22387.7815,22601.7318,22815.6821,23029.6324,23243.5827,23457.533,23671.4833,23885.4336,24099.3839,24313.3342,24527.2845,24741.2348,24955.1851,25169.1354,25383.0857,25597.036,25810.9863,26024.9366,26238.8869,26452.8372,26666.7875,26880.7378,27094.6881,27308.6384],[15046.0505,15282.58,15519.1095,15755.639,15992.1685,16228.698,16465.2275,16701.757,16938.2865,17174.816,17411.3455,17647.875,17884.4045,18120.934,18357.4635,18593.993,18830.5225,19067.052,19303.5815,19540.111,19776.6405,20013.17,20249.6995,20486.229,20722.7585,20959.288,21195.8175,21432.347,21668.8765,21905.406,22141.9355,22378.465,22614.9945,22851.524,23088.0535,23324.583,23561.1125,23797.642,24034.1715,24270.701,24507.2305,24743.76,24980.2895,25216.819,25453.3485,25689.878,25926.4075,26162.937,26399.4665,26635.996,26872.5255,27109.055,27345.5845,27582.114,27818.6435,28055.173,28291.7025,28528.232,28764.7615,29001.291,29237.8205,29474.35,29710.8795,29947.409,30183.9385],[16476.2818,16735.3905,16994.4992,17253.6079,17512.7166,17771.8253,18030.934,18290.0427,18549.1514,18808.2601,19067.3688,19326.4775,19585.5862,19844.6949,20103.8036,20362.9123,20622.021,20881.1297,21140.2384,21399.3471,21658.4558,21917.5645,22176.6732,22435.7819,22694.8906,22953.9993,23213.108,23472.2167,23731.3254,23990.4341,24249.5428,24508.6515,24767.7602,25026.8689,25285.9776,25545.0863,25804.195,26063.3037,26322.4124,26581.5211,26840.6298,27099.7385,27358.8472,27617.9559,27877.0646,28136.1733,28395.282,28654.3907,28913.4994,29172.6081,29431.7168,29690.8255,29949.9342,30209.0429,30468.1516,30727.2603,30986.369,31245.4777,31504.5864,31763.6951,32022.8038,32281.9125,32541.0212,32800.1299,33059.2386],[17906.5131,18188.201,18469.8889,18751.5768,19033.2647,19314.9526,19596.6405,19878.3284,20160.0163,20441.7042,20723.3921,21005.08,21286.7679,21568.4558,21850.1437,22131.8316,22413.5195,22695.2074,22976.8953,23258.5832,23540.2711,23821.959,24103.6469,24385.3348,24667.0227,24948.7106,25230.3985,25512.0864,25793.7743,26075.4622,26357.1501,26638.838,26920.5259,27202.2138,27483.9017,27765.5896,28047.2775,28328.9654,28610.6533,28892.3412,29174.0291,29455.717,29737.4049,30019.0928,30300.7807,30582.4686,30864.1565,31145.8444,31427.5323,31709.2202,31990.9081,32272.596,32554.2839,32835.9718,33117.6597,33399.3476,33681.0355,33962.7234,34244.4113,34526.0992,34807.7871,35089.475,35371.1629,35652.8508,35934.5387],[19336.7444,19641.0115,19945.2786,20249.5457,20553.8128,20858.0799,21162.347,21466.6141,21770.8812,22075.1483,22379.4154,22683.6825,22987.9496,23292.2167,23596.4838,23900.7509,24205.018,24509.2851,24813.5522,25117.8193,25422.0864,25726.3535,26030.6206,26334.8877,26639.1548,26943.4219,27247.689,27551.9561,27856.2232,28160.4903,28464.7574,28769.0245,29073.2916,29377.5587,29681.8258,29986.0929,30290.36,30594.6271,30898.8942,31203.1613,31507.4284,31811.6955,32115.9626,32420.2297,32724.4968,33028.7639,33333.031,33637.2981,33941.5652,34245.8323,34550.0994,34854.3665,35158.6336,35462.9007,35767.1678,36071.4349,36375.702,36679.9691,36984.2362,37288.5033,37592.7704,37897.0375,38201.3046,38505.5717,38809.8388],[20766.9757,21093.822,21420.6683,21747.5146,22074.3609,22401.2072,22728.0535,23054.8998,23381.7461,23708.5924,24035.4387,24362.285,24689.1313,25015.9776,25342.8239,25669.6702,25996.5165,26323.3628,26650.2091,26977.0554,27303.9017,27630.748,27957.5943,28284.4406,28611.2869,28938.1332,29264.9795,29591.8258,29918.6721,30245.5184,30572.3647,30899.211,31226.0573,31552.9036,31879.7499,32206.5962,32533.4425,32860.2888,33187.1351,33513.9814,33840.8277,34167.674,34494.5203,34821.3666,35148.2129,35475.0592,35801.9055,36128.7518,36455.5981,36782.4444,37109.2907,37436.137,37762.9833,38089.8296,38416.6759,38743.5222,39070.3685,39397.2148,39724.0611,40050.9074,40377.7537,40704.6,41031.4463,41358.2926,41685.1389],[22197.207,22546.6325,22896.058,23245.4835,23594.909,23944.3345,24293.76,24643.1855,24992.611,25342.0365,25691.462,26040.8875,26390.313,26739.7385,27089.164,27438.5895,27788.015,28137.4405,28486.866,28836.2915,29185.717,29535.1425,29884.568,30233.9935,30583.419,30932.8445,31282.27,31631.6955,31981.121,32330.5465,32679.972,33029.3975,33378.823,33728.2485,34077.674,34427.0995,34776.525,35125.9505,35475.376,35824.8015,36174.227,36523.6525,36873.078,37222.5035,37571.929,37921.3545,38270.78,38620.2055,38969.631,39319.0565,39668.482,40017.9075,40367.333,40716.7585,41066.184,41415.6095,41765.035,42114.4605,42463.886,42813.3115,43162.737,43512.1625,43861.588,44211.0135,44560.439],[23627.4383,23999.443,24371.4477,24743.4524,25115.4571,25487.4618,25859.4665,26231.4712,26603.4759,26975.4806,27347.4853,27719.49,28091.4947,28463.4994,28835.5041,29207.5088,29579.5135,29951.5182,30323.5229,30695.5276,31067.5323,31439.537,31811.5417,32183.5464,32555.5511,32927.5558,33299.5605,33671.5652,34043.5699,34415.5746,34787.5793,35159.584,35531.5887,35903.5934,36275.5981,36647.6028,37019.6075,37391.6122,37763.6169,38135.6216,38507.6263,38879.631,39251.6357,39623.6404,39995.6451,40367.6498,40739.6545,41111.6592,41483.6639,41855.6686,42227.6733,42599.678,42971.6827,43343.6874,43715.6921,44087.6968,44459.7015,44831.7062,45203.7109,45575.7156,45947.7203,46319.725,46691.7297,47063.7344,47435.7391]],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"x":[4,5,6,7,8,9,10,11,12,13,14,15,16],"y":[64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128],"z":[[6464.6627,6565.717,6666.7713,6767.8256,6868.8799,6969.9342,7070.9885,7172.0428,7273.0971,7374.1514,7475.2057,7576.26,7677.3143,7778.3686,7879.4229,7980.4772,8081.5315,8182.5858,8283.6401,8384.6944,8485.7487,8586.803,8687.8573,8788.9116,8889.9659,8991.0202,9092.0745,9193.1288,9294.1831,9395.2374,9496.2917,9597.346,9698.4003,9799.4546,9900.5089,10001.5632,10102.6175,10203.6718,10304.7261,10405.7804,10506.8347,10607.889,10708.9433,10809.9976,10911.0519,11012.1062,11113.1605,11214.2148,11315.2691,11416.3234,11517.3777,11618.432,11719.4863,11820.5406,11921.5949,12022.6492,12123.7035,12224.7578,12325.8121,12426.8664,12527.9207,12628.975,12730.0293,12831.0836,12932.1379],[7894.894,8018.5275,8142.161,8265.7945,8389.428,8513.0615,8636.695,8760.3285,8883.962,9007.5955,9131.229,9254.8625,9378.496,9502.1295,9625.763,9749.3965,9873.03,9996.6635,10120.297,10243.9305,10367.564,10491.1975,10614.831,10738.4645,10862.098,10985.7315,11109.365,11232.9985,11356.632,11480.2655,11603.899,11727.5325,11851.166,11974.7995,12098.433,12222.0665,12345.7,12469.3335,12592.967,12716.6005,12840.234,12963.8675,13087.501,13211.1345,13334.768,13458.4015,13582.035,13705.6685,13829.302,13952.9355,14076.569,14200.2025,14323.836,14447.4695,14571.103,14694.7365,14818.37,14942.0035,15065.637,15189.2705,15312.904,15436.5375,15560.171,15683.8045,15807.438],[9325.1253,9471.338,9617.5507,9763.7634,9909.9761,10056.1888,10202.4015,10348.6142,10494.8269,10641.0396,10787.2523,10933.465,11079.6777,11225.8904,11372.1031,11518.3158,11664.5285,11810.7412,11956.9539,12103.1666,12249.3793,12395.592,12541.8047,12688.0174,12834.2301,12980.4428,13126.6555,13272.8682,13419.0809,13565.2936,13711.5063,13857.719,14003.9317,14150.1444,14296.3571,14442.5698,14588.7825,14734.9952,14881.2079,15027.4206,15173.6333,15319.846,15466.0587,15612.2714,15758.4841,15904.6968,16050.9095,16197.1222,16343.3349,16489.5476,16635.7603,16781.973,16928.1857,17074.3984,17220.6111,17366.8238,17513.0365,17659.2492,17805.4619,17951.6746,18097.8873,18244.1,18390.3127,18536.5254,18682.7381],[10755.3566,10924.1485,11092.9404,11261.7323,11430.5242,11599.3161,11768.108,11936.8999,12105.6918,12274.4837,12443.2756,12612.0675,12780.8594,12949.6513,13118.4432,13287.2351,13456.027,13624.8189,13793.6108,13962.4027,14131.1946,14299.9865,14468.7784,14637.5703,14806.3622,14975.1541,15143.946,15312.7379,15481.5298,15650.3217,15819.1136,15987.9055,16156.6974,16325.4893,16494.2812,16663.0731,16831.865,17000.6569,17169.4488,17338.2407,17507.0326,17675.8245,17844.6164,18013.4083,18182.2002,18350.9921,18519.784,18688.5759,18857.3678,19026.1597,19194.9516,19363.7435,19532.5354,19701.3273,19870.1192,20038.9111,20207.703,20376.4949,20545.2868,20714.0787,20882.8706,21051.6625,21220.4544,21389.2463,21558.0382],[12185.5879,12376.959,12568.3301,12759.7012,12951.0723,13142.4434,13333.8145,13525.1856,13716.5567,13907.9278,14099.2989,14290.67,14482.0411,14673.4122,14864.7833,15056.1544,15247.5255,15438.8966,15630.2677,15821.6388,16013.0099,16204.381,16395.7521,16587.1232,16778.4943,16969.8654,17161.2365,17352.6076,17543.9787,17735.3498,17926.7209,18118.092,18309.4631,18500.8342,18692.2053,18883.5764,19074.9475,19266.3186,19457.6897,19649.0608,19840.4319,20031.803,20223.1741,20414.5452,20605.9163,20797.2874,20988.6585,21180.0296,21371.4007,21562.7718,21754.1429,21945.514,22136.8851,22328.2562,22519.6273,22710.9984,22902.3695,23093.7406,23285.1117,23476.4828,23667.8539,23859.225,24050.5961,24241.9672,24433.3383],[13615.8192,13829.7695,14043.7198,14257.6701,14471.6204,14685.5707,14899.521,15113.4713,15327.4216,15541.3719,15755.3222,15969.2725,16183.2228,16397.1731,16611.1234,16825.0737,17039.024,17252.9743,17466.9246,17680.8749,17894.8252,18108.7755,18322.7258,18536.6761,18750.6264,18964.5767,19178.527,19392.4773,19606.4276,19820.3779,20034.3282,20248.2785,20462.2288,20676.1791,20890.1294,21104.0797,21318.03,21531.9803,21745.9306,21959.8809,22173.8312,22387.7815,22601.7318,22815.6821,23029.6324,23243.5827,23457.533,23671.4833,23885.4336,24099.3839,24313.3342,24527.2845,24741.2348,24955.1851,25169.1354,25383.0857,25597.036,25810.9863,26024.9366,26238.8869,26452.8372,26666.7875,26880.7378,27094.6881,27308.6384],[15046.0505,15282.58,15519.1095,15755.639,15992.1685,16228.698,16465.2275,16701.757,16938.2865,17174.816,17411.3455,17647.875,17884.4045,18120.934,18357.4635,18593.993,18830.5225,19067.052,19303.5815,19540.111,19776.6405,20013.17,20249.6995,20486.229,20722.7585,20959.288,21195.8175,21432.347,21668.8765,21905.406,22141.9355,22378.465,22614.9945,22851.524,23088.0535,23324.583,23561.1125,23797.642,24034.1715,24270.701,24507.2305,24743.76,24980.2895,25216.819,25453.3485,25689.878,25926.4075,26162.937,26399.4665,26635.996,26872.5255,27109.055,27345.5845,27582.114,27818.6435,28055.173,28291.7025,28528.232,28764.7615,29001.291,29237.8205,29474.35,29710.8795,29947.409,30183.9385],[16476.2818,16735.3905,16994.4992,17253.6079,17512.7166,17771.8253,18030.934,18290.0427,18549.1514,18808.2601,19067.3688,19326.4775,19585.5862,19844.6949,20103.8036,20362.9123,20622.021,20881.1297,21140.2384,21399.3471,21658.4558,21917.5645,22176.6732,22435.7819,22694.8906,22953.9993,23213.108,23472.2167,23731.3254,23990.4341,24249.5428,24508.6515,24767.7602,25026.8689,25285.9776,25545.0863,25804.195,26063.3037,26322.4124,26581.5211,26840.6298,27099.7385,27358.8472,27617.9559,27877.0646,28136.1733,28395.282,28654.3907,28913.4994,29172.6081,29431.7168,29690.8255,29949.9342,30209.0429,30468.1516,30727.2603,30986.369,31245.4777,31504.5864,31763.6951,32022.8038,32281.9125,32541.0212,32800.1299,33059.2386],[17906.5131,18188.201,18469.8889,18751.5768,19033.2647,19314.9526,19596.6405,19878.3284,20160.0163,20441.7042,20723.3921,21005.08,21286.7679,21568.4558,21850.1437,22131.8316,22413.5195,22695.2074,22976.8953,23258.5832,23540.2711,23821.959,24103.6469,24385.3348,24667.0227,24948.7106,25230.3985,25512.0864,25793.7743,26075.4622,26357.1501,26638.838,26920.5259,27202.2138,27483.9017,27765.5896,28047.2775,28328.9654,28610.6533,28892.3412,29174.0291,29455.717,29737.4049,30019.0928,30300.7807,30582.4686,30864.1565,31145.8444,31427.5323,31709.2202,31990.9081,32272.596,32554.2839,32835.9718,33117.6597,33399.3476,33681.0355,33962.7234,34244.4113,34526.0992,34807.7871,35089.475,35371.1629,35652.8508,35934.5387],[19336.7444,19641.0115,19945.2786,20249.5457,20553.8128,20858.0799,21162.347,21466.6141,21770.8812,22075.1483,22379.4154,22683.6825,22987.9496,23292.2167,23596.4838,23900.7509,24205.018,24509.2851,24813.5522,25117.8193,25422.0864,25726.3535,26030.6206,26334.8877,26639.1548,26943.4219,27247.689,27551.9561,27856.2232,28160.4903,28464.7574,28769.0245,29073.2916,29377.5587,29681.8258,29986.0929,30290.36,30594.6271,30898.8942,31203.1613,31507.4284,31811.6955,32115.9626,32420.2297,32724.4968,33028.7639,33333.031,33637.2981,33941.5652,34245.8323,34550.0994,34854.3665,35158.6336,35462.9007,35767.1678,36071.4349,36375.702,36679.9691,36984.2362,37288.5033,37592.7704,37897.0375,38201.3046,38505.5717,38809.8388],[20766.9757,21093.822,21420.6683,21747.5146,22074.3609,22401.2072,22728.0535,23054.8998,23381.7461,23708.5924,24035.4387,24362.285,24689.1313,25015.9776,25342.8239,25669.6702,25996.5165,26323.3628,26650.2091,26977.0554,27303.9017,27630.748,27957.5943,28284.4406,28611.2869,28938.1332,29264.9795,29591.8258,29918.6721,30245.5184,30572.3647,30899.211,31226.0573,31552.9036,31879.7499,32206.5962,32533.4425,32860.2888,33187.1351,33513.9814,33840.8277,34167.674,34494.5203,34821.3666,35148.2129,35475.0592,35801.9055,36128.7518,36455.5981,36782.4444,37109.2907,37436.137,37762.9833,38089.8296,38416.6759,38743.5222,39070.3685,39397.2148,39724.0611,40050.9074,40377.7537,40704.6,41031.4463,41358.2926,41685.1389],[22197.207,22546.6325,22896.058,23245.4835,23594.909,23944.3345,24293.76,24643.1855,24992.611,25342.0365,25691.462,26040.8875,26390.313,26739.7385,27089.164,27438.5895,27788.015,28137.4405,28486.866,28836.2915,29185.717,29535.1425,29884.568,30233.9935,30583.419,30932.8445,31282.27,31631.6955,31981.121,32330.5465,32679.972,33029.3975,33378.823,33728.2485,34077.674,34427.0995,34776.525,35125.9505,35475.376,35824.8015,36174.227,36523.6525,36873.078,37222.5035,37571.929,37921.3545,38270.78,38620.2055,38969.631,39319.0565,39668.482,40017.9075,40367.333,40716.7585,41066.184,41415.6095,41765.035,42114.4605,42463.886,42813.3115,43162.737,43512.1625,43861.588,44211.0135,44560.439],[23627.4383,23999.443,24371.4477,24743.4524,25115.4571,25487.4618,25859.4665,26231.4712,26603.4759,26975.4806,27347.4853,27719.49,28091.4947,28463.4994,28835.5041,29207.5088,29579.5135,29951.5182,30323.5229,30695.5276,31067.5323,31439.537,31811.5417,32183.5464,32555.5511,32927.5558,33299.5605,33671.5652,34043.5699,34415.5746,34787.5793,35159.584,35531.5887,35903.5934,36275.5981,36647.6028,37019.6075,37391.6122,37763.6169,38135.6216,38507.6263,38879.631,39251.6357,39623.6404,39995.6451,40367.6498,40739.6545,41111.6592,41483.6639,41855.6686,42227.6733,42599.678,42971.6827,43343.6874,43715.6921,44087.6968,44459.7015,44831.7062,45203.7109,45575.7156,45947.7203,46319.725,46691.7297,47063.7344,47435.7391]],"type":"surface","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Interpretaciones …</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1d779f4c33283466ad87" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-1d779f4c33283466ad87">{"x":{"visdat":{"36a847ef6ac7":["function () ","plotlyVisDat"]},"cur_data":"36a847ef6ac7","attrs":{"36a847ef6ac7":{"x":[-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],"y":[-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],"z":[[83.2167,82.03253,80.84836,79.66419,78.48002,77.29585,76.11168,74.92751,73.74334,72.55917,71.375,70.19083,69.00666,67.82249,66.63832,65.45415,64.26998,63.08581,61.90164,60.71747,59.5333],[79.47503,78.516652,77.558274,76.599896,75.641518,74.68314,73.724762,72.766384,71.808006,70.849628,69.89125,68.932872,67.974494,67.016116,66.057738,65.09936,64.140982,63.182604,62.224226,61.265848,60.30747],[75.73336,75.000774,74.268188,73.535602,72.803016,72.07043,71.337844,70.605258,69.872672,69.140086,68.4075,67.674914,66.942328,66.209742,65.477156,64.74457,64.011984,63.279398,62.546812,61.814226,61.08164],[71.99169,71.484896,70.978102,70.471308,69.964514,69.45772,68.950926,68.444132,67.937338,67.430544,66.92375,66.416956,65.910162,65.403368,64.896574,64.38978,63.882986,63.376192,62.869398,62.362604,61.85581],[68.25002,67.969018,67.688016,67.407014,67.126012,66.84501,66.564008,66.283006,66.002004,65.721002,65.44,65.158998,64.877996,64.596994,64.315992,64.03499,63.753988,63.472986,63.191984,62.910982,62.62998],[64.50835,64.45314,64.39793,64.34272,64.28751,64.2323,64.17709,64.12188,64.06667,64.01146,63.95625,63.90104,63.84583,63.79062,63.73541,63.6802,63.62499,63.56978,63.51457,63.45936,63.40415],[60.76668,60.937262,61.107844,61.278426,61.449008,61.61959,61.790172,61.960754,62.131336,62.301918,62.4725,62.643082,62.813664,62.984246,63.154828,63.32541,63.495992,63.666574,63.837156,64.007738,64.17832],[57.02501,57.421384,57.817758,58.214132,58.610506,59.00688,59.403254,59.799628,60.196002,60.592376,60.98875,61.385124,61.781498,62.177872,62.574246,62.97062,63.366994,63.763368,64.159742,64.556116,64.95249],[53.28334,53.905506,54.527672,55.149838,55.772004,56.39417,57.016336,57.638502,58.260668,58.882834,59.505,60.127166,60.749332,61.371498,61.993664,62.61583,63.237996,63.860162,64.482328,65.104494,65.72666],[49.54167,50.389628,51.237586,52.085544,52.933502,53.78146,54.629418,55.477376,56.325334,57.173292,58.02125,58.869208,59.717166,60.565124,61.413082,62.26104,63.108998,63.956956,64.804914,65.652872,66.50083],[45.8,46.87375,47.9475,49.02125,50.095,51.16875,52.2425,53.31625,54.39,55.46375,56.5375,57.61125,58.685,59.75875,60.8325,61.90625,62.98,64.05375,65.1275,66.20125,67.275],[42.05833,43.357872,44.657414,45.956956,47.256498,48.55604,49.855582,51.155124,52.454666,53.754208,55.05375,56.353292,57.652834,58.952376,60.251918,61.55146,62.851002,64.150544,65.450086,66.749628,68.04917],[38.31666,39.841994,41.367328,42.892662,44.417996,45.94333,47.468664,48.993998,50.519332,52.044666,53.57,55.095334,56.620668,58.146002,59.671336,61.19667,62.722004,64.247338,65.772672,67.298006,68.82334],[34.57499,36.326116,38.077242,39.828368,41.579494,43.33062,45.081746,46.832872,48.583998,50.335124,52.08625,53.837376,55.588502,57.339628,59.090754,60.84188,62.593006,64.344132,66.095258,67.846384,69.59751],[30.83332,32.810238,34.787156,36.764074,38.740992,40.71791,42.694828,44.671746,46.648664,48.625582,50.6025,52.579418,54.556336,56.533254,58.510172,60.48709,62.464008,64.440926,66.417844,68.394762,70.37168],[27.09165,29.29436,31.49707,33.69978,35.90249,38.1052,40.30791,42.51062,44.71333,46.91604,49.11875,51.32146,53.52417,55.72688,57.92959,60.1323,62.33501,64.53772,66.74043,68.94314,71.14585],[23.34998,25.778482,28.206984,30.635486,33.063988,35.49249,37.920992,40.349494,42.777996,45.206498,47.635,50.063502,52.492004,54.920506,57.349008,59.77751,62.206012,64.634514,67.063016,69.491518,71.92002],[19.60831,22.262604,24.916898,27.571192,30.225486,32.87978,35.534074,38.188368,40.842662,43.496956,46.15125,48.805544,51.459838,54.114132,56.768426,59.42272,62.077014,64.731308,67.385602,70.039896,72.69419],[15.86664,18.746726,21.626812,24.506898,27.386984,30.26707,33.147156,36.027242,38.907328,41.787414,44.6675,47.547586,50.427672,53.307758,56.187844,59.06793,61.948016,64.828102,67.708188,70.588274,73.46836],[12.12497,15.230848,18.336726,21.442604,24.548482,27.65436,30.760238,33.866116,36.971994,40.077872,43.18375,46.289628,49.395506,52.501384,55.607262,58.71314,61.819018,64.924896,68.030774,71.136652,74.24253],[8.3833,11.71497,15.04664,18.37831,21.70998,25.04165,28.37332,31.70499,35.03666,38.36833,41.7,45.03167,48.36334,51.69501,55.02668,58.35835,61.69002,65.02169,68.35336,71.68503,75.0167]],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"camera":{"eye":{"x":1.87,"y":0.88,"z":-0.64}},"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"x":[-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],"y":[-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],"z":[[83.2167,82.03253,80.84836,79.66419,78.48002,77.29585,76.11168,74.92751,73.74334,72.55917,71.375,70.19083,69.00666,67.82249,66.63832,65.45415,64.26998,63.08581,61.90164,60.71747,59.5333],[79.47503,78.516652,77.558274,76.599896,75.641518,74.68314,73.724762,72.766384,71.808006,70.849628,69.89125,68.932872,67.974494,67.016116,66.057738,65.09936,64.140982,63.182604,62.224226,61.265848,60.30747],[75.73336,75.000774,74.268188,73.535602,72.803016,72.07043,71.337844,70.605258,69.872672,69.140086,68.4075,67.674914,66.942328,66.209742,65.477156,64.74457,64.011984,63.279398,62.546812,61.814226,61.08164],[71.99169,71.484896,70.978102,70.471308,69.964514,69.45772,68.950926,68.444132,67.937338,67.430544,66.92375,66.416956,65.910162,65.403368,64.896574,64.38978,63.882986,63.376192,62.869398,62.362604,61.85581],[68.25002,67.969018,67.688016,67.407014,67.126012,66.84501,66.564008,66.283006,66.002004,65.721002,65.44,65.158998,64.877996,64.596994,64.315992,64.03499,63.753988,63.472986,63.191984,62.910982,62.62998],[64.50835,64.45314,64.39793,64.34272,64.28751,64.2323,64.17709,64.12188,64.06667,64.01146,63.95625,63.90104,63.84583,63.79062,63.73541,63.6802,63.62499,63.56978,63.51457,63.45936,63.40415],[60.76668,60.937262,61.107844,61.278426,61.449008,61.61959,61.790172,61.960754,62.131336,62.301918,62.4725,62.643082,62.813664,62.984246,63.154828,63.32541,63.495992,63.666574,63.837156,64.007738,64.17832],[57.02501,57.421384,57.817758,58.214132,58.610506,59.00688,59.403254,59.799628,60.196002,60.592376,60.98875,61.385124,61.781498,62.177872,62.574246,62.97062,63.366994,63.763368,64.159742,64.556116,64.95249],[53.28334,53.905506,54.527672,55.149838,55.772004,56.39417,57.016336,57.638502,58.260668,58.882834,59.505,60.127166,60.749332,61.371498,61.993664,62.61583,63.237996,63.860162,64.482328,65.104494,65.72666],[49.54167,50.389628,51.237586,52.085544,52.933502,53.78146,54.629418,55.477376,56.325334,57.173292,58.02125,58.869208,59.717166,60.565124,61.413082,62.26104,63.108998,63.956956,64.804914,65.652872,66.50083],[45.8,46.87375,47.9475,49.02125,50.095,51.16875,52.2425,53.31625,54.39,55.46375,56.5375,57.61125,58.685,59.75875,60.8325,61.90625,62.98,64.05375,65.1275,66.20125,67.275],[42.05833,43.357872,44.657414,45.956956,47.256498,48.55604,49.855582,51.155124,52.454666,53.754208,55.05375,56.353292,57.652834,58.952376,60.251918,61.55146,62.851002,64.150544,65.450086,66.749628,68.04917],[38.31666,39.841994,41.367328,42.892662,44.417996,45.94333,47.468664,48.993998,50.519332,52.044666,53.57,55.095334,56.620668,58.146002,59.671336,61.19667,62.722004,64.247338,65.772672,67.298006,68.82334],[34.57499,36.326116,38.077242,39.828368,41.579494,43.33062,45.081746,46.832872,48.583998,50.335124,52.08625,53.837376,55.588502,57.339628,59.090754,60.84188,62.593006,64.344132,66.095258,67.846384,69.59751],[30.83332,32.810238,34.787156,36.764074,38.740992,40.71791,42.694828,44.671746,46.648664,48.625582,50.6025,52.579418,54.556336,56.533254,58.510172,60.48709,62.464008,64.440926,66.417844,68.394762,70.37168],[27.09165,29.29436,31.49707,33.69978,35.90249,38.1052,40.30791,42.51062,44.71333,46.91604,49.11875,51.32146,53.52417,55.72688,57.92959,60.1323,62.33501,64.53772,66.74043,68.94314,71.14585],[23.34998,25.778482,28.206984,30.635486,33.063988,35.49249,37.920992,40.349494,42.777996,45.206498,47.635,50.063502,52.492004,54.920506,57.349008,59.77751,62.206012,64.634514,67.063016,69.491518,71.92002],[19.60831,22.262604,24.916898,27.571192,30.225486,32.87978,35.534074,38.188368,40.842662,43.496956,46.15125,48.805544,51.459838,54.114132,56.768426,59.42272,62.077014,64.731308,67.385602,70.039896,72.69419],[15.86664,18.746726,21.626812,24.506898,27.386984,30.26707,33.147156,36.027242,38.907328,41.787414,44.6675,47.547586,50.427672,53.307758,56.187844,59.06793,61.948016,64.828102,67.708188,70.588274,73.46836],[12.12497,15.230848,18.336726,21.442604,24.548482,27.65436,30.760238,33.866116,36.971994,40.077872,43.18375,46.289628,49.395506,52.501384,55.607262,58.71314,61.819018,64.924896,68.030774,71.136652,74.24253],[8.3833,11.71497,15.04664,18.37831,21.70998,25.04165,28.37332,31.70499,35.03666,38.36833,41.7,45.03167,48.36334,51.69501,55.02668,58.35835,61.69002,65.02169,68.35336,71.68503,75.0167]],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a49420761fd0535d4b65" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a49420761fd0535d4b65">{"x":{"visdat":{"633053676bde":["function () ","plotlyVisDat"]},"cur_data":"633053676bde","attrs":{"633053676bde":{"x":[4,5,6,7,8,9,10,11,12,13,14,15,16],"y":[64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128],"z":[[6464.6627,6565.717,6666.7713,6767.8256,6868.8799,6969.9342,7070.9885,7172.0428,7273.0971,7374.1514,7475.2057,7576.26,7677.3143,7778.3686,7879.4229,7980.4772,8081.5315,8182.5858,8283.6401,8384.6944,8485.7487,8586.803,8687.8573,8788.9116,8889.9659,8991.0202,9092.0745,9193.1288,9294.1831,9395.2374,9496.2917,9597.346,9698.4003,9799.4546,9900.5089,10001.5632,10102.6175,10203.6718,10304.7261,10405.7804,10506.8347,10607.889,10708.9433,10809.9976,10911.0519,11012.1062,11113.1605,11214.2148,11315.2691,11416.3234,11517.3777,11618.432,11719.4863,11820.5406,11921.5949,12022.6492,12123.7035,12224.7578,12325.8121,12426.8664,12527.9207,12628.975,12730.0293,12831.0836,12932.1379],[7894.894,8018.5275,8142.161,8265.7945,8389.428,8513.0615,8636.695,8760.3285,8883.962,9007.5955,9131.229,9254.8625,9378.496,9502.1295,9625.763,9749.3965,9873.03,9996.6635,10120.297,10243.9305,10367.564,10491.1975,10614.831,10738.4645,10862.098,10985.7315,11109.365,11232.9985,11356.632,11480.2655,11603.899,11727.5325,11851.166,11974.7995,12098.433,12222.0665,12345.7,12469.3335,12592.967,12716.6005,12840.234,12963.8675,13087.501,13211.1345,13334.768,13458.4015,13582.035,13705.6685,13829.302,13952.9355,14076.569,14200.2025,14323.836,14447.4695,14571.103,14694.7365,14818.37,14942.0035,15065.637,15189.2705,15312.904,15436.5375,15560.171,15683.8045,15807.438],[9325.1253,9471.338,9617.5507,9763.7634,9909.9761,10056.1888,10202.4015,10348.6142,10494.8269,10641.0396,10787.2523,10933.465,11079.6777,11225.8904,11372.1031,11518.3158,11664.5285,11810.7412,11956.9539,12103.1666,12249.3793,12395.592,12541.8047,12688.0174,12834.2301,12980.4428,13126.6555,13272.8682,13419.0809,13565.2936,13711.5063,13857.719,14003.9317,14150.1444,14296.3571,14442.5698,14588.7825,14734.9952,14881.2079,15027.4206,15173.6333,15319.846,15466.0587,15612.2714,15758.4841,15904.6968,16050.9095,16197.1222,16343.3349,16489.5476,16635.7603,16781.973,16928.1857,17074.3984,17220.6111,17366.8238,17513.0365,17659.2492,17805.4619,17951.6746,18097.8873,18244.1,18390.3127,18536.5254,18682.7381],[10755.3566,10924.1485,11092.9404,11261.7323,11430.5242,11599.3161,11768.108,11936.8999,12105.6918,12274.4837,12443.2756,12612.0675,12780.8594,12949.6513,13118.4432,13287.2351,13456.027,13624.8189,13793.6108,13962.4027,14131.1946,14299.9865,14468.7784,14637.5703,14806.3622,14975.1541,15143.946,15312.7379,15481.5298,15650.3217,15819.1136,15987.9055,16156.6974,16325.4893,16494.2812,16663.0731,16831.865,17000.6569,17169.4488,17338.2407,17507.0326,17675.8245,17844.6164,18013.4083,18182.2002,18350.9921,18519.784,18688.5759,18857.3678,19026.1597,19194.9516,19363.7435,19532.5354,19701.3273,19870.1192,20038.9111,20207.703,20376.4949,20545.2868,20714.0787,20882.8706,21051.6625,21220.4544,21389.2463,21558.0382],[12185.5879,12376.959,12568.3301,12759.7012,12951.0723,13142.4434,13333.8145,13525.1856,13716.5567,13907.9278,14099.2989,14290.67,14482.0411,14673.4122,14864.7833,15056.1544,15247.5255,15438.8966,15630.2677,15821.6388,16013.0099,16204.381,16395.7521,16587.1232,16778.4943,16969.8654,17161.2365,17352.6076,17543.9787,17735.3498,17926.7209,18118.092,18309.4631,18500.8342,18692.2053,18883.5764,19074.9475,19266.3186,19457.6897,19649.0608,19840.4319,20031.803,20223.1741,20414.5452,20605.9163,20797.2874,20988.6585,21180.0296,21371.4007,21562.7718,21754.1429,21945.514,22136.8851,22328.2562,22519.6273,22710.9984,22902.3695,23093.7406,23285.1117,23476.4828,23667.8539,23859.225,24050.5961,24241.9672,24433.3383],[13615.8192,13829.7695,14043.7198,14257.6701,14471.6204,14685.5707,14899.521,15113.4713,15327.4216,15541.3719,15755.3222,15969.2725,16183.2228,16397.1731,16611.1234,16825.0737,17039.024,17252.9743,17466.9246,17680.8749,17894.8252,18108.7755,18322.7258,18536.6761,18750.6264,18964.5767,19178.527,19392.4773,19606.4276,19820.3779,20034.3282,20248.2785,20462.2288,20676.1791,20890.1294,21104.0797,21318.03,21531.9803,21745.9306,21959.8809,22173.8312,22387.7815,22601.7318,22815.6821,23029.6324,23243.5827,23457.533,23671.4833,23885.4336,24099.3839,24313.3342,24527.2845,24741.2348,24955.1851,25169.1354,25383.0857,25597.036,25810.9863,26024.9366,26238.8869,26452.8372,26666.7875,26880.7378,27094.6881,27308.6384],[15046.0505,15282.58,15519.1095,15755.639,15992.1685,16228.698,16465.2275,16701.757,16938.2865,17174.816,17411.3455,17647.875,17884.4045,18120.934,18357.4635,18593.993,18830.5225,19067.052,19303.5815,19540.111,19776.6405,20013.17,20249.6995,20486.229,20722.7585,20959.288,21195.8175,21432.347,21668.8765,21905.406,22141.9355,22378.465,22614.9945,22851.524,23088.0535,23324.583,23561.1125,23797.642,24034.1715,24270.701,24507.2305,24743.76,24980.2895,25216.819,25453.3485,25689.878,25926.4075,26162.937,26399.4665,26635.996,26872.5255,27109.055,27345.5845,27582.114,27818.6435,28055.173,28291.7025,28528.232,28764.7615,29001.291,29237.8205,29474.35,29710.8795,29947.409,30183.9385],[16476.2818,16735.3905,16994.4992,17253.6079,17512.7166,17771.8253,18030.934,18290.0427,18549.1514,18808.2601,19067.3688,19326.4775,19585.5862,19844.6949,20103.8036,20362.9123,20622.021,20881.1297,21140.2384,21399.3471,21658.4558,21917.5645,22176.6732,22435.7819,22694.8906,22953.9993,23213.108,23472.2167,23731.3254,23990.4341,24249.5428,24508.6515,24767.7602,25026.8689,25285.9776,25545.0863,25804.195,26063.3037,26322.4124,26581.5211,26840.6298,27099.7385,27358.8472,27617.9559,27877.0646,28136.1733,28395.282,28654.3907,28913.4994,29172.6081,29431.7168,29690.8255,29949.9342,30209.0429,30468.1516,30727.2603,30986.369,31245.4777,31504.5864,31763.6951,32022.8038,32281.9125,32541.0212,32800.1299,33059.2386],[17906.5131,18188.201,18469.8889,18751.5768,19033.2647,19314.9526,19596.6405,19878.3284,20160.0163,20441.7042,20723.3921,21005.08,21286.7679,21568.4558,21850.1437,22131.8316,22413.5195,22695.2074,22976.8953,23258.5832,23540.2711,23821.959,24103.6469,24385.3348,24667.0227,24948.7106,25230.3985,25512.0864,25793.7743,26075.4622,26357.1501,26638.838,26920.5259,27202.2138,27483.9017,27765.5896,28047.2775,28328.9654,28610.6533,28892.3412,29174.0291,29455.717,29737.4049,30019.0928,30300.7807,30582.4686,30864.1565,31145.8444,31427.5323,31709.2202,31990.9081,32272.596,32554.2839,32835.9718,33117.6597,33399.3476,33681.0355,33962.7234,34244.4113,34526.0992,34807.7871,35089.475,35371.1629,35652.8508,35934.5387],[19336.7444,19641.0115,19945.2786,20249.5457,20553.8128,20858.0799,21162.347,21466.6141,21770.8812,22075.1483,22379.4154,22683.6825,22987.9496,23292.2167,23596.4838,23900.7509,24205.018,24509.2851,24813.5522,25117.8193,25422.0864,25726.3535,26030.6206,26334.8877,26639.1548,26943.4219,27247.689,27551.9561,27856.2232,28160.4903,28464.7574,28769.0245,29073.2916,29377.5587,29681.8258,29986.0929,30290.36,30594.6271,30898.8942,31203.1613,31507.4284,31811.6955,32115.9626,32420.2297,32724.4968,33028.7639,33333.031,33637.2981,33941.5652,34245.8323,34550.0994,34854.3665,35158.6336,35462.9007,35767.1678,36071.4349,36375.702,36679.9691,36984.2362,37288.5033,37592.7704,37897.0375,38201.3046,38505.5717,38809.8388],[20766.9757,21093.822,21420.6683,21747.5146,22074.3609,22401.2072,22728.0535,23054.8998,23381.7461,23708.5924,24035.4387,24362.285,24689.1313,25015.9776,25342.8239,25669.6702,25996.5165,26323.3628,26650.2091,26977.0554,27303.9017,27630.748,27957.5943,28284.4406,28611.2869,28938.1332,29264.9795,29591.8258,29918.6721,30245.5184,30572.3647,30899.211,31226.0573,31552.9036,31879.7499,32206.5962,32533.4425,32860.2888,33187.1351,33513.9814,33840.8277,34167.674,34494.5203,34821.3666,35148.2129,35475.0592,35801.9055,36128.7518,36455.5981,36782.4444,37109.2907,37436.137,37762.9833,38089.8296,38416.6759,38743.5222,39070.3685,39397.2148,39724.0611,40050.9074,40377.7537,40704.6,41031.4463,41358.2926,41685.1389],[22197.207,22546.6325,22896.058,23245.4835,23594.909,23944.3345,24293.76,24643.1855,24992.611,25342.0365,25691.462,26040.8875,26390.313,26739.7385,27089.164,27438.5895,27788.015,28137.4405,28486.866,28836.2915,29185.717,29535.1425,29884.568,30233.9935,30583.419,30932.8445,31282.27,31631.6955,31981.121,32330.5465,32679.972,33029.3975,33378.823,33728.2485,34077.674,34427.0995,34776.525,35125.9505,35475.376,35824.8015,36174.227,36523.6525,36873.078,37222.5035,37571.929,37921.3545,38270.78,38620.2055,38969.631,39319.0565,39668.482,40017.9075,40367.333,40716.7585,41066.184,41415.6095,41765.035,42114.4605,42463.886,42813.3115,43162.737,43512.1625,43861.588,44211.0135,44560.439],[23627.4383,23999.443,24371.4477,24743.4524,25115.4571,25487.4618,25859.4665,26231.4712,26603.4759,26975.4806,27347.4853,27719.49,28091.4947,28463.4994,28835.5041,29207.5088,29579.5135,29951.5182,30323.5229,30695.5276,31067.5323,31439.537,31811.5417,32183.5464,32555.5511,32927.5558,33299.5605,33671.5652,34043.5699,34415.5746,34787.5793,35159.584,35531.5887,35903.5934,36275.5981,36647.6028,37019.6075,37391.6122,37763.6169,38135.6216,38507.6263,38879.631,39251.6357,39623.6404,39995.6451,40367.6498,40739.6545,41111.6592,41483.6639,41855.6686,42227.6733,42599.678,42971.6827,43343.6874,43715.6921,44087.6968,44459.7015,44831.7062,45203.7109,45575.7156,45947.7203,46319.725,46691.7297,47063.7344,47435.7391]],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"camera":{"eye":{"x":1.87,"y":0.88,"z":-0.64}},"xaxis":{"title":[]},"yaxis":{"title":[]},"zaxis":{"title":[]}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"x":[4,5,6,7,8,9,10,11,12,13,14,15,16],"y":[64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128],"z":[[6464.6627,6565.717,6666.7713,6767.8256,6868.8799,6969.9342,7070.9885,7172.0428,7273.0971,7374.1514,7475.2057,7576.26,7677.3143,7778.3686,7879.4229,7980.4772,8081.5315,8182.5858,8283.6401,8384.6944,8485.7487,8586.803,8687.8573,8788.9116,8889.9659,8991.0202,9092.0745,9193.1288,9294.1831,9395.2374,9496.2917,9597.346,9698.4003,9799.4546,9900.5089,10001.5632,10102.6175,10203.6718,10304.7261,10405.7804,10506.8347,10607.889,10708.9433,10809.9976,10911.0519,11012.1062,11113.1605,11214.2148,11315.2691,11416.3234,11517.3777,11618.432,11719.4863,11820.5406,11921.5949,12022.6492,12123.7035,12224.7578,12325.8121,12426.8664,12527.9207,12628.975,12730.0293,12831.0836,12932.1379],[7894.894,8018.5275,8142.161,8265.7945,8389.428,8513.0615,8636.695,8760.3285,8883.962,9007.5955,9131.229,9254.8625,9378.496,9502.1295,9625.763,9749.3965,9873.03,9996.6635,10120.297,10243.9305,10367.564,10491.1975,10614.831,10738.4645,10862.098,10985.7315,11109.365,11232.9985,11356.632,11480.2655,11603.899,11727.5325,11851.166,11974.7995,12098.433,12222.0665,12345.7,12469.3335,12592.967,12716.6005,12840.234,12963.8675,13087.501,13211.1345,13334.768,13458.4015,13582.035,13705.6685,13829.302,13952.9355,14076.569,14200.2025,14323.836,14447.4695,14571.103,14694.7365,14818.37,14942.0035,15065.637,15189.2705,15312.904,15436.5375,15560.171,15683.8045,15807.438],[9325.1253,9471.338,9617.5507,9763.7634,9909.9761,10056.1888,10202.4015,10348.6142,10494.8269,10641.0396,10787.2523,10933.465,11079.6777,11225.8904,11372.1031,11518.3158,11664.5285,11810.7412,11956.9539,12103.1666,12249.3793,12395.592,12541.8047,12688.0174,12834.2301,12980.4428,13126.6555,13272.8682,13419.0809,13565.2936,13711.5063,13857.719,14003.9317,14150.1444,14296.3571,14442.5698,14588.7825,14734.9952,14881.2079,15027.4206,15173.6333,15319.846,15466.0587,15612.2714,15758.4841,15904.6968,16050.9095,16197.1222,16343.3349,16489.5476,16635.7603,16781.973,16928.1857,17074.3984,17220.6111,17366.8238,17513.0365,17659.2492,17805.4619,17951.6746,18097.8873,18244.1,18390.3127,18536.5254,18682.7381],[10755.3566,10924.1485,11092.9404,11261.7323,11430.5242,11599.3161,11768.108,11936.8999,12105.6918,12274.4837,12443.2756,12612.0675,12780.8594,12949.6513,13118.4432,13287.2351,13456.027,13624.8189,13793.6108,13962.4027,14131.1946,14299.9865,14468.7784,14637.5703,14806.3622,14975.1541,15143.946,15312.7379,15481.5298,15650.3217,15819.1136,15987.9055,16156.6974,16325.4893,16494.2812,16663.0731,16831.865,17000.6569,17169.4488,17338.2407,17507.0326,17675.8245,17844.6164,18013.4083,18182.2002,18350.9921,18519.784,18688.5759,18857.3678,19026.1597,19194.9516,19363.7435,19532.5354,19701.3273,19870.1192,20038.9111,20207.703,20376.4949,20545.2868,20714.0787,20882.8706,21051.6625,21220.4544,21389.2463,21558.0382],[12185.5879,12376.959,12568.3301,12759.7012,12951.0723,13142.4434,13333.8145,13525.1856,13716.5567,13907.9278,14099.2989,14290.67,14482.0411,14673.4122,14864.7833,15056.1544,15247.5255,15438.8966,15630.2677,15821.6388,16013.0099,16204.381,16395.7521,16587.1232,16778.4943,16969.8654,17161.2365,17352.6076,17543.9787,17735.3498,17926.7209,18118.092,18309.4631,18500.8342,18692.2053,18883.5764,19074.9475,19266.3186,19457.6897,19649.0608,19840.4319,20031.803,20223.1741,20414.5452,20605.9163,20797.2874,20988.6585,21180.0296,21371.4007,21562.7718,21754.1429,21945.514,22136.8851,22328.2562,22519.6273,22710.9984,22902.3695,23093.7406,23285.1117,23476.4828,23667.8539,23859.225,24050.5961,24241.9672,24433.3383],[13615.8192,13829.7695,14043.7198,14257.6701,14471.6204,14685.5707,14899.521,15113.4713,15327.4216,15541.3719,15755.3222,15969.2725,16183.2228,16397.1731,16611.1234,16825.0737,17039.024,17252.9743,17466.9246,17680.8749,17894.8252,18108.7755,18322.7258,18536.6761,18750.6264,18964.5767,19178.527,19392.4773,19606.4276,19820.3779,20034.3282,20248.2785,20462.2288,20676.1791,20890.1294,21104.0797,21318.03,21531.9803,21745.9306,21959.8809,22173.8312,22387.7815,22601.7318,22815.6821,23029.6324,23243.5827,23457.533,23671.4833,23885.4336,24099.3839,24313.3342,24527.2845,24741.2348,24955.1851,25169.1354,25383.0857,25597.036,25810.9863,26024.9366,26238.8869,26452.8372,26666.7875,26880.7378,27094.6881,27308.6384],[15046.0505,15282.58,15519.1095,15755.639,15992.1685,16228.698,16465.2275,16701.757,16938.2865,17174.816,17411.3455,17647.875,17884.4045,18120.934,18357.4635,18593.993,18830.5225,19067.052,19303.5815,19540.111,19776.6405,20013.17,20249.6995,20486.229,20722.7585,20959.288,21195.8175,21432.347,21668.8765,21905.406,22141.9355,22378.465,22614.9945,22851.524,23088.0535,23324.583,23561.1125,23797.642,24034.1715,24270.701,24507.2305,24743.76,24980.2895,25216.819,25453.3485,25689.878,25926.4075,26162.937,26399.4665,26635.996,26872.5255,27109.055,27345.5845,27582.114,27818.6435,28055.173,28291.7025,28528.232,28764.7615,29001.291,29237.8205,29474.35,29710.8795,29947.409,30183.9385],[16476.2818,16735.3905,16994.4992,17253.6079,17512.7166,17771.8253,18030.934,18290.0427,18549.1514,18808.2601,19067.3688,19326.4775,19585.5862,19844.6949,20103.8036,20362.9123,20622.021,20881.1297,21140.2384,21399.3471,21658.4558,21917.5645,22176.6732,22435.7819,22694.8906,22953.9993,23213.108,23472.2167,23731.3254,23990.4341,24249.5428,24508.6515,24767.7602,25026.8689,25285.9776,25545.0863,25804.195,26063.3037,26322.4124,26581.5211,26840.6298,27099.7385,27358.8472,27617.9559,27877.0646,28136.1733,28395.282,28654.3907,28913.4994,29172.6081,29431.7168,29690.8255,29949.9342,30209.0429,30468.1516,30727.2603,30986.369,31245.4777,31504.5864,31763.6951,32022.8038,32281.9125,32541.0212,32800.1299,33059.2386],[17906.5131,18188.201,18469.8889,18751.5768,19033.2647,19314.9526,19596.6405,19878.3284,20160.0163,20441.7042,20723.3921,21005.08,21286.7679,21568.4558,21850.1437,22131.8316,22413.5195,22695.2074,22976.8953,23258.5832,23540.2711,23821.959,24103.6469,24385.3348,24667.0227,24948.7106,25230.3985,25512.0864,25793.7743,26075.4622,26357.1501,26638.838,26920.5259,27202.2138,27483.9017,27765.5896,28047.2775,28328.9654,28610.6533,28892.3412,29174.0291,29455.717,29737.4049,30019.0928,30300.7807,30582.4686,30864.1565,31145.8444,31427.5323,31709.2202,31990.9081,32272.596,32554.2839,32835.9718,33117.6597,33399.3476,33681.0355,33962.7234,34244.4113,34526.0992,34807.7871,35089.475,35371.1629,35652.8508,35934.5387],[19336.7444,19641.0115,19945.2786,20249.5457,20553.8128,20858.0799,21162.347,21466.6141,21770.8812,22075.1483,22379.4154,22683.6825,22987.9496,23292.2167,23596.4838,23900.7509,24205.018,24509.2851,24813.5522,25117.8193,25422.0864,25726.3535,26030.6206,26334.8877,26639.1548,26943.4219,27247.689,27551.9561,27856.2232,28160.4903,28464.7574,28769.0245,29073.2916,29377.5587,29681.8258,29986.0929,30290.36,30594.6271,30898.8942,31203.1613,31507.4284,31811.6955,32115.9626,32420.2297,32724.4968,33028.7639,33333.031,33637.2981,33941.5652,34245.8323,34550.0994,34854.3665,35158.6336,35462.9007,35767.1678,36071.4349,36375.702,36679.9691,36984.2362,37288.5033,37592.7704,37897.0375,38201.3046,38505.5717,38809.8388],[20766.9757,21093.822,21420.6683,21747.5146,22074.3609,22401.2072,22728.0535,23054.8998,23381.7461,23708.5924,24035.4387,24362.285,24689.1313,25015.9776,25342.8239,25669.6702,25996.5165,26323.3628,26650.2091,26977.0554,27303.9017,27630.748,27957.5943,28284.4406,28611.2869,28938.1332,29264.9795,29591.8258,29918.6721,30245.5184,30572.3647,30899.211,31226.0573,31552.9036,31879.7499,32206.5962,32533.4425,32860.2888,33187.1351,33513.9814,33840.8277,34167.674,34494.5203,34821.3666,35148.2129,35475.0592,35801.9055,36128.7518,36455.5981,36782.4444,37109.2907,37436.137,37762.9833,38089.8296,38416.6759,38743.5222,39070.3685,39397.2148,39724.0611,40050.9074,40377.7537,40704.6,41031.4463,41358.2926,41685.1389],[22197.207,22546.6325,22896.058,23245.4835,23594.909,23944.3345,24293.76,24643.1855,24992.611,25342.0365,25691.462,26040.8875,26390.313,26739.7385,27089.164,27438.5895,27788.015,28137.4405,28486.866,28836.2915,29185.717,29535.1425,29884.568,30233.9935,30583.419,30932.8445,31282.27,31631.6955,31981.121,32330.5465,32679.972,33029.3975,33378.823,33728.2485,34077.674,34427.0995,34776.525,35125.9505,35475.376,35824.8015,36174.227,36523.6525,36873.078,37222.5035,37571.929,37921.3545,38270.78,38620.2055,38969.631,39319.0565,39668.482,40017.9075,40367.333,40716.7585,41066.184,41415.6095,41765.035,42114.4605,42463.886,42813.3115,43162.737,43512.1625,43861.588,44211.0135,44560.439],[23627.4383,23999.443,24371.4477,24743.4524,25115.4571,25487.4618,25859.4665,26231.4712,26603.4759,26975.4806,27347.4853,27719.49,28091.4947,28463.4994,28835.5041,29207.5088,29579.5135,29951.5182,30323.5229,30695.5276,31067.5323,31439.537,31811.5417,32183.5464,32555.5511,32927.5558,33299.5605,33671.5652,34043.5699,34415.5746,34787.5793,35159.584,35531.5887,35903.5934,36275.5981,36647.6028,37019.6075,37391.6122,37763.6169,38135.6216,38507.6263,38879.631,39251.6357,39623.6404,39995.6451,40367.6498,40739.6545,41111.6592,41483.6639,41855.6686,42227.6733,42599.678,42971.6827,43343.6874,43715.6921,44087.6968,44459.7015,44831.7062,45203.7109,45575.7156,45947.7203,46319.725,46691.7297,47063.7344,47435.7391]],"type":"surface","contours":{"z":{"show":true,"usecolormap":true,"highlightcolor":"#ff0000","project":{"z":true}}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Interpretaciones …</p>
-<p><strong>x.x. Comparaciones múltiples</strong></p>
+<p><strong>2.8. Comparaciones múltiples</strong></p>
 <p>Interpretaciones …</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
@@ -1106,7 +1232,7 @@ Attaching package: 'plotly'</code></pre>
 </div>
 </div>
 <p>Interpretaciones …</p>
-<p><strong>x.x. Cálculo de réplicas</strong></p>
+<p><strong>2.9. Cálculo de réplicas</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>

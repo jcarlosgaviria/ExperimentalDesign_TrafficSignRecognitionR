@@ -121,6 +121,17 @@ pruebaIgualdadVarianzasLevene <- function(datos, alfa, h0, ha) {
   }
 }
 
+pruebaIgualdadVarianzasLeveneConjunta <- function(grupo, datos, alfa, h0, ha) { 
+  resultado <- leveneTest(grupo, data=datos) 
+  print(resultado)
+  pvalue<-resultado$'Pr(>F)'[1]
+  if ( pvalue > alfa) {
+    cat("Dado que el valor-p ", pvalue, " es mayor que el nivel de significancia ", alfa , " no se rechaza H0, y se concluye que ", h0, ".")
+  } else {
+    cat("Dado que el valor-p ", pvalue, " es menor que el nivel de significancia ", alfa , " se rechaza H0, y se concluye que ", ha, ".")
+  }
+}
+
 pruebaIgualdadVarianzasBartlett <- function(datos, alfa, h0, ha) { 
   resultado <- bartlett.test(datos)
   print(resultado)
@@ -187,43 +198,45 @@ Se ha observado un incremento significativo en la cantidad de fatalidades ocasio
 
 **1.4. Variable respuesta**
 
+Para el experimento, la variable respuesta es:
+
 -   ***Variable***: Exactitud de predicción.
 
 -   ***Valores usuales de operación***: Entre 0 y 100.
 
 -   ***Precisión de medición***: Porcentaje.
 
--   ***Instrumento de medida***: No aplica.
+-   ***Instrumento de medida***: Computador.
 
 **1.5. Variables de control**
 
-+-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+------------------------------------------------------+
-| *Variable*      | *Valores usuales de operación* | *Precisión de medición* | *Instrumento de medida* | *Configuración propuesta* | *Efecto predicho*                                    |
-+=================+================================+=========================+=========================+===========================+======================================================+
-| *Convoluciones* | Entre 1 y 10                   | Número entero           | No aplica               | \[1, 2\]                  | La exactitud de predicción aumentará a mayor número. |
-+-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+------------------------------------------------------+
-| *Filtros*       | Entre 1 y 100                  | Número entero           | No aplica               | \[4, 16\]                 | La exactitud de predicción aumentará a mayor número. |
-+-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+------------------------------------------------------+
-| *Densa*         | Entre 1 y 1000                 | Número entero           | No aplica               | \[65, 128\]               | La exactitud de predicción aumentará a mayor número. |
-+-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+------------------------------------------------------+
+A continuación se describen las variables de control del experimento:
 
-: Variables de control
+Tabla 1. Variables de control
+
++-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+-----------------------------------------------------------------------------------+
+| *Variable*      | *Valores usuales de operación* | *Precisión de medición* | *Instrumento de medida* | *Configuración propuesta* | *Efecto predicho*                                                                 |
++=================+================================+=========================+=========================+===========================+===================================================================================+
+| *Convoluciones* | Entre 1 y 10                   | Número entero           | No aplica               | \[1, 2\]                  | La exactitud de predicción aumentará a mayor número de convoluciones.             |
++-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+-----------------------------------------------------------------------------------+
+| *Filtros*       | Entre 1 y 100                  | Número entero           | No aplica               | \[4, 16\]                 | La exactitud de predicción aumentará a mayor número de filtros.                   |
++-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+-----------------------------------------------------------------------------------+
+| *Densa*         | Entre 1 y 1000                 | Número entero           | No aplica               | \[65, 128\]               | La exactitud de predicción aumentará a mayor número de neuronas en la capa densa. |
++-----------------+--------------------------------+-------------------------+-------------------------+---------------------------+-----------------------------------------------------------------------------------+
 
 **1.6. Factores controlables**
 
-Listado de factores que se mantendrán constantes en el experimento:
+En las tablas 2 y 3 se presentan los factores que se mantendrán constantes durante el experimento:
 
-Factores externos al modelo
+Tabla 2. Factores externos al modelo CNN
 
-+------------+-----------------+-------------------------+-------------------------+------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| *Variable* | *Nivel deseado* | *Precisión de medición* | *Instrumento de medida* | *Control*                                                                          | *Impacto esperado*                                                                                                                                                                                    |
-+============+=================+=========================+=========================+====================================================================================+=======================================================================================================================================================================================================+
-| *Dataset*  | Superior a 1000 | Imágenes                | No aplica               | Se usarán las mismas imágenes de entrenamiento y validación para todos los modelos | Obtención de una mejor comprensión de cómo diferentes configuraciones afectan el rendimiento del modelo, con el fin de identificar la arquitectura más adecuada para mejorar la exactitud predictiva. |
-+------------+-----------------+-------------------------+-------------------------+------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++------------+------------------+---------------------------+-------------------------+------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| *Variable* | *Nivel deseado*  | *Precisión de medición*   | *Instrumento de medida* | *Control*                                                                                                  | *Impacto esperado*                                                                                                                                                                                    |
++============+==================+===========================+=========================+============================================================================================================+=======================================================================================================================================================================================================+
+| *Dataset*  | Superior a 70000 | Imágenes de 32x32 píxeles | No aplica               | Se usarán las mismas 58511 imágenes de entrenamiento y 14630 imágenes de validación para todos los modelos | Obtención de una mejor comprensión de cómo diferentes configuraciones afectan el rendimiento del modelo, con el fin de identificar la arquitectura más adecuada para mejorar la exactitud predictiva. |
++------------+------------------+---------------------------+-------------------------+------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-: Variables de control
-
-Factores internos del modelo
+Tabla 3. Factores internos del modelo CNN
 
 +--------------------------+------------------------------------+-------------------------+-------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | *Variable*               | *Nivel deseado*                    | *Precisión de medición* | *Instrumento de medida* | *Control*                                                                                                                        | *Impacto esperado*                                                                                                                                                                                                                                                                     |
@@ -239,13 +252,11 @@ Factores internos del modelo
 |                          |                                    |                         |                         | metrics=\['accuracy'\]                                                                                                           |                                                                                                                                                                                                                                                                                        |
 +--------------------------+------------------------------------+-------------------------+-------------------------+----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-: Variables de control
-
 **1.7. Factores no controlables**
 
-Listado de factores que no se mantendrán constantes en el experimento:
+A continuación se describen en las tablas 4 y 5 los factores que no se mantendrán constantes durante el experimento:
 
-Factores externos al modelo
+Tabla 4. Factores externos al modelo CNN
 
 +--------------------------------------+-----------------+-------------------------+-------------------------+----------------------------------------------+-----------------------------------------------------------------------------------+
 | *Variable*                           | *Nivel deseado* | *Precisión de medición* | *Instrumento de medida* | Estrategia                                   | *Efectos anticipados*                                                             |
@@ -255,9 +266,7 @@ Factores externos al modelo
 | *Tiempo de entrenamiento por modelo* | Entre 0 y 60    | Minutos                 | Cronómetro              | Uso de configuraciones idénticas de hardware | Limitación en el número de muestras a tomar.                                      |
 +--------------------------------------+-----------------+-------------------------+-------------------------+----------------------------------------------+-----------------------------------------------------------------------------------+
 
-: Variables de control
-
-Factores internos del modelo CNN
+Tabla 5. Factores internos modelo CNN
 
 +------------+-----------------+-------------------------+-------------------------+--------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | *Variable* | *Nivel deseado* | *Precisión de medición* | *Instrumento de medida* | *Estrategia*             | Efectos anticipados                                                                                                                                                                                                                                                                                                          |
@@ -265,77 +274,60 @@ Factores internos del modelo CNN
 | *Pesos*    | Entre 0 y 1     | Número real             | No aplica               | Inicialización aleatoria | La inicialización aleatoria de pesos en una red neuronal convolucional promueve la diversidad desde el inicio del entrenamiento, ayudando a evitar mínimos locales y aumentando la capacidad del modelo para adaptarse a diferentes conjuntos de datos. Esto mejora la capacidad de generalización y la robustez del modelo. |
 +------------+-----------------+-------------------------+-------------------------+--------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-: Variables de control
-
 **1.8. Interacciones**
 
-Los ensayos en cada tratamiento deben realizarse de manera separada tomando una de las repeticiones de cada tratamiento y ubicarlos a una distancia que el calor de una vela no pueda afectar la otra, se deben encender al mismo instante y esperar la combustión de las primeras 4 velas con diferente tratamiento durante un periodo de tiempo donde se apague la hasta la ultima vela, teniendo en cuenta que el registro de la combustión en cada vela debe ser tomado cuando esta se apague en su totalidad, el terminar el primer ensayo se debe proceder con el segundo de la misma forma hasta lograr abordar las cinco replicas y la cuantificación de los tiempos de combustión en cada una de las velas, se debe evitar encender todas las velas al mismo instante, ya que el calor que se produce alrededor de estas podría alterar los tratamientos al ocasionar derretimiento de la cera en algunas de las velas que se encuentren en una posición donde puedan recibir mayor radiación de calor por velas que se encuentren próximas y de este modo crear un sesgo en la combustión total de alguna de los tratamientos y ocasionar errores en el registro de los tiempos totales de combustión ocasionando alteración en el experimento.
+1.  Interacción entre el número de convoluciones y el número de filtros.
+
+2.  Interacción entre el número de convoluciones y el número de neuronas de la capa densa.
+
+3.  Interacción entre el número de filtros y el número de neuronas de la capa densa.
+
+4.  Interacción entre el número de convoluciones, el número de filtros y el número de neuronas de la capa densa.
 
 **1.9. Restricciones**
 
-Las restricciones que se tuvieron en cuenta para la realización del experimento estuvieron enfocadas en que algunas podrían afectar el diseño al igual que los objetivos de los estudios por lo cual nos aseguramos de las siguientes: Seguridad: fue fundamental para evitar posible incendio dentro del cuarto debido a una combustión alterada que pudiera estar fuera de control y provocara encendido del entorno del experimento. Ventilación: el experimento se realizó en un área ventilada de manera regulada que permitió la combustión de las velas, pero a la vez que estas no se apagaran ni diseminara la llama por acción del viento. Espacio y condiciones físicas del cuarto: Se procuró que este espacio fuera el más adecuado en cuestión de área para la combustión segura de las velas. Manipulación de las velas: Las velas desde el primer instante se planificó su ubicación en el cuarto y en la tabla al igual que el momento del encendido, evitando que las distancias no afectaran el entorno por medio del derrame de la cera de las velas ni la diseminación de la llama dentro del cuarto que pudieran provocar posibles incendios o quemaduras al responsable de la ejecución del experimento. Material y equipo de seguridad: Se tuvieron en cuenta todas las precauciones para la manipulación de las velas que pudiera provocar accidentes en el proceso de realización del experimento. Residuos y limpieza: posterior a la realización del experimento se realizó el debido proceso para la separación de la será de la tabla al igual que el barrido de todo material que quedo de residuo luego de la aplicación del experimento.
-
-Este diseño experimental se realizó en un cuarto aislado para poder tener control sobre alguna de las siguientes variables: Temperatura: Esta se mantuvo alrededor de los 28° C. Humedad relativa: Se mantuvo alrededor del 70%. Velas: Las velas con la cual se llevo a cabo los experimentos fueron del mismo tamaño para cada tratamiento y con la misma composición de cera, con una altura de 1 cm cada una y un diámetro de 2 cm, las mechas del mismo diámetro, pero con diferentes longitudes en cada uno de los tratamientos, T1= 1cm, T2=1.5cm, T3= 2 cm, y T4= 2.5 cm, cada tratamiento se repitió 5 veces.
-
-Los ensayos se realizaron en cinco intervalos de tiempo donde en cada ensayo se encendió una vela por cada tratamiento sobre una tabla de acero inoxidable de (70x15x5) cm, el registro de la combustión en cada ensayo se llevó a cabo aproximadamente durante 37 minutos, tomando como tiempo total de combustión en las velas cuando la mecha se apagaba totalmente.
-
-Se espera que la temperatura, la humedad relativa, la composición y el volumen de las velas tengan un impacto mínimo en la combustión, por el contrario, se espera que cualquier cambio en la combustión de las velas se deba principalmente a la longitud de la mecha, permitiendo analizar de manera efectiva el impacto en el proceso de combustión de las velas.
+Debido a los altos requisitos computacionales de los experimentos con redes neuronales convolucionales, fue necesario utilizar el servicio en la nube Google Colab. Tanto en sus versiones gratuitas como de pago, este servicio impone límites en el tiempo de ejecución. Cuando se agota este tiempo, es necesario esperar hasta el día siguiente para continuar. Por lo tanto, la principal limitación fue el tiempo de procesamiento proporcionado por el servicio, considerando un tiempo estimado de 10 minutos para el entrenamiento de cada modelo. Dado que se planeaba realizar pruebas con 8 modelos y realizar 10 ejecuciones de cada uno, se requerían al menos 14 horas de tiempo de computación.
 
 **1.10. Diseño**
 
-![](imagenes/velas.jpeg)
+Se utilizará un diseño factorial el cual involucra tres factores: el numero de convoluciones, numero de filtros aplicados a cada convolucion y el numero de neuronas de la capa densa con lo cual se logrará medir el reconocimiento de señales de tráficos (TSDR) mediante el uso de una red neuronal convolucional (CNN) para determinar la significancia estadística de los efectos de los factores y sus interacciones para comprender como influyen en conjunto en la esactitud de la prediccion de la red neuronal al reconocer las imagenes de tránsito
 
-**Diseño Experimental:** **:** Se utilizará un diseño factorial la cual involucra tres componentes: el numero de convoluciones, numero de filtros aplicados a cada convolucion y el numero de neuronas de la capa densa con lo cual se logrará medir el reconocimiento de señales de tráficos (TSDR) mediante el uso de una red neuronal convolucional (CNN) para determinar la significancia estadística de los efectos de los factores y sus interacciones para comprender como influyen en conjunto en la esactitud de la prediccion de la red neuronal al reconocer las imagenes de tránsito
+**Factores:**
 
-**Factor:**
+Para el experimento se tomaron los siguientes factores:
 
-Convoluciones: Número de convoluciones
+-   ***Convoluciones***: Número de convoluciones
 
-Filtros: Número de filtros aplicados en cada convolución
+-   ***Filtros***: Número de filtros aplicados en cada convolución
 
-Densa: Número de neuronas de la capa densa final de la red neuronal
+-   ***Densa***: Número de neuronas de la capa densa final de la red neuronal
 
 **Tratamientos:**
 
-La nomenclatura usada para identificar cada tratamiento es: Cx_Fy_Dz
+La nomenclatura usada para identificar cada tratamiento es **Cx_Fy_Dz** donde: *x* representa el número de convoluciones, *y* representa número de filtros y *z* el numero de neuronas de la capa densa. De la combinación de los niveles de los factores, convoluciones, filtros y neuronas de la capa densa surgen los siguientes 8 tratamientos.
 
-x: Representa el número de convoluciones
+Tabla 6. Tratamientos
 
-y: representa número de filtros
-
-z: numero de neuronas de la capa densa
-
-de la combinación de los niveles de los factores, convoluciones, filtros y numero de neuronasde la capa densa surgen los siguientes 8 tratamientos.
-
-C1_F4_D64
-
-C1_F4_D128
-
-C1_F16_D64
-
-C1_F16_D128
-
-C2_F4_D64
-
-C2_F4_D128
-
-C2_F16_D64
-
-C2_F16_D128
+| Identificador | Convoluciones | Filtros | Neuronas capa densa |
+|---------------|---------------|---------|---------------------|
+| C1_F4_D64     | 1             | 4       | 64                  |
+| C1_F4_D128    | 1             | 4       | 128                 |
+| C1_F16_D64    | 1             | 16      | 64                  |
+| C1_F16_D128   | 1             | 16      | 128                 |
+| C2_F4_D64     | 2             | 4       | 64                  |
+| C2_F4_D128    | 2             | 4       | 128                 |
+| C2_F16_D64    | 2             | 16      | 64                  |
+| C2_F16_D128   | 2             | 16      | 128                 |
 
 **Materiales:**
 
--   **Hardware de computación:** Google colab
+-   **Entorno de ejecución:** Google colab
 
--   **Software de desarrollo y entrenamiento:** TensorFlow, PyTorch o Keras
+-   **Lenguaje de programación:** Python (TensorFlow y Keras)
 
--   **Conjunto de imágenes graficas:** Datase imágenes de trafico
+-   **Conjunto de datos:** <https://www.kaggle.com/datasets/flo2607/traffic-signs-classification>
 
--   **Herramientas de procesamiento de imágenes:** Python Imaging Library
-
--   **Entorno de experimentación:** Servicio en la nube
-
--   **Herramientas de análisis estadístico:** Lenguaje de programación R-studio
+-   **Herramientas de análisis estadístico:** Lenguaje de programación R
 
 -   **Documentación y registro:** Información de acceso libre
 
@@ -379,7 +371,7 @@ C2_F16_D128
 
 **1.11. Descripción**
 
-La técnica de análisis y presentación utilizada en este experimento de 1 factor con 4 tratamientos se basa en una combinación de herramientas estadísticas y gráficas diseñadas para explorar y comunicar los resultados de manera efectiva.
+La técnica de análisis y presentación utilizada en este experimento de 3 factores se basa en una combinación de herramientas estadísticas y gráficas diseñadas para explorar y comunicar los resultados de manera efectiva.
 
 **Gráficas** Se utilizan histogramas para visualizar la distribución de los datos en cada tratamiento, lo que permite una comprensión rápida de la forma y la dispersión de los datos. Los gráficos de cajas para comparar la distribución de los datos entre los diferentes tratamientos, mostrando la mediana, los cuartiles y los valores atípicos y los gráficos de dispersión para explorar la relación entre variables, como los valores ajustados y los residuos.
 
@@ -399,17 +391,20 @@ En resumen, esta técnica de análisis y presentación utiliza una variedad de h
 
 **1.12. Responsable de coordinación**
 
-Juan Carlos Gaviria Chaverra.
+Andrés Orlando López Henao.
 
 **1.13. Premuestreo**
 
-No se realizará premuestreo por las siguientes razones:
+Se llevó a cabo un premuestreo con el fin de establecer la configuración óptima del modelo CNN, buscando alcanzar una precisión superior al 70% sin sacrificar un tiempo de entrenamiento excesivo, dada la limitada capacidad de cómputo proporcionada por el servicio de Google Colab y las restricciones temporales del proyecto.
 
-Simplicidad del experimento: El diseño experimental es directo y no implica procedimientos complicados. Consiste en encender velas con diferentes longitudes de mecha y medir la duración de la combustión. Dado que el procedimiento es simple y fácil de ejecutar, no se requiere una fase preliminar de recolección de datos para ajustar o validar el método experimental.
+Inicialmente, se diseñaron dos modelos CNN:
 
-Condiciones experimentales bien definidas: Las condiciones del experimento, como el ambiente de prueba y los materiales utilizados, son conocidas y estables. Se llevará a cabo en un entorno controlado y las velas utilizadas serán consistentes en calidad y composición. Por lo tanto, se puede tener confianza en la replicabilidad de los resultados sin la necesidad de un premuestreo para ajustar o validar estas condiciones.
+1.  Un modelo con 2 capas de convolución, cada una con 4 filtros, y una capa densa con 64 neuronas.
+2.  Un modelo con 4 capas de convolución, cada una con 16 filtros, y una capa densa con 128 neuronas.
 
-Recursos limitados: Los recursos disponibles, como tiempo, dinero y personal, son limitados.
+Ambos modelos fueron entrenados durante 3 épocas para evaluar su desempeño y tiempo de entrenamiento. Posteriormente, se incrementó gradualmente el número de épocas con la intención de alcanzar una precisión superior al 90%. Se encontró que el modelo de 2 convoluciones lograba esta precisión con 10 épocas, con un tiempo de entrenamiento medio entre 1 y 1.5 minutos por época. Sin embargo, el modelo de 4 convoluciones, a pesar de su mayor complejidad, no alcanzaba la precisión deseada en un tiempo aceptable, lo que podría atribuirse a la reducción excesiva de la imagen debido a la aplicación de múltiples convoluciones en imágenes tan pequeñas.
+
+Ante la dificultad de entrenamiento y los límites de capacidad computacional, se evaluó un enfoque más simple con un modelo de 1 convolución, logrando la precisión esperada en menos de 1 minuto de entrenamiento por época, lo que demostró ser más eficiente y efectivo dadas las limitaciones del entorno de cómputo disponible.
 
 **2. Análisis**
 
@@ -448,8 +443,6 @@ ggplot(datos,aes(x=tratamiento, y=exactitud, group=tratamiento))+
   labs(title = "Gráfico de cajas", x = "Tratamientos", y = "Exactitud") 
 ```
 
-**Interpretación**
-
 En este análisis exploratorio de los tratamientos con respecto a la exactitud, podemos observar que posiblemente existan diferencias significativas entre algunos de los tratamientos con respecto al comportamiento del modelo de red neuronal, uno de los que mayor distancia toma con respecto a los otros es el arreglo C2_F16_D128, si se observa se puede ver, que los arreglos C1_F16_D64, C1_F4_D128, C1_F4_D64, están aparentemente distanciado del ya mencionado C2_F16_D128 quien por otro lado parece ser es el de mayor porcentaje de exactitud a la hora de predecir las imágenes de tránsito para corroborar dichas apreciaciones deberemos realizar un análisis de factores de efetos principales que permita establecer los valores de significancia entre los arreglos y la exactitud que brinda el modelo.
 
 ```{r}
@@ -462,8 +455,6 @@ ggplot(datos,aes(x=convoluciones, y=exactitud, group=tratamiento))+
 
 
 ```
-
-Interpretaciones
 
 Para el caso de estas interacciones entre convoluciones y la exactitud de manera exploratoria podemos ver que el numero de 2 convoluciones parece no distanciarse de una manera significativa de aquellos que solo presentan 1 convolución, por lo cual en este caso si es muy pertinente poder realizar un análisis mas detallado en las pruebas de significancia de las interacciones entre factores que nos puedan dar una mayor claridad de la relación entre estas dos características dentro del modelo de red neuronal.
 
@@ -478,8 +469,6 @@ ggplot(datos,aes(x=filtros, y=exactitud, group=tratamiento))+
 
 ```
 
-Interpretaciones
-
 Entre la exactitud y el factor filtro parece seguir el mismo comportamiento que el factor convolucional ya que no es claro poder observar diferencias directa entre este factor y la exactitud de igual modo debemos apelar al análisis de factores directos que permitan mostrar el valor de la significancia para con estas métricas poder concluir si realmente existen diferencias significativas directas entre este factor y la exactitud.
 
 ```{r}
@@ -493,49 +482,37 @@ ggplot(datos,aes(x=densa, y=exactitud, group=tratamiento))+
 
 ```
 
-Interpretaciones
-
 Entre la exactitud y capa densa parece nuevamente no haber diferencias ya que todas las cajas están en posiciones muy similares o almenos no se observa que alguna de ellas tome distancias considerables sobre las otras por lo que también es pertinente poder realizar pruebas de significancias que permitan comprobar dicho supuesto ya que de manera exploratoria no es claro que pueda haber diferencias.  
 
 ```{r}
 #| echo: false
 ggplot(datos, aes(x = convoluciones,  y = exactitud, group = convoluciones)) +
-  geom_boxplot(fill = "turquoise", color = "turquoise4") + 
+  geom_boxplot() + 
   xlab("convoluciones") +
   ylab("exactitud")  
 ```
-
-Interpretaciones
 
 Mediante estos gráficos directos de caja entre exactitud y convoluciones es muchísimo mas claro ver que posiblemente no existan diferencias significativas entre la exactitud y la convolución ya que las cajas muestran tener unas formas y traslapes muy similares lo que posiblemente nos haría descartar dicha posibilidad que el p-value este por encima de 0,05.
 
 ```{r}
 #| echo: false
 ggplot(datos, aes(x = filtros,  y = exactitud, group = filtros)) +
-  geom_boxplot(fill = "turquoise", color = "turquoise4") + 
+  geom_boxplot() + 
   xlab("filtros") +
   ylab("exactitud")  
 ```
-
-Interpretaciones
 
 Mediante estos gráficos directos de caja, entre exactitud y filtros de manera exploratoria podemos ver la similitud en la distancia de las cajas con respeto a sus cuartiles, aunque la media pareciera inclinarse para el uso de 16 filtro no pareciera que esa distancia entre medias con respecto a los 4 filtros pueda llegar a presentar diferencia significativa sin embargo es importante poder comprobar este supuesto con la prueba de factores.  
 
 ```{r}
 #| echo: false
 ggplot(datos, aes(x = densa,  y = exactitud, group = densa)) +
-  geom_boxplot(fill = "turquoise", color = "turquoise4") + 
+  geom_boxplot() + 
   xlab("densa") +
   ylab("exactitud")  
 ```
 
-Interpretaciones
-
 A través de la visualización de gráficos de caja comparativos entre la exactitud y la densidad de forma exploratoria, podemos observar similitudes en la distribución de los datos en términos de sus cuartiles. Aunque la media parece favorecer el uso de 128 neuronas en lugar de 64, no parece haber una diferencia significativa entre las medias de ambas configuraciones. No obstante, para validar esta suposición, nuevamente es crucial realizar pruebas de factores.
-
-**Datos descriptivos**
-
-A continuación, presentamos un análisis descriptivo para cada uno de los 8 arreglos que se modelaran para la obtención de la red neuronal convolucional lo cual incluye las combinaciones entre los factores de los que para este caso son convoluciones, numero de filtros y numero de neuronas.
 
 ```{r}
 #| echo: false
@@ -544,18 +521,14 @@ tapply(datos$exactitud, datos$filtros, summary)
 tapply(datos$exactitud, datos$densa, summary)  
 ```
 
-Interpretaciones ...
-
 ```{r}
 #| echo: false
 # Histograma de exactitud
 ggplot(datos, aes(x = exactitud)) +
-  geom_histogram(fill = "turquoise", color = "turquoise4")  
+  geom_histogram(fill = "white", color = "black")  
 ```
 
-Interpretaciones ...
-
-**x.x.Gráficos de medias**
+**Gráficos de medias**
 
 ```{r}
 #| echo: false
@@ -582,15 +555,9 @@ interaction.plot(datos$filtros, datos$densa,datos$ exactitud,
   
 ```
 
-Interpretaciones
+Interpretaciones ...
 
-En estos 3 gráfico podemos observar de manera exploratoria como se distribuyen las medias con respecto a cada uno de los factores, pero además las diferencias que existen dentro de los valores de cada factor, en la primera grafica vemos que en el caso de las convoluciones se observa que la media con respecto a 2 capas es superior a la de 1 capa, pero en la gráfica; las pestañas se traslapan, lo que indica que a pesar de ser medias diferentes, posiblemente no existan diferencias entre los valores conjuntos, caso contrario se puede observar en las medias de los filtros y densas; logramos ver que en el primero, la media de 16 filtros  es muy superior a la de 4, además vemos que en el gráfico las pestañas nos se traslapan, lo que en esta gráfica, podría darnos luces de la existencia de diferencias significativas en el uso de mayores filtros en la red neuronal, algo similar observamos en el factor densa, aunque son menores las diferencia entre las medias de 64 y 128 neuronas, también vemos que 128 podría funcionar mejor que 64 con respecto al modelo de exactitud de la red neuronal.
-
-Ya en el segundo gráfico observamos que entre los tres factores el que mas representan fuerza en la exactitud del modelo son el numero de filtros en segundo lugar el numero de neuronas y por ultimo las convoluciones, pero si miramos en detalle observamos que las diferencias entre los tres factores son muy mínimas situación que permite pensar que posiblemente no existan diferencias entre las interacciones.
-
-Ya en la 3 gráfica es evidente poder considerar que al no haber cruce entre las líneas para ninguno de los factores se podrían considerar la no existencia de diferencias significativa almenos dentro de ellos por lo cual es pertinente poder realizar la prueba entre factores para mirar si posiblemente existen diferencias entre las interacciones.
-
-**ANOVA Multifactorial**
+**2.3. ANOVA**
 
 ```{r}
 #| echo: false
@@ -611,11 +578,7 @@ shapiro.test(residuales)
 ad.test(residuales)  
 ```
 
-Interpretaciones
-
-```         
-Luego de realizar la prueba de normalidad de los datos con una prueba de Shapiro-Wilk: p-value de 0.08737 y otra de Anderson-Darling p-value de 0.06672, además de las pruebas de homocedasticidad Levane con valores de p-value de xxxxxx además de la prueba de independencia de Durbin-Watson con p-value de xxxxxxx procedemos al confirmar todos los supuestos a realizar el análisis de varianza multifactorial lo cual En esta análisis de varianza multifactorial podemos ver la existencia de diferencias significativas de la variable de respuesta exactitud con respecto a cada uno de los factores, convoluciones, filtros y densa ya que observamos en el p-value de la prueba está por debajo de 0,05 lo que establece y corrobora la existencia de diferencias significativas en cada uno de los factores para cada uno de los factores con respecto a la variable de respuesta exactitud de predicción de la red en el caso de la lectura de las imágenes, caso contrario muestran las interacciones dobles; convoluciones:filtros, convoluciones:densa, filtros:densa, donde encontramos que estas interacciones sus p-value están por encima de 0,05, al igual que las interacciones entre los tres factores convoluciones.filtro:densa por lo cual podemos concluir la no existencia de diferencias significativas entre las interacciones, lo cual podríamos decir que estas no aportan a los porcentajes de exactitud del modelo de red neuronal convolucional (CNN).
-```
+Interpretaciones ...
 
 ```{r}
 #| echo: false
@@ -630,7 +593,7 @@ summary(modelolm6)
 
 Interpretaciones ...
 
-**x.x.Diagrama de Pareto de efectos estandarizados**
+**2.4. Diagrama de Pareto de efectos estandarizados**
 
 ```{r}
 #| echo: false
@@ -640,7 +603,7 @@ efectos <- c(-5.6, -22.3, 31.1, -7.3, -9.6, 47.0, -1.9)
 se_efecto <- sqrt(21/4)
 efectos_est <- efectos/se_efecto
 efectos_est_ord <- sort(abs(efectos/se_efecto))
-names(efectos_est_ord) <- c("TCdensa", "T", "TC", "Tdensa", "C", "densa", "Cdensa")
+names(efectos_est_ord) <- c("c_f_d", "c", "c_f", "c_d", "f", "d", "f_d")
 #efectos_est_ord  <- relabels()
  
 barplot(efectos_est_ord , horiz=TRUE, las=1, 
@@ -649,8 +612,8 @@ abline(v=qt(0.975, 8), col="black", lwd=3, lty =3)
 ```
 
 Interpretaciones ...
- leveneTest(exactitud ~ densa*filtros, data=datos1)
-**x.x.Sin la interaccion triple**
+
+**Sin la interaccion triple**
 
 ```{r}
 #| echo: false
@@ -664,9 +627,7 @@ modelolm1 <-  lm(exactitud ~ as.numeric(convoluciones)*as.numeric(filtros) +
 summary(modelolm1)
 ```
 
-Interpretaciones ...
-
-**x.x.Identificacion de outlier**
+**2.5. Identificacion de outlier**
 
 ```{r}
 #| echo: false
@@ -677,9 +638,7 @@ outlierTest(modelolm1)
 plot(fitted(modelolm1), residuals(modelolm1))
 ```
 
-Interpretaciones ...
-
-**x.x.Eliminacion de outlier**
+**Eliminacion de outlier**
 
 ```{r}
 #| echo: false
@@ -706,9 +665,7 @@ modelolm2 <-  lm(datos1$exactitud ~ as.numeric(datos1$convoluciones)*as.numeric(
 summary(modelolm2)
 ```
 
-Interpretaciones ...
-
-**x.x.Análisis de residuales**
+**2.6. Análisis de residuales**
 
 ```{r}
 #| echo: false
@@ -716,8 +673,6 @@ Interpretaciones ...
 residuales <- rstandard(modelo2)
 summary(residuales)
 ```
-
-Interpretaciones ...
 
 **Prueba de normalidad**
 
@@ -731,16 +686,34 @@ hist(residuales, xlab="Residuales", ylab="Frecuencia", main="Histograma")
 boxplot(residuales, xlab="Residuales",  main="Gr?fico de cajas")
 ```
 
-Interpretaciones ...
-
 ```{r}
-#| echo: false
-require(nortest)
-shapiro.test(residuales)
-ad.test(residuales)
+#| echo: false 
+#| 
+h0 <- "los residuales siguen una distribución normal"
+ha <- "los residuales no siguen una distribución normal"
+
+cat("H0: ", h0) 
+cat("HA: ", ha)
+
 ```
 
-Interpretaciones ...
+**Prueba de normalidad Anderson-Darling**
+
+```{r}
+#| echo: false 
+#| 
+pruebaNormalidadAD(residuales, alfaNormalidad, h0, ha) 
+
+```
+
+**Prueba de normalidad Shapiro-Wilk**
+
+```{r}
+#| echo: false 
+#| 
+pruebaNormalidadShapiro(residuales, alfaNormalidad, h0, ha) 
+
+```
 
 **Prueba de varianza constante**
 
@@ -758,26 +731,115 @@ plot(as.numeric(datos1$filtros), residuales, xlab="filtros", ylab="Residuales")
 abline(h=0, col = "gray60")
 plot(as.numeric(datos1$densa), residuales, xlab="densa", ylab="Residuales")
 abline(h=0, col = "gray60")
-
-require(car)
-
-leveneTest(exactitud ~ convoluciones, data=datos1)
-leveneTest(exactitud ~ filtros, data=datos1)
-leveneTest(exactitud ~ densa, data=datos1)
-
-leveneTest(exactitud ~ convoluciones*filtros, data=datos1)
-leveneTest(exactitud ~ convoluciones*densa, data=datos1)
-leveneTest(exactitud ~ densa*filtros, data=datos1)
-
-require(lmtest)
-bptest(modelo2)
-
-#require(car)
-#bartlett.test(exactitud,convoluciones)
-#bartlett.test(exactitud ~ convoluciones)
 ```
 
-Interpretaciones ...
+interpretaciones...
+
+```{r}
+#| echo: false 
+
+alfaVarianzas<-0.05
+h0 <- "Las varianzas de la precisión son iguales en todos los niveles de la variable convoluciones"
+ha <- "Las varianzas de la precisión no son iguales en todos los niveles de la variable convoluciones"
+
+cat("H0: ", h0) 
+cat("HA: ", ha)
+
+```
+
+**Prueba de iguadad de varianzas Levene**
+
+```{r}
+#| echo: false    
+pruebaIgualdadVarianzasLeveneConjunta(exactitud ~ convoluciones, datos1, alfaVarianzas, h0, ha)
+```
+
+```{r}
+#| echo: false 
+
+alfaVarianzas<-0.05
+h0 <- "Las varianzas de la precisión son iguales en todos los niveles de la variable filtros"
+ha <- "Las varianzas de la precisión no son iguales en todos los niveles de la variable filtros"
+
+cat("H0: ", h0) 
+cat("HA: ", ha)
+
+```
+
+**Prueba de iguadad de varianzas Levene**
+
+```{r}
+#| echo: false    
+pruebaIgualdadVarianzasLeveneConjunta(exactitud ~ filtros, datos1, alfaVarianzas, h0, ha)
+```
+
+```{r}
+#| echo: false 
+
+alfaVarianzas<-0.05
+h0 <- "Las varianzas de la precisión son iguales en todos los niveles de la variable densa"
+ha <- "Las varianzas de la precisión no son iguales en todos los niveles de la variable densa"
+
+cat("H0: ", h0) 
+cat("HA: ", ha)
+
+```
+
+```{r}
+#| echo: false    
+pruebaIgualdadVarianzasLeveneConjunta(exactitud ~ densa, datos1, alfaVarianzas, h0, ha)
+```
+
+```{r}
+#| echo: false 
+
+alfaVarianzas<-0.05
+h0 <- "Las varianzas de la precisión son iguales en todos los niveles de la variable convoluciones y filtros, y sus interacciones"
+ha <- "Las varianzas de la precisión no son iguales en todos los niveles de la variable convoluciones y filtros, y sus interacciones"
+
+cat("H0: ", h0) 
+cat("HA: ", ha)
+
+```
+
+```{r}
+#| echo: false    
+pruebaIgualdadVarianzasLeveneConjunta(exactitud ~ convoluciones*filtros, datos1, alfaVarianzas, h0, ha)
+```
+
+```{r}
+#| echo: false 
+
+alfaVarianzas<-0.05
+h0 <- "Las varianzas de la precisión son iguales en todos los niveles de la variable convoluciones y densa, y sus interacciones"
+ha <- "Las varianzas de la precisión no son iguales en todos los niveles de la variable convoluciones y densa, y sus interacciones"
+
+cat("H0: ", h0) 
+cat("HA: ", ha)
+
+```
+
+```{r}
+#| echo: false    
+pruebaIgualdadVarianzasLeveneConjunta(exactitud ~ convoluciones*densa, datos1, alfaVarianzas, h0, ha)
+```
+
+```{r}
+#| echo: false 
+
+alfaVarianzas<-0.05
+h0 <- "Las varianzas de la precisión son iguales en todos los niveles de la variable densa y filtros, y sus interacciones"
+ha <- "Las varianzas de la precisión no son iguales en todos los niveles de la variable densa y filtros, y sus interacciones"
+
+cat("H0: ", h0) 
+cat("HA: ", ha)
+
+```
+
+```{r}
+#| echo: false    
+pruebaIgualdadVarianzasLeveneConjunta(exactitud ~ densa*filtros, datos1, alfaVarianzas, h0, ha)
+```
 
 **Prueba de independencia**
 
@@ -785,18 +847,35 @@ Interpretaciones ...
 #| echo: false
 # 
 par(mfrow=c(1,3))
-plot(residuales, pch=16, ylab="Residuales", xlab="Orden", main="Gr?fico de Orden vs Residuales")
+plot(residuales, pch=16, ylab="Residuales", xlab="Orden", main="Gráfico de Orden vs Residuales")
 abline(h=0)
 acf(residuales,ylim=c(-1,1), main="Grafico de ACF")
 pacf(residuales,ylim=c(-1,1), main="Grafico de PACF", ylab="PACF")
-
-require(lmtest)
-dwtest(modelo2,alternative="two.sided")
 ```
 
-Interpretaciones ...
+-   En el gráfico de dispersión de los residuos en función de su orden dentro del conjunto de datos, no se observa un patrón claro en la distribución de los residuos a lo largo del orden. La mayoría de los residuos parecen estar dispersos aleatoriamente alrededor de la línea horizontal en y = 0, lo que sugiere que no hay un patrón sistemático en la relación entre el orden de los datos y los residuos.
 
-**x.x. Gráfico de superficie de respuesta**
+**Pruebas estadísticas**
+
+```{r}
+#| echo: false   
+
+alfaVarianzas<-0.05
+h0 <- "no hay autocorrelación en los residuos."
+ha <- "hay autocorrelación en los residuos."
+
+cat("H0: ", h0) 
+cat("HA: ", ha)
+```
+
+**Prueba Durbin-Watson**
+
+```{r}
+#| echo: false   
+pruebaIndependencia(modelo2, alfaVarianzas, h0, ha)
+```
+
+**2.7. Gráfico de superficie de respuesta**
 
 ```{r}
 #| echo: false
@@ -811,13 +890,13 @@ Interpretaciones ...
 
 par(mfrow=c(1,2))
 # Superficie de respuesta para c=-1
-x     <-  seq(-1, 1, 0.1) # x=convoluciones
-y     <-  seq(-1, 1, 0.1) # y=filtros
+x     <-  seq(1, 2, 1) # x=convoluciones
+y     <-  seq(4, 16, 1) # y=filtros
 model <-  function (x, y){45.6791 +0.1209*x -32.8209*y -4.5958*x*y}
 z     <-  outer(x, y ,model)
 
 persp(x,y,z, phi=30, theta=130, xlab="convoluciones", ylab="filtros", 
-      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      zlab="Exactitud", col = "lightblue", 
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
@@ -828,12 +907,12 @@ Interpretaciones ...
 #| echo: false
 par(mfrow=c(1,2))
 # Superficie de respuesta para c=1
-x     <-  seq(-1, 1, 0.1) 
-y     <-  seq(-1, 1, 0.1)
+x     <-  seq(1, 2, 1) 
+y     <-  seq(4, 16, 1)
 model <-  function (x, y){74.9125 - 7.6375*x +12.3375*y -4.5958*x*y}
 z     <-  outer(x, y ,model)
 persp(x,y,z, phi=30, theta=20, xlab="convoluciones", ylab="filtros", 
-      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      zlab="Exactitud", col = "lightblue", 
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
@@ -844,12 +923,12 @@ Interpretaciones ...
 #| echo: false
 par(mfrow=c(1,2))
 # Superficie de respuesta para b=-1
-x     <-  seq(-1, 1, 0.1) 
-y     <-  seq(-1, 1, 0.1)
+x     <-  seq(1, 2, 1) 
+y     <-  seq(64, 128, 1)
 model <-  function (x, y){70.5375 + 0.8375*x -7.9625*y -3.8792*x*y }
 z     <-  outer(x, y ,model)
 persp(x,y,z, phi=30, theta=120, xlab="convoluciones", ylab="densa", 
-      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      zlab="Exactitud", col = "lightblue", 
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
@@ -860,12 +939,12 @@ Interpretaciones ...
 #| echo: false
 par(mfrow=c(1,2))
 # Superficie de respuesta para b=1
-x     <-  seq(-1, 1, 0.1) 
-y     <-  seq(-1, 1, 0.1)
+x     <-  seq(1, 2, 1) 
+y     <-  seq(64, 128, 1)
 model <-  function (x, y){50.0541 -8.3541*x + 37.1959*y -3.8792*x*y }
 z     <-  outer(x, y ,model)
 persp(x,y,z, phi=30, theta=120, xlab="convoluciones", ylab="densa", 
-      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      zlab="Exactitud", col = "lightblue", 
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
@@ -876,12 +955,12 @@ Interpretaciones ...
 #| echo: false
 par(mfrow=c(1,2))
 # Superficie de respuesta para a=-1
-x     <-  seq(-1, 1, 0.1) 
-y     <-  seq(-1, 1, 0.1)
+x     <-  seq(4, 16, 1) 
+y     <-  seq(64, 128, 1)
 model <-  function (x, y){64.0541-5.6459*x + 18.4959*y + 22.5792*x*y}
 z     <-  outer(x, y ,model)
 persp(x,y,z, phi=30, theta=30, xlab="filtros", ylab="densa", 
-      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      zlab="Exactitud", col = "lightblue", 
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
@@ -892,12 +971,12 @@ Interpretaciones ...
 #| echo: false
 par(mfrow=c(1,2))
 # Superficie de respuesta para a=1 
-x     <-  seq(-1, 1, 0.1) 
-y     <-  seq(-1, 1, 0.1)
+x     <-  seq(4, 16, 1) 
+y     <-  seq(64, 128, 1)
 model <-  function (x, y){ 56.5375 - 14.8375*x + 10.7375*y + 22.5792*x*y}
 z     <-  outer(x, y ,model)
 persp(x,y,z, phi=30, theta=20, xlab="filtros", ylab="densa", 
-      zlab="Eficiencia de remoci?n", col = "lightblue", 
+      zlab="Exactitud", col = "lightblue", 
       expand=0.9, ticktype = "detailed")
 contour(x,y,z,nlevels=30)
 ```
@@ -944,7 +1023,7 @@ fig
 
 Interpretaciones ...
 
-**x.x. Comparaciones múltiples**
+**2.8. Comparaciones múltiples**
 
 ```{r}
 #| echo: false
@@ -996,7 +1075,7 @@ potencia
 
 Interpretaciones ...
 
-**x.x. Cálculo de réplicas**
+**2.9. Cálculo de réplicas**
 
 ```{r}
 #| echo: false
